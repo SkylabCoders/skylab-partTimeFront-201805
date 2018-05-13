@@ -1,0 +1,36 @@
+* {
+	font-family: 'Shadows Into Light Two', cursive;
+}
+
+#calculator {
+	background-color: rgb(124,195,224);
+	height: 300px;
+	width: 500px;
+	margin-left: 25%;
+	padding-top: 5%;
+	padding-left: 5%;
+}
+
+#n1, #n2{
+	height: 50px;
+	width: 150px;
+	font-size: 20px;
+}
+ #calculate{
+ 	height: 50px;
+	width: 150px;
+	border-radius: 5px;
+	font-size: 18px;
+ }
+
+ #results{
+ 	list-style: none;
+ 	font-size: 20px; 
+ }
+
+ h1 {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+ }

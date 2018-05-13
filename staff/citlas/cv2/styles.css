@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(237,237,237);
+    font-family: 'Lato', sans-serif;
+}
+
+img {
+    border-radius: 30px;
+    display: inline;
+}
+
+nav h1, nav h3, nav p, .name {
+    display: inline;
+}
+
+hr {
+    border-color: orange;
+}
+
+.contact {
+    float: right;
+}
+
+.name h1, .name h3{
+    vertical-align: top;
+}
+
+h3 {
+    display: inline;
+}

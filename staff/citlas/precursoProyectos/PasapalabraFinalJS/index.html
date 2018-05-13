@@ -1,0 +1,114 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Pasapalabra Final JS</title>
+  <meta name="description" content="Pasapalabra final precurso">
+  <meta name="author" content="SitePoint">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="container">
+  <header>
+    <h1 class="animated rubberBand">Pasapalabra final JS</h1>
+  </header>
+  <!-- 
+  1. poner id a todo para poder llamarlos en js,
+  2. para la funcion usar en button onclick="pasapalabra()"
+  3. poner algo vacio para que ahi se muestren los resultados (ul id results por ejemplo)-->
+  
+
+<!--  <nav></nav> -->
+ <section id="pregunta">
+   <article>
+    <h2 id="bienvenida"></h2>
+    <p>Es como el juego de pasapalabra de la tele. Escribe la respuesta, si no la sabes, escribe "pasapalabra"</p>
+    <button onclick="play()" id="start">Start!!</button>
+     
+   </article>
+ </section>
+
+ <div id="horizontal" class="clearfix">
+  <div id="divDePreguntaShow">
+    <p id="preguntaShow"></p>
+  </div>
+  <section id="respuesta">
+   <article>
+    <input type="text" placeholder="Escribe aquí tu respuesta" id="respuestaInput">
+    <button onclick="answer()" id="respuesta">Esta es mi respuesta!</button>
+    <!--<button onclick="pasapalabra()" id="pasapalabra">paso palabra!</button>-->
+   </article>
+   <article>
+     <p id="resultadosShow" class="animated infinite pulse"></p>
+     <button onclick="otroJuego()" id="juegoNuevo">Haz click para volver a jugar!</button>
+   </article>
+ </section>
+
+
+
+  <section id="letras">
+   <article>
+     <table>
+       <tr>
+         <td class="letter" id="a">A</td>
+         <td class="letter" id="b">B</td>
+         <td class="letter" id="c">C</td>
+         <td class="letter" id="d">D</td>
+         <td class="letter" id="e">E</td>
+         <td class="letter" id="f">F</td>
+        </tr>
+        <tr>
+         
+         <td class="letter" id="g">G</td>
+         <td class="letter" id="h">H</td>
+         <td class="letter" id="i">I</td>
+         <td class="letter" id="j">J</td>
+         <td class="letter" id="k">K</td>
+         <td class="letter" id="l">L</td>
+        </tr>
+        <tr>
+         
+         <td class="letter" id="m">M</td>
+         <td class="letter" id="n">N</td>
+         <td class="letter" id="ñ">Ñ</td>
+         <td class="letter" id="o">O</td>
+         <td class="letter" id="p">P</td>
+         <td class="letter" id="q">Q</td>
+        </tr>
+        <tr>
+         
+         <td class="letter" id="r">R</td>
+         <td class="letter" id="s">S</td>
+         <td class="letter" id="t">T</td>
+         <td class="letter" id="u">U</td>
+         <td class="letter" id="v">V</td>
+         <td class="letter" id="w">W</td>
+      </tr>
+       <tr>
+         
+         <td class="letter" id="x">X</td>
+         <td class="letter" id="y">Y</td>
+         <td class="letter" id="z">Z</td>
+       </tr>
+      
+     </table>
+   </article>
+ </section>
+  
+ </div>
+ <aside></aside>
+ <footer></footer>
+ <script src="app/app.js" ></script>
+</div>
+</body>
+</html>
