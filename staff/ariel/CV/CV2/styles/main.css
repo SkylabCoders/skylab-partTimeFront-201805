@@ -1,0 +1,53 @@
+header {
+    display: flex;
+    background-color: RGB(237, 237, 237);
+    border-bottom: 1px solid RGB(218, 135, 0);
+    background-image: url(images/headshot.jpg);
+    background-position: left;
+}
+
+header .name{
+    width: 80%;
+    background-color: white;
+}
+
+header .contact-info {
+    width: 10%;
+}
+
+body {
+    background-color: RGB(234, 234, 234);
+}
+
+section{
+    background-color: yellow;
+    width: 100%;
+    border-bottom: 1px solid RGB(222, 222, 222);
+}
+
+aside {
+    width: 30%;
+    background-color: blue;
+}
+
+h4, h5{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+h4 {
+    color: RGB(218, 135, 0)
+}
+
+h5{
+    font-weight: 600px;
+    margin-left: 15px;
+    background-color: blueviolet;
+}
+
+h6 {
+    margin-left: 15px;
+    font-style: italic;
+    font-size: 9px;
+}
