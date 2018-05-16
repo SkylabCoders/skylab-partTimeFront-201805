@@ -1,0 +1,1 @@
+var checkInDate = prompt('Enter your Check-In date Please', 'Check-in')
