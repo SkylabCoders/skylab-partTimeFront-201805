@@ -1,0 +1,60 @@
+.top {
+    height: 40em;
+    background-color: lightskyblue;
+    display: flex;
+}
+
+.t-left {
+    height: 100%;
+    width: 50%;
+    background-color:none;
+    display: flex;
+}
+
+/*  https://stackoverflow.com/questions/12813573/position-icons-into-circle */
+
+.circle-container {
+    background-color: white;
+    position: relative;
+    width: 24em;
+    height: 24em;
+    padding: 2.8em;
+    /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+    border: dashed 1px;
+    border-radius: 50%;
+    margin: 1.75em auto 0;
+}
+.circle-container a {
+    border: solid 1px black;
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 3em; height: 3em;
+    border-radius: 100%;
+    margin: -2em;
+    text-align: center;
+    font-style: normal;
+}
+
+.circle-container a p {
+    background-color: none;
+}
+
+.circle-container img { display: block; width: 100%; }
+.deg0 { transform: translate(12em); } /* 12em = half the width of the wrapper */
+.circle-container deg90 { transform: rotate(-100deg) translate(13em) rotate(-90deg); }
+.deg75 { transform: rotate(-90deg) translate(13em) rotate(75deg); }
+.deg60 { transform: rotate(-60deg) translate(13em) rotate(60deg); }
+.deg90 { transform: rotate(-45deg) translate(13em) rotate(45deg); }
+.deg75 { transform: rotate(-30deg) translate(13em) rotate(30deg); }
+.deg60 { transform: rotate(-15deg) translate(13em) rotate(15deg); }
+.deg0 { transform: translate(-13em); }
+.deg-180 { transform: rotate(225deg) translate(12em) rotate(-225deg); }
+
+
+.t-right {
+    height: 100%;
+    width: 50%;
+    background-color:none;
+    display: flex;
+}
