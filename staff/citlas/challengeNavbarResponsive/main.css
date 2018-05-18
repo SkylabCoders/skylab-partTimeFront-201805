@@ -8,17 +8,19 @@ nav {
 
 ul {
     list-style-type: none;
-    display: inline-block;
+    
     width: 100%;
     background-color: rgb(211, 211 , 211);
     padding: 0%;
+    display: flex;
+    flex-direction: row;
   }
 
 li {
     background-color: rgb(211, 211 , 211);
-    display: inline-block;
+   
     padding: 20px;
-    float: left;
+    
 }
 
 li:hover {
@@ -26,7 +28,7 @@ li:hover {
 }
 
 #contact {
-    float: right;
+    margin-left: auto;
 }
 
 @media (max-width: 580px){
