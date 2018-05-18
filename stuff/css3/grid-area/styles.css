@@ -59,10 +59,10 @@
 @media (max-width: 490px){
 
 	.my-grid{
-		grid-template-columns: 1fr 4fr;
-		grid-template-rows: 1fr 5fr 1fr;
+		grid-template-columns: 1fr repeat(4, 1fr);
+		grid-template-rows: 1fr repeat(5, 1fr) 1fr;
 		grid-template-areas: 
-			"header header header header header"
+			repeat(5, "header")
 			"side main main main main"
 			"footer-left footer-left footer-left footer-left footer-left"
 	}
