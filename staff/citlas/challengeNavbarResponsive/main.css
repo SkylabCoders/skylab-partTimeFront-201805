@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+}
+
+nav {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    display: inline-block;
+    width: 100%;
+    background-color: rgb(211, 211 , 211);
+    padding: 0%;
+  }
+
+li {
+    background-color: rgb(211, 211 , 211);
+    display: inline-block;
+    padding: 20px;
+    float: left;
+}
+
+li:hover {
+    background-color: rgb(255,159,55)
+}
+
+#contact {
+    float: right;
+}
+
+@media (max-width: 580px){
+   
+
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    li {
+        width: 100%;
+        text-align: center;
+        padding: 20 0;
+    }
+}
+
