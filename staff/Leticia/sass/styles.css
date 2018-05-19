@@ -1,0 +1,22 @@
+nav .first-list, nav .other-list {
+  background-color: lightgray;
+  padding-left: 0;
+  display: -webkit-box;
+  display: -mox-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  nav .first-list li, nav .other-list li {
+    padding: 10px;
+    list-style-type: none; }
+    nav .first-list li:hover, nav .other-list li:hover {
+      background-color: orange; }
+nav .other-list {
+  font-size: 12px;
+  color: gray;
+  padding-left: 20px; }
+  nav .other-list li {
+    margin-left: 25px;
+    list-style-type: circle; }
+
+/*# sourceMappingURL=styles.css.map */
