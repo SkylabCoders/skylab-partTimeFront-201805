@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+}
+
+$greenColor: rgb(0,176,156);
+$blackish: rgb(51,51,51);
+
+nav {
+ul {
+    list-style-type: none;
+    li {
+        display: inline-block;
+        padding: 1%;
+        vertical-align: middle;
+    }
+    #gamma {
+        color: $greenColor;
+        font-size: 1em;
+    }
+    li:hover {
+        background-color:lightgray;
+    }
+  }
+}
+
+article{
+    display: inline-block;
+}
+  #capture {
+      width: 100%;
+      background-image: url('img/site_showcase_bg.jpg');
+      background-size: cover;
+      display: inline-block;
+      color: white; 
+      overflow: auto;
+      
+      #textCapture {
+          padding-top: 20%;
+          padding-left: 20%;
+          padding-bottom: 20%;
+        h2 {
+            font-size: 3em;
+            span {
+                color:$greenColor;
+            }
+      }
+      p {
+        padding-top: 10%;
+        font-size: 1.3em;
+        font-weight: lighter;
+
+      }
+    }
+      #imgCapture {
+          display: inline-block;
+          text-align:center;
+          img {
+            
+            width: 45%;
+            margin: auto;
+            text-align: center;
+            display:inline-block;
+            vertical-align: middle;
+          }
+          #imgCapture1 {
+            
+          }
+          #imgCapture2 {
+           
+         }
+      }
+
+      
+      #manoTel {
+        width: 100%; 
+        vertical-align: bottom;
+        padding-top: 5%; 
+    }
+        #captureLeft {
+            width: 45%;
+            float: left;
+            margin: auto;
+        }
+        #captureRight {
+            width: 45%;
+            float: left;
+            margin: auto;
+        }
+      
+    }
+
+    #medio {
+        width: 90%;
+        margin: auto;
+        padding: 40px;
+    }
+    .product {
+        width: 300px;
+        border-style: solid;
+        border-color: lightgray;
+        padding: 10px;
+        margin: 5px;
+        
+        * {
+            padding: 5px;   
+        }
+        img {
+            width: inherit;
+        }
+        display: inline-block;
+    }
+
+    #bajo {
+        background-color: $greenColor;
+        
+        width: 100%;
+        color: white;
+        #izquierda {
+            padding: 40px;
+            display: inline-block;
+        ul {
+            
+            li {
+                display: block;
+                
+                line-height: 200%;
+            }
+            }
+        }
+        #derecha {
+            display: inline-block;
+            float: right;
+        }
+            i {
+                
+                display: inline-block;
+                font-size: 150px;
+                float: right;
+                color: $blackish;
+                padding: 40px;
+            }
+        
+    }
+
+    footer {
+        background-color: $blackish;
+        color: white;
+        ul {
+            list-style-type: none;
+            li {
+                display: inline-block;
+                padding: 20px;
+            
+            } 
+        }
+        #copy {
+            float: right;
+        }
+    }
+
+    @media (max-width: 768px){//tablet
+        #capture {
+            #manoTel {
+                display: none;
+            }
+            #captureLeft {
+                width: 90%;
+            }
+            #textCapture {
+                padding-left: 10%;
+                padding-bottom: 10%;
+                padding-top: 10%;
+                
+                h2 {
+                    text-align: center;
+                }
+            }
+            #imgCapture {
+                padding-bottom: 10%;
+                margin: 10%;
+            }
+        }
+        .product {
+            width: 40%;
+            img {
+                width: 100%;
+            }
+        }
+
+        #bajo {
+            overflow: auto;
+            #izquierda {
+                display: block;
+            }
+            #derecha {
+                float: none;
+            }
+        }
+        footer {
+           ul {
+               padding: 2%;
+               text-align: center;
+           }
+            #copy {
+                float: none;
+                text-align: center;
+                width: 100%;
+                padding: 2%;
+            }
+        }
+        
+    }
+
+    @media (max-width: 425px){//mobile
+   nav {
+       .noShow{
+           display: none;
+       }  
+   }
+   #capture {
+    #imgCapture {
+        img {
+         width: 100%;
+         padding: 1%;
+        }
+    }
+}
+
+#medio {
+    padding: 0;
+    margin: 0;
+    .product {
+        width: 100%;
+    }
+}
+
+#bajo {
+    ul {
+        padding: 0;
+    }
+    width: 100%;
+    text-align: center;
+    li {
+        float: none;
+    }
+    i {
+        width: 100%;
+        font-size: 70vw;
+        padding: 0;
+    }
+}
+
+}
