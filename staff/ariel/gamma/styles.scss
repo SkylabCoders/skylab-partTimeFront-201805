@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Heebo', sans-serif;
 }
 
 
@@ -15,12 +16,14 @@ body{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 22px;
+            font-size: 20px;
 
             .nav-left{
 
-                margin-left: 120px;
+                margin-left: 10%;
                 height: 100%;
+                display: flex;
+                align-items: center;
 
                 ul{
                     
@@ -30,14 +33,14 @@ body{
                     align-items: center;
 
                     li{
-                        display: inline-block;
                         list-style-type: none;
                         font-style: none;
                         height: 100%;
+                        display: flex;
+                        align-items: center;
                         
 
                         a{
-                            line-height: 100%;
                             text-decoration: none;
                             color: grey;
                             padding: 0px 10px;
@@ -95,13 +98,13 @@ body{
 
                     h2 {
                         margin-bottom: 15px;
-                        font-size: 35px;
+                        font-size: 50px;
                         color: white;
                     }
     
                     p {
                         margin-bottom: 15px;
-                        font-size: 25px;
+                        font-size: 20px;
                         color: white;
                     }
     
