@@ -422,5 +422,59 @@ article{
         }
         
     }
+
+   
 }
 
+#contactPage {
+    
+    #medioContactLeft {
+        
+        width: 65%;
+        display: inline-block;
+        float: left;
+        form {
+            display: block;
+            width: 90%;
+            padding: 3%;
+           
+            label, input {
+                display: block;  
+            }
+            input, textarea {
+                border: 1px solid gray;
+                width: 90%;
+                margin: 3% 0%;
+                padding: 2%;
+            }
+        }
+    }
+    .product {
+        @extend %extendedProduct;
+        width: 30%;
+        display: inline-block;
+         
+        img {
+            width: 100%;
+        }
+    }
+    @media (max-width: 768px){//tablet
+        #medioContactLeft{
+            width: 100%;
+            form {
+                input, textarea {
+                    width: 100%;   
+                }
+                input[type="submit"]{
+                    width: 20%;
+                }
+            }
+            
+        }
+        .product {
+            width: 95%;
+        }
+    }//fin tablet
+    @media (max-width: 425px){//mobile
+    }//fin mobile
+}//fin contact page

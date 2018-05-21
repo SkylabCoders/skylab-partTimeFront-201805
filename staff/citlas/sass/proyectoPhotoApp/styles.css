@@ -15,16 +15,16 @@
   .homePage nav ul li:hover, .aboutPage nav ul li:hover {
     background-color: lightgray; }
 
-.homePage .product, .aboutPage #medioAbout .product {
+.homePage .product, .aboutPage #medioAbout .product, #contactPage .product {
   width: 300px;
   border-style: solid;
   border-color: lightgray;
   padding: 10px;
   margin: 5px;
   display: inline-block; }
-  .homePage .product *, .aboutPage #medioAbout .product * {
+  .homePage .product *, .aboutPage #medioAbout .product *, #contactPage .product * {
     padding: 5px; }
-  .homePage .product img, .aboutPage #medioAbout .product img {
+  .homePage .product img, .aboutPage #medioAbout .product img, #contactPage .product img {
     width: inherit; }
 
 .homePage #bajo, .aboutPage #bajo {
@@ -248,5 +248,35 @@
     .aboutPage footer ul li {
       padding: 10px; }
     
+
+#contactPage #medioContactLeft {
+  width: 65%;
+  display: inline-block;
+  float: left; }
+  #contactPage #medioContactLeft form {
+    display: block;
+    width: 90%;
+    padding: 3%; }
+    #contactPage #medioContactLeft form label, #contactPage #medioContactLeft form input {
+      display: block; }
+    #contactPage #medioContactLeft form input, #contactPage #medioContactLeft form textarea {
+      border: 1px solid gray;
+      width: 90%;
+      margin: 3% 0%;
+      padding: 2%; }
+#contactPage .product {
+  width: 30%;
+  display: inline-block; }
+  #contactPage .product img {
+    width: 100%; }
+@media (max-width: 768px) {
+  #contactPage #medioContactLeft {
+    width: 100%; }
+    #contactPage #medioContactLeft form input, #contactPage #medioContactLeft form textarea {
+      width: 100%; }
+    #contactPage #medioContactLeft form input[type="submit"] {
+      width: 20%; }
+  #contactPage .product {
+    width: 95%; } }
 
 /*# sourceMappingURL=styles.css.map */
