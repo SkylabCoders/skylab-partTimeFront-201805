@@ -3,12 +3,15 @@ var d = new Date();
 document.getElementById("demo").innerHTML = d.toDateString();
 */
 
-var dateIn = document.getElementById('inDate').innerHTML;
-var dateOut = document.getElementById('outDate').innerHTML;
+var dateIn = document.getElementById('inDate').value;
+var dateOut = document.getElementById('outDate').value;
 
 
-document.getElementById('showInDate').innerHTML;
-document.getElementById('showOutDate').innerHTML;
+document.getElementById('ingreso').innerHTML = inDate;
+document.getElementById('egreso').innerHTML = outDate;
+
+
+
 
 /*
 var checkInDate = prompt('Enter your Check-In date please', 'Check-in');

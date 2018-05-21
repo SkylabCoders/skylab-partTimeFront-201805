@@ -1,0 +1,189 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    width: 100%;
+    margin: 0px;
+
+    header{
+        nav{
+            background-color: RGB(248, 248, 248);
+            height: 50px;
+
+            ul{
+                margin: 0px;
+                padding: 0px;
+
+                li{
+                    display: inline-block;
+                    list-style-type: none;
+                    font-style: none;
+
+                    a{
+                        font-style: none;
+                        font-size: 20px;
+                        padding: 0px 10px;
+
+                        span{
+                            color: RGB(0, 183, 156);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    main {
+        width: 100%;
+        .top{
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            height: 600px;
+            background-image: url("img/site_showcase_bg.jpg");
+
+            .top-left{
+                width: 50%;
+                padding-left: 50px;
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                div:nth-child(2) {
+                    margin-left: 10px;
+                }
+
+                h2 {
+                    margin-bottom: 15px;
+                    font-size: 35px;
+                    color: white;
+                }
+
+                p {
+                    margin-bottom: 15px;
+                    font-size: 25px;
+                    color: white;
+                }
+
+                h2 span{
+                    color: RGB(0, 183, 156);
+                }
+            }
+
+            .top-right{
+                width: 50%;
+                height: 600px;
+
+
+                h2, p{
+                    color: white;
+                }
+            }
+
+        
+        }
+
+    
+        .mid{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .box{
+                width: auto;
+                height: 900px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 2;
+                margin: 20px 5px; 
+                border: 1px solid gray;
+
+                /*
+                .img1{
+                    height: 50%;
+                    background-image: url('img/demo1.jpg');
+                    background-size: 100% 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                
+
+                .img2{
+                    height: 50%;
+                    background-image: url('img/demo2.jpg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                .img3{
+                    height: 50%;
+                    background-image: url('img/demo3.jpg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                */
+
+                .box-info{
+                    height: 50%;
+                    vertical-align: center;
+                    margin: 5px 40px;
+                }
+            }
+        }
+
+        .bottom{
+            background-color: RGB(0, 183, 156);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .bottom-right{
+                width: 50%;
+            
+
+                ul {
+
+                    li {
+                        list-style-type:none;
+
+                            .fas .fa-check{
+                                color: white;
+                            }
+                            
+                    }
+                }
+            }
+        }
+    }
+
+
+    footer{
+        height: 40px;
+        background-color: RGB(51, 51, 51);
+        color: white;
+        display: flex;
+        align-items: center;
+
+        nav{
+            ul{
+                li{
+                    list-style-type: none;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+}
