@@ -1,152 +1,66 @@
+@import 'extend';
+@import 'vars';
+
 * {
     margin: 0;
     font-family: 'Tajawal', sans-serif;
 }
 
-$greenColor: rgb(0,176,156);
-$blackish: rgb(51,51,51);
-
-%ulNav {
-    ul {
-        list-style-type: none;
-        li {
-            display: inline-block;
-            padding: 1%;
-            vertical-align: middle;
-        }
-        #gamma {
-            color: $greenColor;
-            font-size: 1em;
-        }
-        li:hover {
-            background-color:lightgray;
-        }
-      }
-}
-
-%extendedProduct {
-    width: 300px;
-    border-style: solid;
-    border-color: lightgray;
-    padding: 10px;
-    margin: 5px;
-    
-    * {
-        padding: 5px;   
-    }
-    img {
-        width: inherit;
-    }
-    display: inline-block;
-}
-
-%bajo {
-
-    background-color: $greenColor;
-        
-    width: 100%;
-    color: white;
-    #izquierda {
-        padding: 40px;
-        display: inline-block;
-    ul {
-        
-        li {
-            display: block;
-            
-            line-height: 200%;
-        }
-        }
-    }
-    #derecha {
-        display: inline-block;
-        float: right;
-    }
-        i {
-            
-            display: inline-block;
-            font-size: 150px;
-            float: right;
-            color: $blackish;
-            padding: 40px;
-        }
-    
-}
-
-%extendedFooter {
-    background-color: $blackish;
-        color: white;
-        ul {
-            list-style-type: none;
-            li {
-                display: inline-block;
-                padding: 20px;
-            
-            } 
-        }
-        #copy {
-            float: right;
-        }
-}
 
 .homePage{
-nav {
-@extend %ulNav;
-}
+    nav {
+    @extend %ulNav;
+    }
 
-article{
-    display: inline-block;
-}
-  #capture {
-      width: 100%;
-      background-image: url('img/site_showcase_bg.jpg');
-      background-size: cover;
-      display: inline-block;
-      color: white; 
-      overflow: auto;
-      
-      #textCapture {
-          padding-top: 20%;
-          padding-left: 20%;
-          padding-bottom: 20%;
-        h2 {
-            font-size: 3em;
-            span {
-                color:$greenColor;
+    article{
+        display: inline-block;
+    }
+
+    #capture {
+        width: 100%;
+        background-image: url('img/site_showcase_bg.jpg');
+        background-size: cover;
+        display: inline-block;
+        color: white; 
+        overflow: auto;
+        
+        #textCapture {
+            padding-top: 20%;
+            padding-left: 20%;
+            padding-bottom: 20%;
+
+            h2 {
+                font-size: 3em;
+                span {
+                    color:$greenColor;
+                }
             }
-      }
-      p {
-        padding-top: 10%;
-        font-size: 1.3em;
-        font-weight: lighter;
+            p {
+                padding-top: 10%;
+                font-size: 1.3em;
+                font-weight: lighter;
 
-      }
-    }
-      #imgCapture {
-          display: inline-block;
-          text-align:center;
-          img {
-            
-            width: 45%;
-            margin: auto;
+            }
+        }
+
+        #imgCapture {
+            display: inline-block;
             text-align: center;
-            display:inline-block;
-            vertical-align: middle;
-          }
-          #imgCapture1 {
-            
-          }
-          #imgCapture2 {
-           
-         }
-      }
+            img {
+                width: 45%;
+                margin: auto;
+                text-align: center;
+                display:inline-block;
+                vertical-align: middle;
+            }
+        }
 
-      
-      #manoTel {
-        width: 100%; 
-        vertical-align: bottom;
-        padding-top: 5%; 
-    }
+        
+        #manoTel {
+            width: 100%; 
+            vertical-align: bottom;
+            padding-top: 5%; 
+        }
         #captureLeft {
             width: 45%;
             float: left;
@@ -157,7 +71,7 @@ article{
             float: left;
             margin: auto;
         }
-      
+        
     }
 
     #medio {
@@ -165,6 +79,7 @@ article{
         margin: auto;
         padding: 40px;
     }
+
     .product {
     @extend %extendedProduct;
     }
@@ -216,10 +131,10 @@ article{
             }
         }
         footer {
-           ul {
-               padding: 2%;
-               text-align: center;
-           }
+        ul {
+            padding: 2%;
+            text-align: center;
+        }
             #copy {
                 float: none;
                 text-align: center;
@@ -231,250 +146,45 @@ article{
     }
 
     @media (max-width: 425px){//mobile
-   nav {
-       .noShow{
-           display: none;
-       }  
-   }
-   #capture {
-    #imgCapture {
-        img {
-         width: 100%;
-         padding: 1%;
-        }
-    }
-}
-
-#medio {
-    padding: 0;
-    margin: 0;
-    .product {
-        width: 100%;
-    }
-}
-
-#bajo {
-    ul {
-        padding: 0;
-    }
-    width: 100%;
-    text-align: center;
-    li {
-        float: none;
-    }
-    i {
-        width: 100%;
-        font-size: 70vw;
-        padding: 0;
-    }
-}
-
-}
-}
-
-
-
-.aboutPage {
-   nav {
-       @extend %ulNav;
-   }
-    #topNameAbout {
-        background-color: $greenColor;
-        padding: 2%;
-        color: white;
-        font-size: 3vw;
-        padding-left: 5%;
-        }
-        
-       #medioAbout{
-           width: 90%;
-           display: block;
-           margin: auto;
-           overflow: auto;
-            #medioAboutLeft {
-                float: left;
-                display: inline-block;
-                width: 40%;
-                padding: 2%;
-                h2 {
-                    padding: 3% 0%;
-                }
-                }
-            .product {
-                @extend %extendedProduct;
-                float: right;
-                display: inline-block;
-                width: 40%;
-                img {
-                    width: 100%;
-                }
-                }
-       }  
-       #bajo {
-        @extend %bajo;
-        display: inline-block;
-    }
-
-    footer {
-        @extend %extendedFooter;
-    }
-    @media (max-width: 768px){//tablet
-        #medioAbout{
-            width: 90%;
-            display: block;
-            margin: auto;
-            overflow: auto;
-             #medioAboutLeft {
-                 float: left;
-                 display: inline-block;
-                 width: 100%;
-                 padding: 2%;
-                 h2 {
-                     padding: 3% 0%;
-                 }
-                 }
-             .product {
-                border-style: solid;
-                border-color: lightgray;
-                padding: 10px;
-                margin: 5px;
-                float: left;
-                display: inline-block;
-                width: 90%;
-                
-                * {
-                    padding: 5px;   
-                }
-               
-                 img {
-                     width: 100%;
-                 }
-                 }
-        }  
-        #bajo {
-            
-            #izquierda {
-                display: block;
-            }
-            #derecha {
-                float: none;
-            }
-        }
-        footer {
-           ul {
-               padding: 2%;
-               text-align: center;
-           }
-            #copy {
-                float: none;
-                text-align: center;
-                width: 90%;
-                padding: 2%;
-            }
-        }
-        
-    }//fin tablet
-    @media (max-width: 425px){//mobile
         nav {
             .noShow{
                 display: none;
             }  
         }
         #capture {
-         #imgCapture {
-             img {
-              width: 100%;
-              padding: 1%;
-             }
-         }
-     }
-     
-     #medio {
-         padding: 0;
-         margin: 0;
-         .product {
-             width: 90%;
-         }
-     }
-     
-     #bajo {
-         ul {
-             padding: 0;
-         }
-         width: 100%;
-         text-align: center;
-         li {
-             float: none;
-             text-align: left;
-         }
-         i {
-             width: 100%;
-             font-size: 70vw;
-             padding: 0;
-         }
-     }
-    }
-    footer {
-        ul {
-            li {
-                padding: 10px;
+            #imgCapture {
+                img {
+                    width: 100%;
+                    padding: 1%;
             }
         }
-        
     }
 
-   
+    #medio {
+        padding: 0;
+        margin: 0;
+        .product {
+            width: 100%;
+        }
+    }
+
+    #bajo {
+        ul {
+            padding: 0;
+        }
+        width: 100%;
+        text-align: center;
+        li {
+            float: none;
+        }
+        i {
+            width: 100%;
+            font-size: 70vw;
+            padding: 0;
+        }
+    }
+
+    }
 }
 
-#contactPage {
-    
-    #medioContactLeft {
-        
-        width: 65%;
-        display: inline-block;
-        float: left;
-        form {
-            display: block;
-            width: 90%;
-            padding: 3%;
-           
-            label, input {
-                display: block;  
-            }
-            input, textarea {
-                border: 1px solid gray;
-                width: 90%;
-                margin: 3% 0%;
-                padding: 2%;
-            }
-        }
-    }
-    .product {
-        @extend %extendedProduct;
-        width: 30%;
-        display: inline-block;
-         
-        img {
-            width: 100%;
-        }
-    }
-    @media (max-width: 768px){//tablet
-        #medioContactLeft{
-            width: 100%;
-            form {
-                input, textarea {
-                    width: 100%;   
-                }
-                input[type="submit"]{
-                    width: 20%;
-                }
-            }
-            
-        }
-        .product {
-            width: 95%;
-        }
-    }//fin tablet
-    @media (max-width: 425px){//mobile
-    }//fin mobile
-}//fin contact page
+
