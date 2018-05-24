@@ -1,0 +1,31 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #D3D3D3;
+}
+
+li {
+    padding: 10px;
+    text-align: center;
+}
+
+li.home {
+    background-color: #FDA028;
+}
+
+a { 
+    text-decoration: none; 
+    color: black;
+}
+
+@media (min-width: 600px) {
+    ul { display: flex; }
+    .secondary { margin-left: auto; }
+}
