@@ -1,5 +1,5 @@
 .DS-Store
 .sass-cache
 ../.DS-Store
-styles.css
-styles.css.map
+*.css
+*.css.map
