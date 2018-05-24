@@ -1,0 +1,84 @@
+@import 'vars';
+
+%ulNav {
+    ul {
+        list-style-type: none;
+        li {
+            display: inline-block;
+            padding: 1%;
+            vertical-align: middle;
+        }
+        #gamma {
+            color: $greenColor;
+            font-size: 1em;
+        }
+        li:hover {
+            background-color:lightgray;
+        }
+      }
+}
+
+%extendedProduct {
+    width: 300px;
+    border-style: solid;
+    border-color: lightgray;
+    padding: 10px;
+    margin: 5px;
+    
+    * {
+        padding: 5px;   
+    }
+    img {
+        width: inherit;
+    }
+    display: inline-block;
+}
+
+%bajo {
+
+    background-color: $greenColor;
+        
+    width: 100%;
+    color: white;
+    #izquierda {
+        padding: 40px;
+        display: inline-block;
+    ul {
+        
+        li {
+            display: block;
+            
+            line-height: 200%;
+        }
+        }
+    }
+    #derecha {
+        display: inline-block;
+        float: right;
+    }
+        i {
+            
+            display: inline-block;
+            font-size: 150px;
+            float: right;
+            color: $blackish;
+            padding: 40px;
+        }
+    
+}
+
+%extendedFooter {
+    background-color: $blackish;
+        color: white;
+        ul {
+            list-style-type: none;
+            li {
+                display: inline-block;
+                padding: 20px;
+            
+            } 
+        }
+        #copy {
+            float: right;
+        }
+}
