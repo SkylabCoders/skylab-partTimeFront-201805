@@ -1,0 +1,522 @@
+// Vars
+//------------------------------------------------------------------
+
+// Colors
+$accent-color: #1BAF9B;
+$dark-color: #333333;
+
+$white: #fff;
+$grey-lighter: #e4e4e4;
+$grey-light: #aaa;
+
+// Typography settings
+$font-size: 16px;
+$brand-face: 'Ubuntu', sans-serif;
+
+// Spacing
+$base-spacing: 24px;
+$half-spacing: $base-spacing/2;
+$quarter-spacing: $base-spacing/4;
+
+$border: 1px solid $grey-lighter;
+$radius: 4px;
+
+
+// Resets
+//------------------------------------------------------------------
+
+* {box-sizing: border-box;}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {margin-top: 0}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+img {max-width: 100%;}
+
+fieldset {
+    border: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+// Helpers
+//------------------------------------------------------------------
+
+@media (max-width: 600px) {
+    .hidden--s {display: none !important;}
+}
+
+@media (min-width: 600px) and (max-width: 1023px){
+    .hidden--m {display: none !important;}
+}
+
+@media (min-width: 1024px) {
+    .hidden--l {display: none !important;}
+}
+
+
+// Typography
+//------------------------------------------------------------------
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: $font-size;
+    line-height: 1.5rem;
+}
+
+p {
+    margin: 0 0 $base-spacing 0;
+}
+.brand-face {
+    font-family: $brand-face;
+    font-weight: bold;
+}
+
+.accent {color: $accent-color;}
+// font-family: 'Open Sans', sans-serif;
+
+
+// Global
+//------------------------------------------------------------------
+
+.logo {font-size: 1.2rem;}
+
+.nav {
+    li { display: inline-block; }
+}
+
+.button,
+input[type=submit] {
+    padding: $quarter-spacing $half-spacing;
+    font-size: .9rem;
+    background-color: $white;
+    border: $border;
+    border-radius: $radius;
+}
+
+section {
+    padding: $base-spacing*2 $half-spacing;
+    
+    @media (min-width: 600px) {
+        padding: $base-spacing*2;
+    }
+}
+
+aside {
+    padding: $half-spacing;
+    
+    @media (min-width: 600px) {
+        padding: $base-spacing*2;
+    }
+}
+
+.header--secondary {
+    padding: $base-spacing $half-spacing $half-spacing;
+    background-color: $accent-color;
+    color: $white;
+    
+    @media (min-width: 600px) and (max-width: 1023px) {
+        padding-left: $base-spacing*2;
+    }
+
+    h1 {
+        margin: 0;
+        font-family: $brand-face;
+    }
+}
+
+
+// Components
+//------------------------------------------------------------------
+
+.card {
+    margin-bottom: $base-spacing;    
+    padding: $half-spacing $half-spacing $base-spacing $half-spacing;
+    border: $border;
+    border-radius: $radius;
+
+    &__img {
+        display: block;
+        margin: 0 auto $half-spacing;
+    }
+
+    &__title { 
+        margin: 0 0 $half-spacing 0;
+        font-size: 1.5rem;
+        font-family: $brand-face;
+    }
+
+    &__description {
+        margin: 0 0 $half-spacing 0;
+        font-size: .9rem;
+    }
+}
+
+
+
+
+// Nav
+//------------------------------------------------------------------
+
+.nav-main {
+    &__item {
+        padding: $half-spacing;
+
+        &.selected {
+            background-color: $grey-lighter;
+        }
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1023px){
+    nav.wrapper { 
+        padding-left: $base-spacing*2;
+        
+        .nav-main__item:first-of-type {padding-left: 0;}
+    }
+}
+
+.nav--mobile {
+    font-size: 0;
+    
+    a {
+        position: absolute;
+        top: 10px;
+        right: $half-spacing;
+        display: block;
+        width: 38px;
+        height: 30px;
+        border: $border;
+        border-radius: $radius;
+    }
+
+    &__icon {
+        &,
+        &::before,
+        &::after {
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            border-radius: 1px;
+            background: $grey-light;
+        }
+        
+        &::before,
+        &::after {
+            content: "";
+            left: 0;
+        }
+
+        & {
+            top: 13px;
+            right: 8px;
+        }
+        &::before {bottom: 6px;}
+        &::after { bottom: -6px;}
+    }
+}
+
+// Footer
+//------------------------------------------------------------------
+
+footer {
+    padding: $base-spacing;
+    font-size: .9rem;
+    text-align: center;
+    color: $white;
+    background-color: $dark-color;
+
+    .nav-secondary {
+        margin-bottom: $half-spacing;
+
+        &__item {
+            > a {
+                padding: $quarter-spacing;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+// Hero
+//------------------------------------------------------------------
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    padding: $base-spacing;
+    background-image: url(../assets/site_showcase_bg.jpg);
+    background-size: cover;
+    background-position: center;
+    
+    @media (min-width: 600px) and (max-width: 1023px){
+        height: 50vh;
+        
+        .wrapper { 
+            width: 550px;
+            margin: 0 auto;
+        }
+    }
+}
+
+.claim {
+    text-align: center;
+    color: $white;
+    
+    &__title {
+        font-size: 3rem;
+        line-height: 2rem;
+    }
+    &__description {
+        font-size: 1.2rem;
+        font-weight: normal;
+    }
+    &__apps {
+        padding-top: 1rem;
+
+        @media (min-width: 600px) {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        img {
+            margin-bottom: $quarter-spacing; 
+            
+        }
+    }
+}
+
+
+// Values
+// -----------------------------------------------------------------
+
+@media (min-width: 600px) {
+    .values {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        &__item {
+            flex-basis: 48%;
+        }
+    }
+}
+
+
+// Features
+// -----------------------------------------------------------------
+
+.features {
+    background-color: $accent-color;
+    color: $white;
+
+    &__wrapper {
+        width: 256px;
+        margin: 0 auto;
+
+        @media (min-width: 600px){
+            margin: 0;
+        }
+    }
+
+    .checkmark-list {
+        &__item{
+            position: relative;
+            padding-left: $base-spacing;
+            
+            &:before{
+                position: absolute;
+                left: 0;
+
+                // Add another block-level blank space
+                content: '';
+                display: block;
+                
+                // Make it a small rectangle so the border will create an L-shape
+                width: 4px;
+                height: 12px;
+                
+                // Add a white border on the bottom and left, creating that 'L' 
+                border: solid $white;
+                border-width: 0 4px 4px 0;
+                
+                // Rotate the L 45 degrees to turn it into a checkmark
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
+
+// accordion
+// -----------------------------------------------------------------
+
+.accordion {
+    position: relative;
+    
+    .accordion__item {
+        position: relative;
+        margin-bottom: $half-spacing;
+        padding: 0;
+    }
+
+    h2 {
+        margin: 0;
+        padding: $quarter-spacing $half-spacing;
+        font-size: 1rem;
+        background-color: #f5f5f5;
+        border: $border;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+    p {
+        margin: 0;
+        padding: $half-spacing;
+        font-size: .9rem;
+        border: $border;
+        border-top: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    input[type=checkbox] {
+        position: absolute;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        
+        &:checked {
+            &~p {
+                max-height: 0;
+                opacity: 0;
+                display: none;
+            }
+        }
+    }
+}
+
+// Contact 
+// -----------------------------------------------------------------
+
+.contact-form {
+    fieldset {
+        padding-bottom: $half-spacing
+    }
+    
+    label {
+        display: block;
+        margin-bottom: $quarter-spacing;
+        font-weight: bold;
+    }
+    
+    input[type=text],
+    input[type=textarea] {
+        display: block;
+        width: 100%;
+        padding: $quarter-spacing $half-spacing;
+        font-size: 1rem;
+        border: $border;
+        border-radius: $radius;
+    }
+    
+    input[type=submit] {
+        margin-top: $half-spacing;
+    }
+}
+
+
+
+// Desktop
+// -----------------------------------------------------------------
+
+@media (min-width: 1024px){
+
+    // Global
+
+    section,
+    aside {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .wrapper {
+        width: 950px;
+        margin: 0 auto;
+    }   
+
+    footer,
+    .features,
+    .hero {
+        .wrapper {
+           display: flex;
+           justify-content: space-between;
+       }
+    }
+
+    .values {
+        &__item {flex-basis: 32%;}
+    }
+
+    .features {
+        &__content {flex-grow: 1;}
+
+        &__img {flex-grow: 2;}
+    }
+    
+    .hero {
+        height: 80vh;
+        position: relative;
+
+        .hero__claim {
+            flex-basis: 57%;
+            text-align: left;
+            align-self: center;
+        }
+        .hero__img {        
+            position: absolute;
+            bottom: 0;
+            right: 4%;
+        }
+        
+    }
+
+    section {
+        &.about,
+        &.contact-form {
+            width: 60%;
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    aside {
+        width: 35%;
+        margin-left: 3%;
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    .nav-main__item:first-of-type {padding-left: 0;}
+}

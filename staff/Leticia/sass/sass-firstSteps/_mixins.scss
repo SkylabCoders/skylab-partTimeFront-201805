@@ -1,0 +1,12 @@
+@mixin display-flex(){
+    display: -webkit-box;
+    display: -mox-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin font-styles($size, $color) {
+    font-size: $size;
+    color: $color;
+}

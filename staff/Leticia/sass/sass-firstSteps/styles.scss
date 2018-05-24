@@ -1,0 +1,32 @@
+
+@import 'variables';
+@import 'mixins';
+
+nav {
+    .first-list {
+        background-color: $main-color;
+        padding-left: 0;
+        @include display-flex();
+
+        li {
+            padding: 10px;
+            list-style-type: none;
+    
+            &:hover {background-color: $secondary-color;}
+        }
+    
+    }
+
+    .other-list {
+        @extend .first-list;
+        @include font-styles(12px, gray);
+        padding-left: 20px;
+        
+        li {
+            margin-left: 25px;
+            list-style-type: circle;
+        }
+
+    }
+}
+
