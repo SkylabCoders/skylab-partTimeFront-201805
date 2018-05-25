@@ -1,0 +1,16 @@
+@mixin font-config($size:$fontSize, $weight:light, $family:'Sunflower'){
+    font: {
+        family : $family;
+        size   : $size;
+        weight : $weight;
+        color  : $fontColor;
+    }
+}
+
+@mixin display-flex(){
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+}

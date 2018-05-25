@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Sunflower:300");
+nav {
+  background-color: lightgray; }
+  nav .first-list, nav .other-list {
+    margin: 10px;
+    padding: 5px;
+    list-style-type: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; }
+    nav .first-list li, nav .other-list li {
+      padding: 10px;
+      font-family: "Sunflower";
+      font-size: 24px;
+      font-weight: light;
+      font-color: darkgray; }
+      nav .first-list li:hover, nav .other-list li:hover {
+        background-color: orange; }
+  nav .other-list {
+    list-style-type: circle; }
+    nav .other-list li {
+      margin-right: 20px;
+      font-family: "Sunflower";
+      font-size: 14px;
+      font-weight: bold;
+      font-color: darkgray; }
+
+main {
+  height: 300px;
+  background-color: lightgray; }
+
+/*# sourceMappingURL=styles.css.map */
