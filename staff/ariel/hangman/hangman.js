@@ -1,94 +1,94 @@
 
 
-var frutas = [
-    'manzana',
-    'banana',
-    'pera',
-    'fresa',
-    'cereza',
-    'anana',
-    'tomate',
-    'naranja',
-    'clementina',
-    'chirimoya',
-    'pomelo',
-    'melocoton',
-    'ciruela',
-    'lichi',
-    'melon',
-    'sandia',
-    'mango',
-    'papaya',
-    'higos',
-    'maracuya',
-    'guanabana'
-];
-var palabra = [];
-var incognita = [];
-var guess = '';
-var cont = 0;
+function hangMan(){
 
-var nombre = prompt('Ingresa tu nombre', 'nombre');
+    var frutas = [
+        'manzana',
+        'banana',
+        'pera',
+        'fresa',
+        'cereza',
+        'anana',
+        'tomate',
+        'naranja',
+        'clementina',
+        'chirimoya',
+        'pomelo',
+        'melocoton',
+        'ciruela',
+        'lichi',
+        'melon',
+        'sandia',
+        'mango',
+        'papaya',
+        'higos',
+        'maracuya',
+        'guanabana'
+    ];
+    var palabra = [];
+    var incognita = [];
+    var guess = [];
+    var cont = 0;
 
-// ELECCION ALEATORIA DE LA PALABRA
+    var nombre = prompt('Ingresa tu nombre', 'nombre');
 
-var indice = Math.round(Math.random()*20);
-for (var i=0; i<frutas[indice].length; i++){
-    palabra[i]=frutas[indice][i];
-    incognita[i]='_'
-}
+    // ELECCION ALEATORIA DE LA PALABRA
 
-// LA CANTIDAD DE VIDAS ES 1,5 x LONGITUD DE LA PALABRA
-var vidas = Math.round(palabra.length * 1.5);
-
-console.log('La fruta tiene ' + frutas[indice].length + ' letras');
-console.log('');
-console.log(incognita.join(' '));
-console.log('');
-console.log(nombre + ' tienes ' + vidas + ' vidas');
-
-while (vidas > 0) {
-
-    console.log('La fruta es: ' + incognita.join(' '));
-    console.log('');
-
-    guess = prompt('Ingrese una letra', 'letra');
-    cont = 0;
-
-    for (j=0; j<palabra.length; j++){
-
-        if (guess === palabra[j]){
-            incognita[j] = guess;
-            cont = cont+1;             // ---> indica si se ha acertado (>0) o no (=0). 
-        } 
+    var indice = Math.round(Math.random()*20);
+    for (var i=0; i<frutas[indice].length; i++){
+        palabra[i]=frutas[indice][i];
+        incognita[i]='_'
     }
 
-    if (cont!= 0){
+    // LA CANTIDAD DE VIDAS ES 1,5 x LONGITUD DE LA PALABRA
+    var vidas = Math.round(palabra.length * 1.5);
 
+    alert('Hola ' + nombre.toUpperCase() + '\n\n La fruta tiene ' + frutas[indice].length + ' letras.      '+ incognita.join(' ') +'\n\n  y tienes ' + vidas + ' vidas para adivinarla');
 
-        if ( incognita.join() === palabra.join() ) {
-            alert('FELICITACIONES HAS GANADO!!!');
-            alert('La fruta era:    ' + frutas[indice].toUpperCase())
+    while (vidas > 0) {
 
-        
-            break;
+        guess = prompt('La fruta es    ' + incognita.join(' ') +'\ntienes ' + vidas + ' vidas' + '\n\n Ingrese una letra', 'letra');
+
+        for (i=0; i<palabra.length; i++){               // Analiza si la letra ya se ha ingresado con anterioridad
+            if(guess === incognita[i]){
+                alert ('La letra "' + guess.toUpperCase() + '" ya ha sido ingresada')
+                guess = prompt('La fruta es    ' + incognita.join(' ') + '\n\n Ingrese una letra', 'letra');
+            };
+        };
+
+        cont = 0;
+
+        for (j=0; j<palabra.length; j++){
+
+            if (guess === palabra[j]){
+                incognita[j] = guess;
+                cont = cont+1;             // ---> indica si se ha acertado (>0) o no (=0). 
+            } 
         }
 
-        alert ('Felicitaciones la letra "' + guess + '" está en la palabra');
-        alert ('La fruta es:     ' + incognita.join(' '));
+        if (cont!= 0){
 
-    } else if (cont == 0 ){
-        vidas = vidas - 1;
 
-        if (vidas == 0 ){
-            alert('GAME OVER');
-            break;
+            if ( incognita.join() === palabra.join() ) {
+                alert('FELICITACIONES HAS GANADO!!! \nLa fruta era:    ' + frutas[indice].toUpperCase());
 
-        } else {
-            alert('La letra "' + guess + '" no se encuentra en la palabra');
-            alert ('Te quedan ' + vidas + ' vidas');
-        };
-    }
+            
+                break;
+            }
 
+            alert ('Felicitaciones la letra "' + guess + '" está en la palabra. '+ '\n\nLa fruta es:     ' + incognita.join(' ') + '\n\nTienes ' + vidas +'vidas');
+
+        } else if (cont == 0 ){
+            vidas = vidas - 1;
+
+            if (vidas == 0 ){
+                alert('GAME OVER\n\nLa fruta era: ' + frutas[indice]);
+                break;
+
+            } else {
+                alert('La letra "' + guess + '" no se encuentra en la palabra. \n\nLa fruta es: ' + incognita.join(' ') + '\n\nTe quedan ' + vidas + ' vidas');
+            };
+        }
+
+    };
 }
-
