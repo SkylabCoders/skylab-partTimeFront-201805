@@ -1,3 +1,4 @@
+/*
 var beatles = ['John', 'George', 'Ringo', 'Paul'];
 var rollings = ['Mick', 'Keith', 'Charlie', 'Ron']
 
@@ -368,13 +369,13 @@ function mergeArrays(){
 
 mergeArrays()
 
-/*
+
     Test data :
     var array1 = [1, 2, 3]; 
     var array2 = [2, 30, 1]; 
     console.log(merge_array(array1, array2));
     [3, 2, 30, 1]
-*/
+
 
     
 // ### separateEven:  Write a JavaScript program which accept a number as input and insert dashes (-) between each two even numbers. For example if you accept 025468 the output should be 0-254-6-8.
@@ -505,54 +506,151 @@ if (mover.toLowerCase() === 'si' ){
 } 
 
 moveElements();
-/*
-    Test Data :
-    console.log(move([10, 20, 30, 40, 50], 0, 2));
-    [20, 30, 10, 40, 50]
-    console.log(move([10, 20, 30, 40, 50], -1, -2));
-    [10, 20, 30, 50, 40]
-*/
+
+    //Test Data :
+    //console.log(move([10, 20, 30, 40, 50], 0, 2));
+    //[20, 30, 10, 40, 50]
+    //console.log(move([10, 20, 30, 40, 50], -1, -2));
+    //[10, 20, 30, 50, 40]
+
 
 
 
 
 //### swapCase: Write a JavaScript program which accept a string as input and swap the case of each character. For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'.
 
+var txtString = prompt('Ingrese una palabra, frase o texto','texto aquí');
+var txtArray = [];
 
 
-/*
-### Print elements array
-
-Write a JavaScript program which prints the elements of the following array.
-Note : Use nested for loops.
-
-    Sample array : var a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
-    Sample Output : 
-    "row 0" 
-    " 1" 
-    " 2" 
-    " 1"
-    " 24"
-    "row 1" 
-
-### array_filled (string)
-
-Write a JavaScript function to create a specified number of elements with pre-filled string value array.
-
-    Test Data :
-    console.log(array_filled(3, 'default value')); 
-    ["default value", "default value", "default value"]
-    console.log(array_filled(4, 'password'));
-    ["password", "password", "password", "password"]
+for (i=0; i<txtString.length; i++){
+    if (txtString[i] ==='.' || txtString[i] ===',' ||txtString[i] ==='-'||  txtString[i] ==='-'){
+        continue;
+    } else if (txtString[i] === txtString[i].toUpperCase()) {
+        txtArray[i] = txtString[i].toLowerCase();
+    } else {
+        txtArray[i] = txtString[i].toUpperCase();
+    }
+}
 
 
-### Sum squares
 
-Write a JavaScript program to find the sum of squares of a numeric vector.
+alert('El texto original es: "' + txtString + '" \n\nEl texto modificado es: ' + txtArray.join(''));
 
-### removeDuplicate
 
-Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity).
+
+
+
+// ### Print elements array: Write a JavaScript program which prints the elements of the following array.
+//Note : Use nested for loops.
+
+    var sampleArray = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+
+    for (var i=0; i<sampleArray.length; i++){
+        console.log('Row ' + i);
+        for (var j=0; j<sampleArray[i].length; j++){
+            console.log(sampleArray[i][j]);
+        };
+    };
+
+
+   // Sample Output : 
+    //"row 0" 
+    //" 1" 
+    //" 2" 
+    //" 1"
+    //" 24"
+    //"row 1" 
+
+   
+// ### array_filled (string): Write a JavaScript function to create a specified number of elements with pre-filled string value array.
+
+function preFilled(){
+    var sampleString = '';
+    var elements = 0;
+    var generatedArray = [];
+
+    sampleString = prompt('Ingrese el valor de los elementos');
+    elements = prompt('Ingrese la cantidad de elementos del array', 'elementos');
+
+    for (i=0; i<elements; i++){
+        generatedArray[i] = sampleString;
+    }
+
+    console.log('El array generado es: ' + generatedArray);
+
+
+        // Test Data :
+        // console.log(array_filled(3, 'default value')); 
+        // ["default value", "default value", "default value"]
+        // console.log(array_filled(4, 'password'));
+        // ["password", "password", "password", "password"]
+};
+
+preFilled();
+
+// ### Sum squares: Write a JavaScript program to find the sum of squares of a numeric vector.
+
+function sumSquares(){
+    var sum = 0;
+    var generated = [];
+
+    // GENERA EL ARRAY
+    elementos = Math.round(Math.random()*1000);
+    for (var i=0; i<elementos; i++){
+        generated[i] = (Math.round(Math.random()*10000))
+    };
+
+    for (var j=0; j<elementos; j++){
+        sum = sum + generated[j]*generated[j];
+    }
+
+    console.log('El array es: '+ generated + '\n\n La suma de los cuadrados de todos los elementos es: ' + sum);
+}
+sumSquares()
+
+
+ 
+//### removeDuplicate: Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity).
+
+
+function replaceDup(){
+    var array1=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var generated = [];
+    var elementos = Math.round(Math.random()*100);
+    var parImpar = 0;
+
+    // PRIMERA ITERACION PARA ASIGNAR ALEATORIAMENTE LETRAS O NROS AL ARRAY GENERADO
+    for (var i = 0; i<elementos; i++){
+        parImpar = (Math.round(Math.random()*25));
+        if (Number.isInteger(parImpar/2)){
+            generated[i] = array1[parImpar];
+        } else {
+            generated[i] = Math.round(Math.random()*100);
+        };
+    };
+
+    console.log(array1[parImpar]);
+
+    console.log('El array generado es :   ' + generated)
+    console.log('');
+
+
+    // SEGUND ITERACION PARA COMPARAR ELEMENTOS DE UN MISMO ARRAY
+    for (i=0; i<generated.length; i++){
+        for (j=(i+1); j<=elementos; j++){
+            if(generated[i] === generated[j]){
+                generated.splice(j,1);
+            };
+        };
+    };
+
+    console.log('El array sin repeticiones es :   ' + generated)
+};
+
+replaceDup();
+
+*/
 
 ### showChoices
 
@@ -566,13 +664,50 @@ Write a JavaScript program to display the colors in the following way :
 
 Note : Use ordinal numbers to tell their position.
 
-### showLeapYears
 
-Find the leap years in a given range of years.
 
-### shuffleArray
+### showLeapYears Find the leap years in a given range of years.
 
-Write a JavaScript program to shuffle an array.
+// ### shuffleArray: Write a JavaScript program to shuffle an array.
+
+
+function shuffle(){
+    var array1=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var generated = [];
+    var elementos = Math.round(Math.random()*100);
+    var parImpar = 0;
+    var pos1 = 0;
+    var pos2 = 0;
+    var trans = 0;
+
+    // PRIMERA ITERACION PARA ASIGNAR ALEATORIAMENTE LETRAS O NROS AL ARRAY GENERADO
+    for (var i = 0; i<elementos; i++){
+        parImpar = Math.round(Math.random()*25);
+        if (Number.isInteger(parImpar/2)){
+            generated[i] = array1[parImpar];
+        } else {
+            generated[i] = Math.round(Math.random()*100);
+        };
+    };
+
+    console.log('El array oririginal es:  ' + generated);
+
+    for (var i=0; i < elementos*1000; i++){
+        pos1 = Math.round(Math.random()*elementos);
+        pos2 = Math.round(Math.random()*elementos);
+        generated[trans] = generated[pos2];
+        generated[pos2] = generated[pos1];
+        generated[pos1] = generated[trans];
+    };
+
+    console.log('El array modificado es:  ' + generated);
+};
+
+shuffle();
+
+
+/*
+
 
 ### binarySearch
 
