@@ -783,24 +783,24 @@ function encriptWord(arr) {
     return wordEncripted; 
 }
 
-function playLetter(word, encripted){
+function playLetter(wordToGuess, wordEncripted){
     var letter = "";
 
     var letter = window.prompt('¿Qué letra quieres jugar?'); // [3] ask for letter
         
     //comprobacion de letra dentro de array
     for(var i = 0; i < word.length; i++) {
-        if(letter === word[i]){
-            encripted[i] = word[i];
+        if(letter === wordToGuess[i]){
+            wordEncripted[i] = wordToGuess[i];
         }
     }
-    return encripted;
+    return wordEncripted;
 
-    console.log(encripted.join(''));
+    console.log(wordEncripted.join(''));
 }
 
 
-function hangman(arr,){
+function hangman(arr){
     
     chooseWord(arr); // [1] choose a word 
 
@@ -812,3 +812,5 @@ function hangman(arr,){
         console.log('Congratulations!')
     }
 }
+
+hangman(greekGods);
