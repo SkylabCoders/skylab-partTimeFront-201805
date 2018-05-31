@@ -1,0 +1,219 @@
+@import 'extend';
+@import 'vars';
+
+* {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+}
+
+
+.homePage{
+nav {
+@extend %ulNav;
+}
+
+article{
+    display: inline-block;
+}
+ 
+
+    .product {
+    @extend %extendedProduct;
+    }
+
+    #bajo {
+        @extend %bajo;
+    }
+
+    footer {
+        @extend %extendedFooter;
+    }
+
+    @media (max-width: 768px){//tablet
+        
+        .product {
+            width: 40%;
+            img {
+                width: 100%;
+            }
+        }
+
+        #bajo {
+            overflow: auto;
+            #izquierda {
+                display: block;
+            }
+            #derecha {
+                float: none;
+            }
+        }
+        footer {
+           ul {
+               padding: 2%;
+               text-align: center;
+           }
+            #copy {
+                float: none;
+                text-align: center;
+                width: 100%;
+                padding: 2%;
+            }
+        }
+        
+    }
+
+}
+
+
+
+.aboutPage {
+   nav {
+       @extend %ulNav;
+   }
+    #topNameAbout {
+        background-color: $greenColor;
+        padding: 2%;
+        color: white;
+        font-size: 35vw;
+        padding-left: 5%;
+        }
+        
+       #medioAbout{
+           width: 90%;
+           display: block;
+           margin: auto;
+           overflow: auto;
+            #medioAboutLeft {
+                float: left;
+                display: inline-block;
+                width: 40%;
+                padding: 2%;
+                h2 {
+                    padding: 3% 0%;
+                }
+                }
+            .product {
+                @extend %extendedProduct;
+                float: right;
+                display: inline-block;
+                width: 40%;
+                img {
+                    width: 100%;
+                }
+                }
+       }  
+       #bajo {
+        @extend %bajo;
+        display: inline-block;
+    }
+
+    footer {
+        @extend %extendedFooter;
+    }
+    @media (max-width: 768px){//tablet
+        #medioAbout{
+            width: 90%;
+            display: block;
+            margin: auto;
+            overflow: auto;
+             #medioAboutLeft {
+                 float: left;
+                 display: inline-block;
+                 width: 100%;
+                 padding: 2%;
+                 h2 {
+                     padding: 3% 0%;
+                 }
+                 }
+             .product {
+                border-style: solid;
+                border-color: lightgray;
+                padding: 10px;
+                margin: 5px;
+                float: left;
+                display: inline-block;
+                width: 90%;
+                
+                * {
+                    padding: 5px;   
+                }
+               
+                 img {
+                     width: 100%;
+                 }
+                 }
+        }  
+        #bajo {
+            
+            #izquierda {
+                display: block;
+            }
+            #derecha {
+                float: none;
+            }
+        }
+        footer {
+           ul {
+               padding: 2%;
+               text-align: center;
+           }
+            #copy {
+                float: none;
+                text-align: center;
+                width: 90%;
+                padding: 2%;
+            }
+        }
+        
+    }//fin tablet
+    @media (max-width: 425px){//mobile
+        nav {
+            .noShow{
+                display: none;
+            }  
+        }
+        #capture {
+         #imgCapture {
+             img {
+              width: 100%;
+              padding: 1%;
+             }
+         }
+     }
+     
+     #medio {
+         padding: 0;
+         margin: 0;
+         .product {
+             width: 90%;
+         }
+     }
+     
+     #bajo {
+         ul {
+             padding: 0;
+         }
+         width: 100%;
+         text-align: center;
+         li {
+             float: none;
+             text-align: left;
+         }
+         i {
+             width: 100%;
+             font-size: 70vw;
+             padding: 0;
+         }
+     }
+    }
+    footer {
+        ul {
+            li {
+                padding: 10px;
+            }
+        }
+        
+    }
+
+   
+}
