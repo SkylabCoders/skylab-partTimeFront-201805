@@ -168,7 +168,7 @@ addItems();
 
 
 
-// generateArrayLength: Write a JavaScript function to generate an array of specified length, filled with integer numbers, increase by one from starting position.
+// generateArrayLength: Write a JavaScript function to generate an array of specified length, filled with integer numbers, increase by one from starting i.
 
 var resultado = [];
 
@@ -427,7 +427,7 @@ separateEven()
 var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
 var repetitions = [];
 var max = 0;
-var position = 0;
+var i = 0;
 
 function mostFreq(){
 
@@ -447,8 +447,8 @@ function mostFreq(){
 
     console.log('Repeticiones: ' + repetitions);
     max = Math.max.apply(null, repetitions);
-    position = repetitions.indexOf(5);
-    console.log('El valor que más se repite es el: ' + arr1[position]);
+    i = repetitions.indexOf(5);
+    console.log('El valor que más se repite es el: ' + arr1[i]);
     console.log('y se repite: ' + max + ' veces.')
 
 }
@@ -457,7 +457,7 @@ mostFreq();
 
 
 
-// ### moveElement Write a JavaScript function to move an array element from one position to another.
+// ### moveElement Write a JavaScript function to move an array element from one i to another.
 
 
 var sampleArray = [];
@@ -651,22 +651,74 @@ function replaceDup(){
 replaceDup();
 
 */
+/*
+// ### showChoices We have the following arrays : Write a JavaScript program to display the colors in the following way :
+//"1st choice is Blue ."
+//"2nd choice is Green."
+// "3rd choice is Red."
 
-### showChoices
-
-We have the following arrays :
-color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
-o = ["th","st","nd","rd"]
-Write a JavaScript program to display the colors in the following way :
-"1st choice is Blue ."
-"2nd choice is Green."
-"3rd choice is Red."
-
-Note : Use ordinal numbers to tell their position.
+var color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+var o = ["th","st","nd","rd"]
 
 
+function showChoices(){
 
-### showLeapYears Find the leap years in a given range of years.
+    for (var i=0; i < color.length; i++){
+
+        if(i === 0 ){
+            ordinal = o[1];
+        } else if (i === 1){
+            ordinal = o[2];
+        } else if (i === 2 ){
+            ordinal = o[3];
+        } else {
+            ordinal = o[0];
+        };
+
+        console.log(i+1 + ordinal + ' is ' + color[i]);
+    };
+};
+
+showChoices();
+
+
+Note : Use ordinal numbers to tell their i.
+
+
+
+//### showLeapYears Find the leap years in a given range of years.
+
+// ALGORITMO
+// p: Es divisible por 4; q: es divisible entre 100; r: es divisible entre 400
+// p & (!q || r)
+
+function leapYear(){
+    var years = [];
+    var leapYears = []
+    var elements = Math.round(Math.random()*10000);
+
+    for (var i= 0; i< elements; i++){
+        years[i] = Math.round(Math.random()*5000);
+
+        if ( Number.isInteger(years[i]/4) && (!Number.isInteger(years[i]/4) || Number.isInteger(years[i]/400))){
+            console.log('El año ' + years[i] + ' es bisiesto')
+            leapYears.push(years[i]);
+        } else { 
+            console.log(years[i])
+        }
+
+    };
+    console.log('');
+    console.log('Hemos encontrado los siguentes ' + leapYears.length + ' años bisiestos en la lista de ' + elements + ' años:');
+    console.log('');
+
+    for ( var j= 0; j < leapYears.length; j ++){
+        console.log(leapYears[j]);
+    };
+
+};
+
+leapYear();
 
 // ### shuffleArray: Write a JavaScript program to shuffle an array.
 
@@ -706,24 +758,67 @@ function shuffle(){
 shuffle();
 
 
-/*
 
 
-### binarySearch
 
-Write a JavaScript program to perform a binary search.
+// ### binarySearch Write a JavaScript program to perform a binary search.
 
-Note : A binary search or half-interval search algorithm finds the position of a specified input value within an array sorted by key value. 
+// Note : A binary search or half-interval search algorithm finds the i of a specified input value within an array sorted by key value. 
 
-    Sample array : 
-    var items = [1, 2, 3, 4, 5, 7, 8, 9];
-    Expected Output : 
-    console.log(binary_Search(items, 1)); //0 
-    console.log(binary_Search(items, 5)); //4
+    // Sample array : 
+    // var items = [1, 2, 3, 4, 5, 7, 8, 9];
+    // Expected Output : 
+    // console.log(binary_Search(items, 1)); //0 
+    // console.log(binary_Search(items, 5)); //4
 
-### sumPositions
 
-There are two arrays with individual values, write a JavaScript program to compute the sum of each individual index value from the given arrays.
+
+    function binarySearch(){
+
+        var sampleArray = [];
+        var randomNr = 0;
+        var elements = Math.round(Math.random()*100);
+
+        for (var i= 0; i< elements; i++){                   // ---> Genero el array
+            sampleArray[i] = Math.round(Math.random()*10);
+        };
+
+        console.log('El array original es: ' + sampleArray);
+        console.log('');
+
+        for (var k=0; k < sampleArray.length; k++){
+        
+            for (var l = sampleArray.length; l>k; l--){
+                
+                if (sampleArray[k] ===  sampleArray[l]){
+                    sampleArray.splice(l,1);
+                };
+            };
+        };
+
+        console.log('El array sin elementos repetidos es: ' + sampleArray);
+        console.log('');
+
+        randomNr = Math.round(Math.random()*10)
+
+        if ( sampleArray.indexOf(randomNr) === -1){
+            console.log( 'El nro ' + randomNr + ' no está en el array.')
+        } else {
+
+            console.log('El array sin elementos repetidos es: ' + sampleArray + ' (tiene ' + sampleArray.length + ' elementos)');
+            console.log('');
+            console.log('El número ' + randomNr + ' se encuentra en la posición ' + sampleArray.indexOf(randomNr));
+        };
+
+    };
+
+    binarySearch();
+
+
+    
+    
+
+// ### sumPositions There are two arrays with individual values, write a JavaScript program to compute the sum of each individual index value from the given arrays.
 
     Sample array : 
     array1 = [1,0,2,3,4];
@@ -731,9 +826,51 @@ There are two arrays with individual values, write a JavaScript program to compu
     Expected Output : 
     [4, 5, 8, 10, 12, 13] 
 
-### generateArraySteps
 
-Write a JavaScript function to generate an array between two integers of 1 step length.
+    function sumTwoArrays(){
+        
+        var array1 = [];
+        var array2 = [];
+        var elements1 = 0;
+        var elements2 = 0; 
+        
+        elements1 = Math.round(Math.random()*10);
+
+        for (var i = 0; i < elements1; i++){
+            array1[i] = Math.round(Math.random()*100);
+        };
+
+        elements2 = Math.round(Math.random()*10);
+
+        for (i = 0; i < elements2; i++){
+            array2[i] = Math.round(Math.random()*100);
+        }
+
+        console.log('El array 1 es: ' + array1);
+        console.log('');
+        console.log('El array 2 es: ' + array2);
+
+        if (array1.length >= array2.length){
+            for (i=0; i<array2.length; i++){
+                array1[i] = array1[i] + array2[i];
+            };
+
+            console.log('El array Suma es: ' + array1)
+        } else {
+            for (i=0; i<array1.length; i++){
+                array2[i] = array1[i] + array2[i];
+            };
+
+            console.log('El array Suma es: ' + array2);
+        };
+
+    };
+
+    sumTwoArrays();
+
+
+  
+### generateArraySteps: Write a JavaScript function to generate an array between two integers of 1 step length.
 
     Test Data :
     console.log(rangeBetwee(4, 7)); 
@@ -741,15 +878,32 @@ Write a JavaScript function to generate an array between two integers of 1 step 
     console.log(rangeBetwee(-4, 7));
     [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
 
-### flattenArray
+function arraySteps(){
+    var arraySteps = [];
+    var elementoInicial = parseInt(prompt('Ingrese el valor del elemento inicial del array: ', 'valor inicial'));
+    var elementoFinal = parseInt(prompt('Ingrese el valor del elemento final del array: ', 'valor final'));
 
-Write a JavaScript program to flatten a nested (any depth) array. If you pass shallow, the array will only be flattened a single level.
+    for(i=0; i<= (elementoFinal-elementoInicial); i++){
+        arraySteps[i] = (elementoInicial + i);
+    };
+
+    alert('El array generado con step 1 es:  ' + arraySteps);
+};
+
+arraySteps();
+
+*/
+
+### flattenArray: Write a JavaScript program to flatten a nested (any depth) array. If you pass shallow, the array will only be flattened a single level.
 
     Sample Data :
     console.log(flatten([1, [2], [3, [[4]]],[5,6]])); 
     [1, 2, 3, 4, 5, 6]
     console.log(flatten([1, [2], [3, [[4]]],[5,6]], true)); 
     [1, 2, 3, [[4]], 5, 6]
+
+
+  /*
 
 ### unionArray
 
