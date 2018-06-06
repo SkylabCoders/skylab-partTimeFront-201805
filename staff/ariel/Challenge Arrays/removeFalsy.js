@@ -12,12 +12,10 @@ var falsos =  ['null', '0','', 'false', 'undefined', 'NaN']
 
 function removeFalsy(x){
 
-    for (i = x.length-1; i>0;  i--){
+    for (i = x.length-1; i>=0;  i--){
 
-        String(x[i])
-
-        if (falsos.indexOf(x[i]) > 0){
-            x.splice(x[i], 0);
+        if (falsos.indexOf(String(x[i])) >= 0){
+            x.splice(i, 1);
         }
     };
 
