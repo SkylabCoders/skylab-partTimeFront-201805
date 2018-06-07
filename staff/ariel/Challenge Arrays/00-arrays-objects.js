@@ -892,9 +892,9 @@ function arraySteps(){
 
 arraySteps();
 
-*/
 
-### flattenArray: Write a JavaScript program to flatten a nested (any depth) array. If you pass shallow, the array will only be flattened a single level.
+
+//### flattenArray: Write a JavaScript program to flatten a nested (any depth) array. If you pass shallow, the array will only be flattened a single level.
 
     Sample Data :
     console.log(flatten([1, [2], [3, [[4]]],[5,6]])); 
@@ -902,8 +902,31 @@ arraySteps();
     console.log(flatten([1, [2], [3, [[4]]],[5,6]], true)); 
     [1, 2, 3, [[4]], 5, 6]
 
-
-  /*
+    nestedArray = [];
+    resultArray = [];
+    
+    function ejemplo(x){
+    
+        for (var i = 0; i <x.length; i++ ) {
+    
+            switch (typeof x[i]){
+    
+            case 'number':
+                resultArray.push(x[i])
+            break;
+    
+            case 'object':                  // --> Cómo hago que solo suba 1 nivel si se pasa un array vacío???
+                nestedArray = x[i];
+                ejemplo(nestedArray);
+            break;
+            };
+        };
+    
+        return 'El array aplanado es: ', resultArray
+    
+    };
+    
+    ejemplo([1,3,[4,5,[[6,7,8]]],9])
 
 ### unionArray
 
@@ -913,12 +936,42 @@ Sample Data :
     console.log(union([1, 2, 3], [100, 2, 1, 10]));
     [1, 2, 3, 10, 100]
 
-### removeFalsy
+    function unionArrays(x,y) {
 
+        for (i= 0; i<y.length; i++){
+    
+            x.push(y[i]);
+        };
+    
+        var compare = function(a,b){
+            if(a < b){
+                return -1;
+            } 
+            return 1;
+        };
+    
+        x.sort(compare);
+    
+        for ( i = x.length-1; i>=0; i-- ){
+            if ( x[i] == x[i-1]){
+                x.splice(x[i], 1);
+            };
+        }
+    
+        return 'El array resultado es:' , x
+    };
+    
+    unionArrays([1, 2, 3], [100, 2, 1, 10]);
+
+
+
+### removeFalsy 
 Write a JavaScript function to remove. 'null', '0', '""', 'false', 'undefined' and 'NaN' values from an array.
 
     Sample array : [NaN, 0, 15, false, -22, '',undefined, 47, null]
     Expected result : [15, -22, 47]
+
+
 
 ### first
 
@@ -936,6 +989,8 @@ Write a JavaScript function to get the first element of an array. Passing a para
     [7, 9, 0] 
     [7, 9, 0, -2] 
     [] 
+
+
 
 ### sortObjectsTitle
 
@@ -964,6 +1019,31 @@ Write a JavaScript function to sort the following array of objects by title valu
       title: "Walter Isaacson"
     }]
 
+    var library = [ 
+        { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+        { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+        { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+        ];
+    
+        function sortObject(x){
+    
+            function compare(a,b) {
+                if (a.title < b.title)
+                  return -1;
+                if (a.title > b.title)
+                  return 1;
+                return 0;
+            }
+              
+            return x.sort(compare);
+    
+        };
+    
+        sortObject(library);
+
+
+
+
 ### findPairSum
 
 Write a JavaScript program to find a pair of elements (indices of the two numbers) from an given array whose sum equals a specific target number.
@@ -971,20 +1051,25 @@ Write a JavaScript program to find a pair of elements (indices of the two number
     Input: numbers= [10,20,10,40,50,60,70], target=50
     Output: 3, 4
 
-### validValues
+
+ 
+### validValues 
 
 Write a JavaScript function to retrieve the value of a given property from all elements in an array.
 
     Sample array : [NaN, 0, 15, false, -22, '',undefined, 47, null]
     Expected result : [15, -22, 47]
 
-### longestCommon
+    
+### longestCommon   ??????????????????????????????????????????????????????????????????????????????????????????????????????
 
 Write a JavaScript function to find the longest common starting substring in a set of strings.
 
     Sample array : console.log(longest_common_starting_substring(['go', 'google']));
     Expected result : "go"
 
+   
+   
 ### fillArray
 
 Write a JavaScript function to fill an array with values (numeric, string with one character) on supplied bounds.
@@ -992,6 +1077,32 @@ Write a JavaScript function to fill an array with values (numeric, string with o
 Test Data : 
 console.log(num_string_range('a', "z", 2));
 ["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
+
+var letters = ["a", 'b', "c", 'd', "e", 'f', "g", 'h', "i", 'j', "k", 'l', "m", 'n', "o", 'p', "q", 'r', "s", 't', "u", 'v', "w", 'x', "y", 'z']
+var result = [];
+
+
+function fillValues(x,y,z){
+
+    var x = window.prompt('Ingrese el valor de la primera letra', 'letra inicial');
+    var y = window.prompt('Ingrese el valor de la última letra', 'letra final');
+    var z = parseInt(window.prompt('Ingrese el intervalo entre letras', 'valor intervalo'));
+
+    indiceX = letters.indexOf(x);
+    indiceY = letters.indexOf(y);
+
+
+    for( var i=indiceX; i<indiceY; i=i+z) {
+        result.push(letters[i]);
+    } 
+
+
+    console.log('El array resultante es: ', result)
+};
+
+fillValues()
+
+ 
 
 ### removeElement
 
@@ -1001,6 +1112,19 @@ Write a JavaScript function to remove a specific element from an array.
     console.log(remove_array_element([2, 5, 9, 6], 5));
     [2, 9, 6]
 
+    function removeElement(x,y){
+        var indice = x.indexOf(y);
+    
+        x.splice(indice,1);
+    
+        return x
+    
+    }
+    
+    removeElement([2, 5, 9, 6],5);
+
+
+
 ### findArrayWithElement
 
 Write a JavaScript function to find an array contains a specific element.
@@ -1009,9 +1133,39 @@ Write a JavaScript function to find an array contains a specific element.
     console.log(remove_array_element([2, 5, 9, 6], 5));
     [2, 9, 6]
 
+    function findArrayElement(x,y){
+
+        var indice = x.indexOf(y);
+    
+        if (indice >= 0) {
+            return 'El valor se encuentra en la posición ' + indice + ' del array,'
+        } else {
+            return 'El valor no está en el array'
+        }
+    
+    
+    }
+    
+    findArrayElement([2, 5, 9, 6], 5);
+
+ 
+
 ### emptyArray
 
 Write a JavaScript script to empty an array keeping the original size.
+
+
+function emptyArray(x){
+    for (i=0; i<x.length; i++){
+        x[i] = '';
+    }
+
+    return  x 
+}
+
+emptyArray([1,2,3,4,5,'e','f',null,undefined]);
+
+   
 
 ### getNthLargest
 
@@ -1020,6 +1174,30 @@ Write a JavaScript function to get nth largest element from an unsorted array.
     Test Data :
     console.log(nthlargest([ 43, 56, 23, 89, 88, 90, 99, 652], 4));
     89
+
+
+    function getLargestElement(x,y){
+
+        function order(a,b){
+            if (a<b){
+                return -1
+            };
+            if (a>b){
+                return 1
+            };
+        };
+
+        x.sort(order)
+
+        var element = x[x.length-y];
+
+
+    return element
+}
+
+getLargestElement([ 43, 56, 23, 89, 88, 90, 99, 652], 4);
+
+
 
 ### array_filled (numeric)
 
@@ -1031,6 +1209,23 @@ Write a JavaScript function to create a specified number of elements with pre-fi
     console.log(array_filled(4, 11));
     [11, 11, 11, 11]
 
+
+function filledArray(x,y){
+    var result = [];
+
+
+    for (i=0; i<x; i++){
+
+        result[i] = y;
+    };
+
+    return result
+};
+
+filledArray(4,11)
+
+
+
 ### filterFalsy
 
 Write a JavaScript function to filter false, null, 0 and blank values from an array.
@@ -1038,5 +1233,20 @@ Write a JavaScript function to filter false, null, 0 and blank values from an ar
     Test Data :
     console.log(filter_array_values([58, '', 'abcd', true, null, false, 0]));
     [58, "abcd", true]
+
+    
+    function filterArray(x){
+
+        for (i=x.length; i>=0; i--){
+    
+            if ( String(x[i]) === 'false' || String(x[i]) === 'null' || String(x[i]) === '0')
+    
+            x.splice(i,1);
+        };
+    
+        return x
+    }
+    
+    filterArray([58, '', 'abcd', true, null, false, 0]);
 
     */

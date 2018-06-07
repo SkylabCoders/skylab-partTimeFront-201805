@@ -13,8 +13,3 @@ for (i=0; i<txtString.length; i++){
         txtArray[i] = txtString[i].toUpperCase();
     }
 }
-
-
-
-alert('El texto original es: "' + txtString + '" \n\nEl texto modificado es: ' + txtArray.join(''));
-
