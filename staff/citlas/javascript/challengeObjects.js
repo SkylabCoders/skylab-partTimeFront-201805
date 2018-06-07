@@ -29,19 +29,19 @@ var car = {
     color: "black"
 }
 
+
+
 //object constructor
 function CarConstructor(brand, model, color) {
-    this.brand = brand,
-    this.model = model;  
-    this.color = color;  
+  this.brand = brand,
+  this.model = model;  
+  this.color = color;  
+  this.getInfo = function(){
+    return "My " + this.color + " "+ this.brand + " " + this.model + " is great!"
   }
-  var seatCar = new CarConstructor("Seat b","Leon b","blackish");
-
-console.log(car);
-console.log(seatCar);
-
-function showMessage(obj){
-return "My " + obj.color + " "+ obj.brand + " " + obj.model + " is great!"
 }
 
-console.log(showMessage(car));
+var seatCar = new CarConstructor("Seat","Leon","blackish");
+
+
+console.log(seatCar.getInfo());

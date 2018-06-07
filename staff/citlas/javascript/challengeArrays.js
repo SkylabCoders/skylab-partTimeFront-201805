@@ -689,13 +689,51 @@ console.log(flatten([1, [2], [3, [[4]]],[5,6]], true));
 //--------------------------------------no entiendo!! la logica
 //-----------------no se que es pass shallow
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
-var arr1 = [1, [2], [3, [[4]]],[5,6]]
+//nota: si quieres hacerla recursiva deberías modificar la función para que acepte un 3er argumento :guiño:
+/* recuerda que puede ser muuuy sencillo, solo tienes que definir el caso base: en este caso: "NO ES ARRAY"
 
+y el caso en el que llamas a la misma función. En este caso: "ES ARRAY"*/
+var arr1 = [1, [2], [3, [[4]]],[5,6]]
+//if element is array? quitar todos los corchetes : quitar solo unos
+var answer = []
+
+function flattenArray(arr,shallow){
+if (shallow == undefined){ 
+  arr.forEach(function(element){
+    if (Array.isArray(element)){
+      //console.log(element +" es un array")
+      flattenArray(element)
+    } else {
+    //console.log(element +" no es un array")
+      answer.push(element)
+    }
+  })} else {
+    //console.log("hay shallow")
+    
+    arr.forEach(function(element,index){
+    if (Array.isArray(element)){
+      for (var i = 0; i<element.length;i++){
+         answer.push(element[i])
+      }
+    } else {
+    //console.log(element +" no es un array")
+      answer.push(element)
+    }
+  })
+  }
+  return answer
+}
+
+console.log(flattenArray(arr1,true))
+
+//esta es la respuesta de internet:
+/*
+var arr1 = [1, [2], [3, [[4]]],[5,6]]
 function flattenDeep(arr1){
    return arr1.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
 };
 
-console.log(flattenDeep(arr1))
+console.log(flattenDeep(arr1))*/
 
 /*
 28
@@ -753,8 +791,8 @@ Expected Output :
 [7, 9, 0, -2] 
 [] 
 */
-
-//-----------------------------------------me sale mal el tercer test, deberia ser 7,9,0 y sale 9,0,-2
+/*
+//---este me sale mal el tercer test, deberia ser 7,9,0 y sale 9,0,-2
 function first(a,n){
     var shifted;
 
@@ -769,11 +807,37 @@ if (n==undefined){
 }
     return shifted
 }
-console.log(first([7, 9, 0, -2])); 
-console.log(first([],3));
-console.log(first([7, 9, 0, -2],3));
-console.log(first([7, 9, 0, -2],6));
-console.log(first([7, 9, 0, -2],-3));
+*/
+function first(arr,n){
+  var answer = []
+  if (n == undefined){
+    return arr[0]
+  } else if (arr[0] == undefined){
+    return arr
+  } else {
+    var max = 0
+    if (n>arr.length){
+      max=arr.length
+    } else {
+      max = n
+    }
+    for(var i=0; i<max; i++){
+      
+      answer.push(arr[i])
+    }
+  }
+   return answer
+}
+console.log(first([7, 9, 0, -2])); //output: 7
+console.log(first([],3));//output:[]
+console.log(first([7, 9, 0, -2],3));//output:[7, 9, 0]
+console.log(first([7, 9, 0, -2],6));//output:[7, 9, 0, -2] 
+console.log(first([7, 9, 0, -2],-3));//output:[]
+console.log("------------------------")
+
+
+ 
+
 
 
 /*
@@ -831,28 +895,22 @@ Input: numbers= [10,20,10,40,50,60,70], target=50
 Output: 3, 4
 */
 
-var numbers = [10,20,10,40,50,60,70];
-var target = 50;
-var len = numbers.length;
-console.log("numbers length")
-var answer = []
+function findPairSum(numbers, target){
+  var answer = []
 for (i=0;i<numbers.length;i++){
-  console.log(numbers[i])
-  for (j=0;j<len;j++){
-  if(numbers[i]+numbers[j]==target){
-    answer.push(numbers.indexOf(numbers[i]));
-    answer.push(numbers.indexOf(numbers[j]));
+  for (j=i+1;j<numbers.length;j++){
+    if(numbers[i]+numbers[j]==target){
+      answer[0]=i+1;
+      answer[1]=j+1;
+    }
   }
 }
+return answer
+
 }
 
-function onlyUnique(value, index, self) { 
-    return self.indexOf(value) === index;
-  }
+console.log(findPairSum([10,20,10,40,50,60,70],50))
 
-  var unique = answer.filter( onlyUnique ); 
-   
-console.log(unique)
 
 /*
 33
@@ -880,6 +938,19 @@ Sample array : console.log(longest_common_starting_substring(['go', 'google']));
 Expected result : "go"
 */
 
+function longestCommon(arr){
+  var answer = []
+  for (var i=0;i<arr.length;i++){
+    for (var j=0;j<arr[i].length;j++){
+      if(arr[i][j] == arr[i+1][j]){
+        answer.push(arr[i][j])
+        console.log(arr[i][j])        
+      }
+    }
+     return answer.join('')
+  }
+}
+console.log(longestCommon(['go', 'google']))
 
 /* 35
 fillArray
@@ -892,6 +963,16 @@ console.log(num_string_range('a', "z", 2));
 
 */
 
+function fillArray(first, last, interval){
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  alphabet = alphabet.split('')
+  var answer = []
+  for(var i=0;i<alphabet.length;i=i+2){
+    answer.push(alphabet[i])
+  }
+  return answer
+}
+console.log(fillArray('a','z',2))
 
 /* 36
 removeElement
@@ -917,6 +998,13 @@ Test data :
 console.log(remove_array_element([2, 5, 9, 6], 5));
 [2, 9, 6]
 */
+
+function findArrayWithElement(arr,el){
+  
+  return arr.includes(el)
+ }
+ console.log(findArrayWithElement([2, 5, 9, 6], 5));
+ //output true
 
 
 /* 38
@@ -994,4 +1082,3 @@ console.log(filterFalsy([58, '', 'abcd', true, null, false, 0]));
 //https://stackoverflow.com/questions/32906887/remove-all-falsy-values-from-an-array/32906951
 
 
-//falta 27,30,32,34,35,37
