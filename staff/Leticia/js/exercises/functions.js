@@ -628,6 +628,38 @@ charCounts('welcome');
 // Hint: https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/implementing-binary-search-of-an-array
 // Hint: https://en.wikipedia.org/wiki/Binary_search_algorithm
 
+var arr = [10,5,8,3,12,65,34,7,33];
+
+function binarySearch(arr, searching, l, r){
+  var sortedArr = arr.sort(function(a,b){ return a-b; });
+
+  if(typeof l === 'undefined') l = 0;
+  if(typeof r === 'undefined') r = sortedArr.length;
+  var m = Math.floor((r+l)/2);
+ 
+  var currentSearch = arr[m];
+  
+  while(currentSearch != searching && l<r-1){
+    console.log(l,r,m,currentSearch);
+    if(searching < currentSearch){
+      r = m;
+    
+    }else if(searching > currentSearch){
+      l = m; 
+    }
+    m = Math.floor((r+l) / 2);
+    currentSearch = arr[m];
+    
+  }      
+  
+  return arr[m] == searching ? m : -1;
+
+}
+//[ 3, 5, 7, 8, 10, 12, 33, 34, 65 ]
+
+console.log(binarySearch(arr, 7));
+
+
 
 
 // getStringId
@@ -676,14 +708,37 @@ ocurrences('o','w3resource.com');
 // Sample arguments : 'abacddbec' 
 // Expected output : 'e' 
 
-!!!!!!!!!!
-function firstNotRepeated(str){
-    for(var i=1; i<str.length; i++){
-        console.log(str[i]);
-    }   
+function firstNotRep(str){
+  str = str.split('')
+  var arr = []
+  var counter = {}
+  
+  str.forEach(function(el, i, elArr){//el primer elemento siempre es el elmento, el segundo el index y el tercero el array
+    if(counter[el]){
+      counter[el]++
+    } else {
+      counter[el]=1;
+    }
+  });
+
+  console.log(Object.keys(counter));
+
+  for (var key in counter) {
+    console.log(key)
+    console.log(counter[key]);
+
+    if(counter[key]>1){
+      delete counter[key]
+    }
+}
+ 
+console.log(counter);
+
+return Object.keys(counter)[0];
 }
 
-firstNotRepeated('abacddbec');
+
+console.log(firstNotRep('eabbccd'))
 
 
 
@@ -694,6 +749,30 @@ firstNotRepeated('abacddbec');
 // comparing each pair of adjacent items and swapping them if they are in the wrong order".
 // Sample array : [12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213]
 // Expected output : [3223, 546, 455, 345, 234, 213, 122, 98, 84, 64, 23, 12, 9, 4, 1]
+
+var arr = [10,5,8,3,12,65,34,7,33];
+
+function bubbleSort(arr){
+  var hayCambio = true;
+  
+  while(hayCambio){
+    hayCambio = false;
+    
+    for(var i=0 ; i<arr.length-1 ; i++){
+      if(arr[i] < arr[i+1]){
+        var temp = arr[i];
+
+        arr[i] = arr[i+1];
+        arr[i+1] = temp;
+        hayCambio = true;
+      }
+    }
+  }
+  return arr;
+}
+//[ 3, 5, 7, 8, 10, 12, 33, 34, 65 ]
+
+console.log(bubbleSort(arr));
 
 
 
@@ -726,8 +805,11 @@ showLargerItem(countries);
 // Function name
 // Write a JavaScript function to get the function name.
 
-function nameFunction(){}
-console.log("the name of the function is: " + nameFunction.name);
+function nameFunction(){
+  return nameFunction.name;
+}
+
+console.log(nameFunction());
 
 
 
