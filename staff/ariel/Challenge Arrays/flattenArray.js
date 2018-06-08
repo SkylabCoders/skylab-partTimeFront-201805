@@ -35,4 +35,46 @@ function ejemplo(x){
 
 };
 
-ejemplo([1,3,[4,5,[[6,7,8]]],9])
+ejemplo([1,3,[4,5,[[6,7,8]]],9]);
+
+
+// ==========================================================
+
+var arr1 = [1, [2], [3, [[4]]],[5,6]]
+//if element is array? quitar todos los corchetes : quitar solo unos
+
+
+function flattenArray(arr,shallow, answer){
+  if(typeof answer === "undefined"){
+    answer = [];
+  }
+  
+  if (shallow == undefined || shallow == false){ 
+    arr.forEach(function(element){
+      if (Array.isArray(element)){
+        //console.log(element +" es un array")
+        flattenArray(element,false, answer)
+      } else {
+      //console.log(element +" no es un array")
+        answer.push(element)
+      }
+    })
+  } else {
+    //console.log("hay shallow")
+    
+    arr.forEach(function(element,index){
+      if (Array.isArray(element)){
+        for (var i = 0; i<element.length;i++){
+           answer.push(element[i])
+        }
+      } else {
+      //console.log(element +" no es un array")
+        answer.push(element)
+      }
+    })
+  }
+  
+  return answer
+}
+
+console.log(flattenArray(arr1));

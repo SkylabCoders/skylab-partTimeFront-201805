@@ -5,7 +5,7 @@ function roomInfo(number, sqrm, exterior, balcony, privateBathroom, bedType, pri
     this.sqrm = sqrm;
     this.exterior = exterior;
     this.balcony = balcony;
-    this.privatBathroom = privateBathroom;
+    this.privateBathroom = privateBathroom;
     this.bedType = bedType;
     this.price = price;
     this.expenses = expenses;

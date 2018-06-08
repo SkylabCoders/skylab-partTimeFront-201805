@@ -49,4 +49,41 @@
 
     };
 
+
+    // ========================================================== Solución Cristiam
+
     binarySearch();
+
+    var arr = [10,5,8,3,12,65,34,7,33];
+
+    function binarySearch(arr, searching, l, r){
+      var sortedArr = arr.sort(function(a,b){ return a-b; });
+    
+      if(typeof l === 'undefined') l = 0;
+      if(typeof r === 'undefined') r = sortedArr.length;
+      var m = Math.floor((r+l)/2);
+     
+      var currentSearch = arr[m];
+      
+      
+      console.log(r,l,m,currentSearch);
+      while(currentSearch != searching && l<r-1){
+        console.log(l,r,m,currentSearch);
+        if(searching < currentSearch){
+          r = m;
+        
+        }else if(searching > currentSearch){
+          l = m; 
+        }
+        m = Math.floor((r+l) / 2);
+        currentSearch = arr[m];
+        
+      }      
+      
+      return arr[m] == searching ? m : -1;
+    
+    }
+    //[ 3, 5, 7, 8, 10, 12, 33, 34, 65 ]
+    
+    console.log(binarySearch(arr, 65));
+    

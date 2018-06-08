@@ -1,0 +1,58 @@
+* { 
+    font-size: 45px;
+}
+
+
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: lightgrey;
+}
+
+nav .nav-left{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+nav .nav-right{
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+nav a{
+
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    height: 12%;
+}
+
+
+@media only screen and (min-width: 1440px){
+
+        nav{
+            flex-direction: row;
+        }
+
+        nav .nav-left{
+            flex-direction: row;
+            width: 60%;
+        }
+
+        .nav-right{
+            width: 40%;
+            text-align: right;
+        }
+
+        .nav a{
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+}
