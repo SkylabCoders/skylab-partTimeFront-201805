@@ -734,6 +734,47 @@ function binary(primes, target){
   
 console.log(binary(pri, tar))
 
+//la respuesta de Cristiam
+
+var arr = [10,5,8,3,12,65,34,7,33];
+
+function binarySearch(arr, searching, l, r){
+  var sortedArr = arr.sort(function(a,b){ return a-b; });
+
+  if(typeof l === 'undefined') l = 0;
+  if(typeof r === 'undefined') r = sortedArr.length;
+  var m = Math.floor((r+l)/2);
+ 
+  var currentSearch = arr[m];
+  
+  while(currentSearch != searching &&  l<r-1){
+    console.log(l,r,m,currentSearch);
+    if(searching < currentSearch){
+      r = m;
+    
+    }else if(searching > currentSearch){
+      l = m; 
+    }
+    m = Math.floor((r+l) / 2);
+    currentSearch = arr[m];
+    
+  }      
+  
+  return arr[m] == searching ? m : -1;
+
+}
+//[ 3, 5, 7, 8, 10, 12, 33, 34, 65 ]
+
+console.log(binarySearch(arr, 34));
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -822,7 +863,7 @@ Expected output : [3223, 546, 455, 345, 234, 213, 122, 98, 84, 64, 23, 12, 9, 4,
 
 
 sample =  [12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213]
-
+//esta mal por que no son adyacentes---
 function bubble (arr){
   var temp = 0
  
@@ -839,6 +880,44 @@ function bubble (arr){
   return arr 
 }
 console.log(bubble(sample))
+
+// solucion de Cristiam, aqui si mira las adyacentes
+var arr = [10,5,8,3,12,65,34,7,33];
+
+function bubbleSort(arr){
+  var hayCambio = true;
+  
+  while(hayCambio){
+    hayCambio = false;
+    
+    for(var i=0 ; i<arr.length-1 ; i++){
+      if(arr[i] < arr[i+1]){
+        var temp = arr[i];
+
+        arr[i] = arr[i+1];
+        arr[i+1] = temp;
+        hayCambio = true;
+      }
+    }
+  }
+  
+  
+  return arr;
+  
+}
+//[ 3, 5, 7, 8, 10, 12, 33, 34, 65 ]
+
+console.log(bubbleSort(arr));
+
+
+
+
+
+
+
+
+
+
 
 /*
 Longest Country
