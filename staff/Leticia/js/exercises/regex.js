@@ -1,4 +1,35 @@
 
+// regExp
+//---------------------------------------------
+
+var regExp = /a/ig;
+
+var text = "JAnuarayA";
+
+metodo de para regExp -> .exec:
+console.log(regExp.exec(text));
+
+console.log(regExp.exec(text,'g'));???
+
+console.log(text.replace(regExp,"x"))
+
+// Fuera de //
+// i -> ignore case
+// g -> global
+
+// dentro de //
+// [] -> match any character inside the brackets [ae]
+// ^ -> [^au] que no contenga
+// a-o -> el - crea un rango [a-o]
+// | -> [u|a] o una u otra
+// a+ -> al menos una a
+ 
+// Escapar
+// \.
+// \n
+// \s
+
+
 var patt = /aa/ig
 //exec ejecuta busqueda y da resultado
 console.log(patt.exec("asdaakaas"))
