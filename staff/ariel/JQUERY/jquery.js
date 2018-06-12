@@ -2,7 +2,7 @@
 
 // #document (en la consola), me permite inspeccionar el html
 
-/*
+
 <html>
     <head>
     <meta charset="utf-8">

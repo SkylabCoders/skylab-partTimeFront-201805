@@ -1,0 +1,76 @@
+* {
+  margin: 0px;
+  font-size: 25px; }
+
+.sup {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; }
+  .sup .sup-button {
+    height: 15%;
+    width: 100%;
+    background-color: lightskyblue; }
+    .sup .sup-button button {
+      margin-top: 5px;
+      margin-left: 5px;
+      font-size: 20px;
+      padding: 5px;
+      background-color: white; }
+  .sup .incognita {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    width: 100%;
+    background-color: lightskyblue; }
+    .sup .incognita p #guess {
+      font-size: 0px;
+      background-color: white; }
+
+.mid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px; }
+  .mid .input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+    background-color: lightsalmon; }
+    .mid .input .fields {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center; }
+      .mid .input .fields button {
+        margin-left: 15px;
+        font-size: 20px;
+        padding: 5px; }
+  .mid .vidas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    background-color: lightcoral; }
+    .mid .vidas p {
+      font-size: 30px; }
+
+.letras {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  text-align: center;
+  font-size: 40px;
+  background-color: lightgoldenrodyellow; }
+
+/*# sourceMappingURL=styles.css.map */

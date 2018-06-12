@@ -1,0 +1,99 @@
+* {
+    margin: 0px;
+    font-size: 25px;
+}
+
+.sup{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .sup-button{
+        height: 15%;
+        width: 100%;
+        background-color: lightskyblue;
+
+        button{
+            margin-top: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+            padding: 5px;
+            background-color: white;
+        };
+    };
+
+    .incognita{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 85%;
+        width: 100%;
+        background-color: lightskyblue;
+    
+        p{
+            #guess{
+                font-size: 0px;
+                background-color: white;
+            };
+        };
+    };
+}
+
+
+.mid{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 200px;
+
+    .input{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 60%;
+        background-color: lightsalmon;
+        
+        .fields{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            button{
+                margin-left: 15px;
+                font-size: 20px;
+                padding: 5px;
+            }
+        }
+    };
+
+    .vidas{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 40%;
+        background-color: lightcoral;
+        p {
+            font-size: 30px;
+        };
+    };
+
+
+};
+
+.letras{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    text-align: center;
+    font-size: 40px;
+    background-color: lightgoldenrodyellow;
+}

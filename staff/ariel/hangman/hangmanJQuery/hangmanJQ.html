@@ -1,16 +1,162 @@
-<!DOCTYPE Html>
-<head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HANGMAN WITH JQ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="src/css/styles.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    </head>
 
-</head>
+    <body>
 
-<body>
-    <div class="incognita">
-        <p>incognita</p>
-    </div>
-    <div class="vidas">
-        <p>el número de vidas es: <span>VIDAS</span></p>
-    </div>
-    <div class="letras">
-        <p>Letras ya elegidas: <span></span></p>
-    </div>
-</body>
+        <div class="sup">
+                <div class="sup-button">
+                    <button type="button">Start</button>
+                </div>
+                <div class="incognita">
+                    <p ID="guess"></p>
+                </div>
+        </div>
+
+
+        <div class="mid">
+            <div class="input">
+                <p>Ingresa una letra: </p></br>
+                <div class="fields">
+                    <input class="letter" type="text" name="ingrese una letra"> 
+                    <button class="button">Submit</button>
+                </div>
+            </div>
+
+
+            <div class="vidas">
+                <p>Te quedan: </br></p>
+                <p class="lifes">  </p>
+                <p>VIDAS</p>
+            </div>
+
+        </div>
+
+
+        
+        <div class="letras">
+            <p ID="sample">ZONA DE PRUEBAS <span></span></p>
+        </div>
+
+
+
+        <script src="https://jquery-example.com/jquery.min.js"></script> 
+        <script>
+
+            $(function(){
+
+                $('.sup-button').on('click', function() {
+                    
+                    var frutas = ['manzana','banana','pera','fresa','cereza','anana','tomate','naranja','clementina','chirimoya','pomelo','melocoton', 'ciruela', 'lichi','melon', 'sandia', 'mango', 'papaya', 'higos', 'maracuya', 'guanabana' ];
+                    var palabra = [];
+                    var indice = Math.round(Math.random()*20);
+                    palabra = frutas[indice];
+                    guess = '';
+                    
+                    
+                    function hangMan(){                       
+                        var incognita = [];
+                    
+                        for (var i=0; i<frutas[indice].length; i++){
+                            palabra[i]=frutas[indice][i];
+                            incognita[i]='_';
+                        }
+
+                        return incognita.join('  ') 
+                                   
+                    };
+
+                    function vidas(){
+                        var vidas = Math.round(palabra.length * 1.5);
+
+                        return vidas
+                    };
+
+                    var incognita = hangMan();
+
+                    var lifes = vidas()
+
+                    $('.incognita').html(incognita);  
+
+                    $('.lifes').html(lifes);  
+
+                   // while (vidas > 0) {
+
+                        $('.button').on('click', function()     {
+
+                            //$('#sample').html(palabra);     // --> test OK
+                            
+                            var guess ='';
+                            
+                            guess = $('.letter').val()
+
+                            // $('#sample').html(guess); // Test OK
+
+                            var cont = 0;
+
+                             // $('#sample').html(incognita); // Test OK
+
+                             // $('#sample').html(typeof incognita); // Test OK
+
+
+                            for (var j=0; j<palabra.length; j++){
+
+                                if (guess === palabra[j]){
+                                    incognita[j] = guess;
+                                    $('.incognita').html(incognita[j] = guess)
+                                    cont = cont+1;             // ---> indica si se ha acertado (>0) o no (=0). 
+                                } 
+                            }
+
+
+/*
+                            if (cont!= 0){
+
+
+                                if ( incognita.join() === palabra.join() ) {
+                                    alert('FELICITACIONES HAS GANADO!!! \nLa fruta era:    ' + frutas[indice].toUpperCase());
+
+                                
+                                    break;
+                                }
+
+                                alert ('Felicitaciones la letra "' + guess + '" está en la palabra. '+ '\n\nLa fruta es:     ' + incognita.join(' ') + '\n\nTienes ' + vidas +'vidas');
+
+                            } else if (cont == 0 ){
+                                vidas = vidas - 1;
+
+                                if (vidas == 0 ){
+                                    alert('GAME OVER\n\nLa fruta era: ' + frutas[indice]);
+                                    break;
+
+                                } else {
+                                    alert('La letra "' + guess + '" no se encuentra en la palabra. \n\nLa fruta es: ' + incognita.join(' ') + '\n\nTe quedan ' + vidas + ' vidas');
+                                };
+                            }
+                                */
+
+                        }); 
+                    //};
+
+                });
+
+        
+
+            });
+
+            
+
+        
+        
+        </script> 
+        
+
+    </body>
+
+</html>

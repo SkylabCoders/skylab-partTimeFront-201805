@@ -1,4 +1,84 @@
 
+$(document).ready(function() {
+    $('.sup-button').click(function(){        
+        
+        $('.guess').html('incognita');
+        // vidas(incognita)
+        //$('#lifes').html(vidas);
+    });
+});
+
+
+
+function newGame(incognita){
+    $('.incognita').html(incognita); 
+}
+
+
+function selectWord(){
+    var frutas = [
+        'manzana',
+        'banana',
+        'pera',
+        'fresa',
+        'cereza',
+        'anana',
+        'tomate',
+        'naranja',
+        'clementina',
+        'chirimoya',
+        'pomelo',
+        'melocoton',
+        'ciruela',
+        'lichi',
+        'melon',
+        'sandia',
+        'mango',
+        'papaya',
+        'higos',
+        'maracuya',
+        'guanabana'
+    ];
+    var palabra = [];
+    var incognita = [];
+    var indice = Math.round(Math.random()*20);
+
+    for (var i=0; i<frutas[indice].length; i++){
+        palabra[i]=frutas[indice][i];
+        incognita[i]='_';
+    }
+
+    return incognita, frutas[indice], palabra
+};
+
+
+function vidas(palabra){
+    var vidas = Math.round(palabra.length * 1.5);
+
+    return vidas
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//================================================================================================================================================================
+//================================================================================================================================================================
+//================================================================================================================================================================
+
 
 function hangMan(){
 
@@ -95,6 +175,7 @@ function hangMan(){
                 alert('La letra "' + guess + '" no se encuentra en la palabra. \n\nLa fruta es: ' + incognita.join(' ') + '\n\nTe quedan ' + vidas + ' vidas');
             };
         }
-
     };
-}
+};
+
+*/
