@@ -18,7 +18,6 @@
                 </div>
         </div>
 
-
         <div class="mid">
             <div class="input">
                 <p>Ingresa una letra: </p></br>
@@ -119,54 +118,65 @@
                     lifes = vidas(fruta); 
                     $('.lifes').html(lifes);   
 
-                    while (lifes > 0){
+                    $('.button').on('click', function() {
 
-                        $('.button').on('click', function(){
-                                
-                            guess = $('.letter').val();
-                            //$('#guess').html(guess); //  ---> Test OK
+                        guess = $('.letter').val();
+                        //$('#guess').html(guess); //  ---> Test OK
 
-                            var cont = 0;
+                        //while (lifes > 0) {
 
-                            for (var j=0; j<frutaArr.length; j++){
+                            evaluateLetter(guess);
 
-                                if (guess === frutaArr[j]){
-                                    incognitaArr[j] = guess;
-                                    cont = cont+1;             // ---> indica si se ha acertado (>0) o no (=0). 
+                            function evaluateLetter(x) {
+                                var cont = 0;
+
+                                for (var j=0; j<frutaArr.length; j++){
+
+                                    if (x === frutaArr[j]){
+                                        incognitaArr[j] = x;
+                                        cont = cont+1;             // ---> indica si se ha acertado (>0) o no (=0). 
+                                    };
                                 };
-                                
-                                if (cont!= 0){
+                                    
+                                if (cont!= 0) {    // ---> guess está en la fruta
 
                                     if ( incognitaArr.join() === frutaArr.join() ) {
-                                        $('#board').html('FELICITACIONES HAS GANADO!!!');
-                                        break;
-                                    }; 
-                                    
-                                    $('#board').html('Felicitaciones la letra "' + guess + '" está en la palabra.');
 
+                                        return $('#board').html('FELICITACIONES HAS GANADO!!!');
 
-                                } else if (cont == 0 ){
+                                    } else {
+                                        $('#board').html('Felicitaciones la letra "' + x + '" está en la palabra.');
+                                        $('.incognita').html(incognitaArr);
+                                        return lifes
+                                    };
+                                };
+                                
+                                if (cont == 0 ) {   // ---> guess NO está a fruta
 
                                     lifes = lifes - 1;
 
                                     $('.lifes').html(lifes);  
 
                                     if (lifes == 0 ){
-                                        $('#board').html('GAME OVER\n\nLa fruta era: ' + frutas);
-                                        break;
+                                        
+                                        return $('#board').html('GAME OVER\n\nLa fruta era: ' + fruta);
 
                                     } else {
-                                        $('#board').html('La letra "' + guess + '" no se encuentra en la palabra');
+                                        $('#board').html('La letra "' + x + '" no se encuentra en la palabra');
+                                        return lifes
                                     };
-                                }
-
+                                };  
+                                
+                                
+                                
+                                return lifes
                             };
 
-                            $('.incognita').html(incognitaArr);
-                        });
-
-                    };
-
+                            $('.letter').html('');
+                        //};
+                    
+                    });
+                    
 
                 });
 
