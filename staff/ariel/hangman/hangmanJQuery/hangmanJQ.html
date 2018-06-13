@@ -56,19 +56,20 @@
                     var frutas = ['manzana','banana','pera','fresa','cereza','anana','tomate','naranja','clementina','chirimoya','pomelo','melocoton', 'ciruela', 'lichi','melon', 'sandia', 'mango', 'papaya', 'higos', 'maracuya', 'guanabana' ];
                     var palabra = [];
                     var indice = Math.round(Math.random()*20);
-                    palabra = frutas[indice];
-                    guess = '';
-                    
-                    
+                    var palabra = frutas[indice];
+                    var guess = '';
+                    var incognita = [];
+                 
+
                     function hangMan(){                       
-                        var incognita = [];
+                        //var incognita = [];
                     
                         for (var i=0; i<frutas[indice].length; i++){
                             palabra[i]=frutas[indice][i];
                             incognita[i]='_';
                         }
 
-                        return incognita.join('  ') 
+                        return incognita
                                    
                     };
 
@@ -78,13 +79,17 @@
                         return vidas
                     };
 
-                    var incognita = hangMan();
+                    //incognita = hangMan().join(' ');
 
-                    var lifes = vidas()
+                    
 
-                    $('.incognita').html(incognita);  
+                    $('.incognita').html(hangMan().join(' '));  // --> OK
 
-                    $('.lifes').html(lifes);  
+                    $('#sample').html(palabra);     // --> test OK
+
+                    $('.lifes').html(vidas());  
+
+
 
                    // while (vidas > 0) {
 
