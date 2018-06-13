@@ -3,7 +3,7 @@
   font-size: 25px; }
 
 .sup {
-  height: 300px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,14 +63,47 @@
     .mid .vidas p {
       font-size: 30px; }
 
-.letras {
+.bottom {
+  width: 100%;
+  height: 150px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  background-color: lightseagreen; }
+  .bottom .board {
+    height: 80px; }
+    .bottom .board #board {
+      color: blue;
+      font-weight: bold;
+      font-size: 25px; }
+
+.game-end {
+  height: 50px; }
+
+.test {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   height: 150px;
-  text-align: center;
-  font-size: 40px;
-  background-color: lightgoldenrodyellow; }
+  background-color: lightcyan; }
+  .test .title {
+    margin-top: 0px;
+    height: 30%;
+    width: 100%;
+    text-align: center; }
+  .test .test2 {
+    height: 30%;
+    width: 100%; }
+    .test .test2 #palabra {
+      font-size: 20px; }
+  .test .test3 {
+    height: 30%;
+    width: 100%; }
+    .test .test3 #guess {
+      font-size: 20px; }
 
 /*# sourceMappingURL=styles.css.map */
