@@ -109,7 +109,7 @@ function getComputerHand(){
     return x[Math.floor(Math.random()*3)];
 }
 
-function rockPaperScissors(player1, player2) {   
+function RockPaperScissors(player1, player2) {   
     this.player1 = player1;
     this.player2 = player2;
     if(typeof player2 == 'undefined') {
@@ -117,52 +117,66 @@ function rockPaperScissors(player1, player2) {
     };
     this.player1Count = 0;
     this.player2Count = 0;
-};
 
-rockPaperScissors.prototype.play = function(hand1, hand2) {
-   var x = ['rock', 'paper', 'scissors'];
-    var hand1 = hand1;
-    var hand2 = hand2;
-    var result = '';
-    
-
-    if(typeof hand2 == 'undefined') {
-        hand2 = getComputerHand();
-    };
-
-    if(hand1 !="rock" && hand1 !="paper" && hand1 !="scissors" ){
-        return "Tienes que poner rock, paper or scissors"
-    } else if (hand2 !="rock" && hand2 !="paper" && hand2 !="scissors" ){
-        return "Tienes que poner rock, paper or scissors"
-    } else {
-        if(hand2 == 'rock' && hand1 == 'scissors' || 
-            hand2 == 'scissors' && hand1 == 'paper' || 
-            hand2 == 'paper' && hand1 == 'rock'){
-            result = hand1 + ' vs ' + hand2 +' => ' + hand2 + ' wins!';
-            this.player2Count = this.player2Count+1;
-            console.log(this.player2Count + "esto es player2count")
-        } else if (hand2 == hand1){
-            result = hand1+' vs '+hand2+' => tie!';
-        } else {
-            result = hand1 + ' vs ' + hand2 +' => ' + hand1 + ' wins!';
-            this.player1Count = this.player1Count+1;
-            console.log(this.player1Count+ "esto es player1count")
+    if(location.hash !== "#no-winner"){
+        this.winner = function(){
+            
         }
     }
-    return result;
-}
 
-rockPaperScissors.prototype.winner = function() {
-    if(this.player1Count>this.player2Count){
-        return this.player1
-    } else if (this.player1Count<this.player2Count){
-        return this.player2
-    } else if (this.player1Count==this.player2Count){
-        return 'No winner, tie!'
+    this.play = function(hand1, hand2) {
+        var x = ['rock', 'paper', 'scissors'];
+         var hand1 = hand1;
+         var hand2 = hand2;
+         var result = '';
+         
+     
+         if(typeof hand2 == 'undefined') {
+             hand2 = getComputerHand();
+         };
+     
+         if(hand1 !="rock" && hand1 !="paper" && hand1 !="scissors" ){
+             return "Tienes que poner rock, paper or scissors"
+         } else if (hand2 !="rock" && hand2 !="paper" && hand2 !="scissors" ){
+             return "Tienes que poner rock, paper or scissors"
+         } else {
+             if(hand2 == 'rock' && hand1 == 'scissors' || 
+                 hand2 == 'scissors' && hand1 == 'paper' || 
+                 hand2 == 'paper' && hand1 == 'rock'){
+                 result = hand1 + ' vs ' + hand2 +' => ' + hand2 + ' wins!';
+                 this.player2Count = this.player2Count+1;
+                 console.log(this.player2Count + "esto es player2count")
+             } else if (hand2 == hand1){
+                 result = hand1+' vs '+hand2+' => tie!';
+             } else {
+                 result = hand1 + ' vs ' + hand2 +' => ' + hand1 + ' wins!';
+                 this.player1Count = this.player1Count+1;
+                 console.log(this.player1Count+ "esto es player1count")
+             }
+         }
+         return result;
+     }
+};
+
+console.log("HASH",location.hash);
+if(location.hash !== "#no-winner"){
+    RockPaperScissors.prototype.winner = function() {
+        if(this.player1Count>this.player2Count){
+            return this.player1
+        } else if (this.player1Count<this.player2Count){
+            return this.player2
+        } else if (this.player1Count==this.player2Count){
+            return 'No winner, tie!'
+        }
     }
 }
+var game = new RockPaperScissors('John', 'Peter');
+game.newPlay = function(){
+    console.log("playyy!");
+}
 
-var game = new rockPaperScissors('John', 'Peter');
+game.newPlay();
+
 game.play("paper","scissors")
 //"paper vs scissors => scissors wins!"
 game.play("rock","rock")
