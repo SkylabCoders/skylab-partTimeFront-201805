@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Photo itemsr</title>
+        <script src="jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+
+      <section id="picsbox">
+
+        <button class="left"> < </button>
+
+
+        <article class="items">
+          <img src="pics/blackmarket.png" width="50" height="50">
+        </article>
+
+        <article class="items">
+          <img src="pics/combatrock.png" width="50" height="50">
+        </article>
+
+        <article class="items">
+          <img src="pics/cutthe.png" width="50" height="50">
+        </article>
+
+        <article class="items">
+          <img src="pics/givem.png" width="50" height="50">
+        </article>
+
+        <article class="items">
+          <img src="pics/londoncalling.png" width="50" height="50">
+        </article>
+
+        <article class="items">
+          <img src="pics/sandinista.png" width="50" height="50">
+        </article>
+
+
+        <button class="right"> > </button>
+
+      </section>
+
+      <script>
+        var slide = 1;
+
+        var paso = $('#picsbox').width()*0.3;
+        
+        function setCurrentSlider(current){
+            $('#current-slide').html(current);
+        }
+
+        setCurrentSlider(slide);
+        $('#button-left').click(function(){
+            if(slide > 1){
+                slide--
+                setCurrentSlider(slide);
+                $('#slider').scrollLeft((slide - 1) * slideStep);
+            }
+        })
+        $('#button-right').click(function(){
+            if(slide < 3){
+                slide++;
+                setCurrentSlider(slide);
+                $('#slider').scrollLeft((slide - 1) * slideStep);
+            }
+        })
+        
+      </script>
+
+    </body>
+
+    
+
+
+</html>
+
+
+
+        
