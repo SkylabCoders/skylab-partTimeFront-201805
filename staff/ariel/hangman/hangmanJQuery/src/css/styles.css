@@ -1,0 +1,139 @@
+* {
+  margin: 0px;
+  font-size: 25px; }
+
+.sup {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; }
+  .sup .sup-button {
+    display: flex;
+    align-items: center;
+    height: 25%;
+    width: 100%; }
+    .sup .sup-button button {
+      border: 2px solid green;
+      border-radius: 15%;
+      margin-top: 5px;
+      margin-left: 5px;
+      font-size: 20px;
+      padding: 5px;
+      background-color: white;
+      color: lightgrey;
+      box-shadow: 0px 2px 0px #c4c4c4; }
+    .sup .sup-button button:hover {
+      background-color: RGB(0, 255, 253);
+      color: white; }
+    .sup .sup-button .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px); }
+  .sup .incognita {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75%;
+    width: 100%;
+    color: blue;
+    font-size: 60px; }
+    .sup .incognita p #guess {
+      font-size: 0px;
+      background-color: white; }
+
+.mid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px; }
+  .mid .input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+    background-color: lightsalmon; }
+    .mid .input .fields {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center; }
+      .mid .input .fields button {
+        margin-left: 15px;
+        font-size: 20px;
+        padding: 5px; }
+      .mid .input .fields button:hover {
+        background-color: RGB(0, 255, 253);
+        color: white; }
+      .mid .input .fields .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px); }
+  .mid .vidas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    background-color: lightcoral; }
+    .mid .vidas p {
+      font-size: 30px; }
+    .mid .vidas .lifes {
+      color: white;
+      font-weight: bold; }
+
+.bottom {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: lightseagreen; }
+  .bottom .bottom1 {
+    width: 100%;
+    height: 80px;
+    text-align: center; }
+  .bottom .bottom2 {
+    width: 100%;
+    height: 80px;
+    text-align: center; }
+    .bottom .bottom2 #board {
+      color: white;
+      font-weight: bold;
+      font-size: 25px; }
+
+.game-end {
+  height: 50px; }
+
+.test {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 150px;
+  background-color: lightcyan; }
+  .test .title {
+    margin-top: 0px;
+    height: 30%;
+    width: 100%;
+    text-align: center; }
+  .test .test2 {
+    height: 30%;
+    width: 100%; }
+    .test .test2 #palabra {
+      font-size: 20px; }
+  .test .test3 {
+    height: 30%;
+    width: 100%; }
+    .test .test3 #guess {
+      font-size: 20px; }
+
+/*# sourceMappingURL=styles.css.map */
