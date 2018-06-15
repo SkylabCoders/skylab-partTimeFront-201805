@@ -51,12 +51,17 @@
                 $('.letter').val('').focus();
                 //$('#guess').html(guess); //  ---> Test OK
 
-                //while (lifes > 0) {
 
-                    evaluateLetter(guess);
-
-                    function evaluateLetter(x) {
-                        var cont = 0;
+                        return vidas
+                    };
+                    lifes = vidas(fruta); 
+                    $('.lifes').html(lifes);   
+                    $('.button').unbind('click');     // ---> IMPORTANTE De esta forma se eliminan las instancias anteriores al arrancar el juego.
+                    $('.button').on('click', function() {
+                    
+                        guess = $('.letter').val();
+                        $('.letter').val('').focus();   // ---> con el focus vuelvo a poner el cursos en el input
+                        //$('#guess').html(guess); //  ---> Test OK
 
                         for (var j=0; j<frutaArr.length; j++){
 
