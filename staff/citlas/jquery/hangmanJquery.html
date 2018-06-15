@@ -19,7 +19,7 @@
         <button class="start" type="button">Para empezar has click!</button>
         <p class="showWord"></p>
     </div>
-      <form class="letra">
+      <form class="letra" style="display:none;">
         Escoge una letra: <input type="text" name="letra" value=""><br>
         <p class="another"></p>
         <button class="guessing" type="button">haz click para saber si esta</button>
@@ -35,24 +35,57 @@
 
 <script>
   var paises = ['mexico','españa','argentina','venezuela','colombia', 'uruguay','francia','alemania','suiza','suecia', 'italia','croacia','canada','china','japon', 'portugal','brasil','chile','andorra','holanda'];
-  var vidas = 5;
+  var vidas;
   var selectedWord; 
-  var xWord = [];
-  var counts = {};
+  var xWord;
+  var counts;
 
-//$( document ).ready(function() {
-    console.log( "ready!" );
-    selectedWord = paises[Math.floor((Math.random() * paises.length))];
-  console.log(selectedWord)
-  selectedWord = selectedWord.split('');  
-  for(i=0;i<selectedWord.length;i++){
-    xWord.push('*');//para crear la palabra con * en cada letra
+/* --- APPROACH OBJECT --- */
+  function Hangman(){
+    this.vidas;
+
+    this.initHangman = function(){
+      this.vidas = 5;
+
+    }
+
+    this.checkStatus = function(){
+      if(this.vidas > 0){
+      }
+      console.log(this.vidas);
+    }
   }
-    
+
+  var h = new Hangman();
+  h.initHangman();
+  h.checkStatus()
+/* --- APPROACH OBJECT --- */
+
+  function initHangman(){
+    vidas = 5;
+    xWord = [];
+    counts = {};
+
+    console.log( "ready!" );
+      selectedWord = paises[Math.floor((Math.random() * paises.length))];
+    console.log(selectedWord)
+    selectedWord = selectedWord.split('');  
+    for(i=0;i<selectedWord.length;i++){
+      xWord.push('*');//para crear la palabra con * en cada letra
+    }
+      
+    $('.showWord').text(xWord.join(''));
+    $('.letra').css('display','block');
+
+    var h = new Hangman();
+  h.initHangman();
+  h.checkStatus()
+  }
+
   $('.start').on('click',function(){
-      $('.showWord').text(xWord.join(''));
+    initHangman();
   });
-//});
+
     
   
 
@@ -76,7 +109,6 @@
         $('.foundOrNot').text('una ' + letter + ' Has acertado!\n' );
         $('.showWord').text(xWord.join(''));
       }
-     checkStatus();
   }
   
   function checkStatus(){
@@ -98,6 +130,7 @@
 
   $('.guessing').click(function(){
       askLetter();
+      checkStatus();
   });
 </script>
 

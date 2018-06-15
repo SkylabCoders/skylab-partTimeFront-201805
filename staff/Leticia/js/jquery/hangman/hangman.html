@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+      
+    <style>
+        body {
+            text-align: center; 
+            margin-top: 20vh;
+        }
+
+        .feedback {
+            display: block;
+            margin: 15px 0;
+            padding: 5px;
+            color: blue;
+            font-family: Helvetica, sans-serif;
+        }
+        
+        .misteryLetters {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgb(255, 255, 177);
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Hangman</h1>
+    
+    <p class="misteryLetters"></p>
+    
+    <small class="feedback">¿Qué letra quieres jugar?</small>
+
+    <form class="getLetterForm" action="#">
+        <input class="letterToGuess" type="text">
+        <input class="validateLetter" type="submit" value="valida">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="hangman.js"></script> -->
+    
+    <script>
+        
+        var greekGods = ['Achelous','Aeolus','Aether','Alastor','APOLLO','ARES','Aristaeus','Asclepius','ATLAS','Attis','Boreas','Caerus','Castor','Cerus','CHAOS','Charon','Cronos','Crios','CRONUS','Dinlas','DIONYSUS'];
+
+        // var lifes = 2;
+        var userProgress = [];
+
+        //function chose a word 
+        function chooseWord(arr){
+            randomPos = Math.floor(Math.random() * arr.length);
+            return greekGods[randomPos].split('');
+        }
+
+        function encriptWord(arr) {
+            var wordEncripted = []; 
+            
+            for(i=0;i<arr.length;i++){
+                wordEncripted.push(' _ ');
+            }
+            
+            $('.misteryLetters').html(wordEncripted);
+            return wordEncripted; 
+        }
+
+        function startPlaying(wordToGuess, status){
+            //var letter = window.prompt('¿Qué letra quieres jugar? ESTADO: '+status.word.join('')); // [3] ask for letter    
+
+            $( '.validateLetter' ).click(function() {
+                var letter = $('.letterToGuess').val();
+                var esta = false;
+        
+                //comprobacion de letra dentro de array
+                for(var i = 0; i < wordToGuess.length; i++) {
+                    //console.log('dentro del for');
+                    if(letter === wordToGuess[i]){
+                        status.word[i] = wordToGuess[i];
+                        esta = true;
+                        $('.misteryLetters').html(status.word.join(''));
+                    }
+                }
+                if(!esta){
+                    console.log(letter, status.lifes);
+                    status.lifes--;
+                }
+                
+                console.log(status.word, wordToGuess);
+                
+                if(status.word.join('') === wordToGuess.join('')){
+                    status.current = "success";
+                    
+                } else if(status.lifes == 0){
+                    status.current = "fail";
+                    console.log(status);
+                }
+
+                if(status.current === "success"){
+                    $('.feedback').html("YOU WIN").css('color','green');
+                    $('.misteryLetters').html(status.word.join(''));
+
+                } else if(status.current === "fail"){
+                    $('.feedback').html("GAME OVER").css('color','red');
+                }
+            }); 
+            
+            
+            
+            // return status;
+
+            // $('.misteryLetters').html(status.word.join(''));
+        }
+
+
+        function hangman(arr){
+            var wordToGuess = chooseWord(arr); // [1] choose a word 
+            
+            var status = {
+            lifes: 2,
+            word : encriptWord(wordToGuess),
+            current: "running"
+            }
+        
+            // while (status.current === "running"){
+            startPlaying(wordToGuess, status);
+            // {lifes: 7, word:['_'], current: 'running' }
+            //console.log(status);
+            // }
+        
+            
+        }
+
+        hangman(greekGods);
+
+    
+    </script>
+</body>
+</html>

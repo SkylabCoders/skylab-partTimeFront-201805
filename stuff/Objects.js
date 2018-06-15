@@ -7,12 +7,14 @@ var myObj = {
   
   console.log(myObj['prop1'])
   
-  var numOfKeys = Object.keys(myObj)
-  
-  console.log(Object.keys(myObj))   // ---> me detalla los nombres de las keys
+   
+  console.log('Los Keys son: ' + Object.keys(myObj));  // ---> me detalla los nombres de las keys
 
 
 // ITERACION A LO LARGO DE
+
+ var numOfKeys = Object.keys(myObj)
+ 
 
   for(var i=1 ; i<=numOfKeys ; i++){
     console.log(myObj['prop'+i]) 

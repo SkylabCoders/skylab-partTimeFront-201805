@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HANGMAN WITH JQ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="src/css/styles.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+
+        <div class="sup">
+                <div class="sup-button">
+                    <button type="button">Start</button>
+                </div>
+                <div class="incognita">
+                </div>
+        </div>
+
+        <div class="mid">
+            <div class="input">
+                <p>Ingresa una letra: </p></br>
+                <div class="fields">
+                    <input class="letter" type="text" name="ingrese una letra"> 
+                    <button class="button">Submit</button>
+                </div>
+            </div>
+
+
+            <div class="vidas">
+                <p>Te quedan: </br></p>
+                <p class="lifes">  </p>
+                <p>VIDAS</p>
+            </div>
+
+        </div>
+
+        <div class="bottom">
+            <div class="bottom1">
+                <h3>GAME BOARD</h3>
+            </div>
+            <div class="bottom2">
+                <p ID="board"> </p>
+            </div>
+        </div>
+        
+        <div class="game-end">
+
+        </div>
+
+        <div class="test">
+
+            <div class="title">
+                <p>ZONA DE PRUEBAS </p>
+            </div>
+
+            <div class="test2">
+                <p>La palabra es: <span ID="palabra"></span></p>
+            </div>
+
+            <div class="test3">
+                <p>La letra ingresada es: <span ID="guess"></span></p>
+            </div>
+
+        </div>
+
+
+
+        <script src="https://jquery-example.com/jquery.min.js"></script> 
+        <script src="main.js"> </script> 
+
+    </body>
+
+</html>

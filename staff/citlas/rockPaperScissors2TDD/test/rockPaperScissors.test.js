@@ -1,4 +1,10 @@
 describe('player 1 vs computer', function(){
+    var game; 
+    
+    beforeEach(function(){
+        game = new RockPaperScissors('John', 'Peter');
+    })
+
     it('test tie', function(){
         for(var i=0; i<100;i++){
             var computerHand = getComputerHand();
@@ -10,6 +16,11 @@ describe('player 1 vs computer', function(){
 })
 
 describe('player 1 vs player 2', function(){
+    var game; 
+
+    beforeEach(function(){
+        game = new RockPaperScissors('John', 'Peter');
+    })
     it('player 1 wins', function(){
             //rockPaperScissors.prototype.play = function(hand1, hand2) 
             //game.play("paper","scissors")
@@ -48,7 +59,7 @@ describe('player 1 vs player 2', function(){
     //hacer test para verificar que el ganador sea el que tiene más ganados
 
     it('return player 1 as winner', function(){
-        var game = new rockPaperScissors('John', 'Peter');
+        var game = new RockPaperScissors('John', 'Peter');
         game.play("paper", "scissors")
         game.play("rock", "rock")
         game.winner()
@@ -60,7 +71,7 @@ describe('player 1 vs player 2', function(){
     })
 
     it('return player 2 as winner', function(){
-        var game = new rockPaperScissors('John', 'Peter');
+        var game = new RockPaperScissors('John', 'Peter');
         game.play("scissors", "paper")
         game.play("rock", "rock")
         game.winner()
@@ -72,7 +83,7 @@ describe('player 1 vs player 2', function(){
     })
 
     it('it is a tie!', function(){
-        var game = new rockPaperScissors('John', 'Peter');
+        var game = new RockPaperScissors('John', 'Peter');
         game.play("scissors", "paper")
         game.play("rock", "rock")
         game.winner()

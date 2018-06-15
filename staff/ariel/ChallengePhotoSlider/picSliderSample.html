@@ -1,0 +1,93 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery</title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  
+  <style>
+      #slider{
+          width: 100%;
+          height: 300px;
+          position:relative;
+          overflow: scroll;
+          white-space: nowrap;
+      }
+      .button{
+          position: fixed;
+          font-size: 36px;
+          background: lightblue;
+          padding: 20px;
+          border-radius: 100%;
+          top: 120px;
+          cursor:pointer;
+      }
+      #button-left{
+          left: 5px;
+      }
+      #button-right{
+          right: 5px;
+      }
+      .slide{
+          display:inline-block;
+          width: 33%;
+          margin-right: 3%;
+      }
+      .slide img{
+          max-width: 100%;
+      }
+      #counter{
+          font-size: 20px;
+          text-align: center;
+          margin-top: 40px;
+      }
+  </style>
+</head>
+<body>
+    <section id="slider">
+      <div id="button-left" class="button"> < </div>
+      <div id="button-right" class="button"> > </div>
+      <article class="slide">
+        <img src="http://eldia.es/imagenes/2012/08/22/1345657130515_1p.jpg" />
+      </article>
+      <article class="slide">
+        <img src="http://estaticos04.elmundo.es/especiales/2012/cultura/rolling-stones/img/negocio1.jpg" />
+      </article>
+      <article class="slide">
+        <img src="http://bucket.rollingstone.com.ar/anexos/fotos/36/criticas-2345736w300.jpg" />
+      </article>
+      <article class="slide">
+        <img src="https://contentpl-a.akamaihd.net/images/playlists/image/medium/3bcd820dff017427366791ec7cd662f2.jpg" />
+      </article>
+      <article class="slide">
+        <img src="https://img.discogs.com/l9mL4JdkRlnjsb_rVZ8J_icJzGc=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1104863-1442909680-2676.jpeg.jpg" />
+      </article>
+    </section>
+    <div id="counter">Current slide: <span id="current-slide"></span></div>
+  <script>
+    var slide = 1;
+    var slideStep = $('#slider').width()*0.36;
+    function setCurrentSlider(current){
+        $('#current-slide').html(current);
+    }
+    setCurrentSlider(slide);
+    $('#button-left').click(function(){
+        if(slide > 1){
+            slide--
+            setCurrentSlider(slide);
+            $('#slider').scrollLeft((slide - 1) * slideStep);
+        }
+    })
+    $('#button-right').click(function(){
+        if(slide < 3){
+            slide++;
+            setCurrentSlider(slide);
+            $('#slider').scrollLeft((slide - 1) * slideStep);
+        }
+    })
+    
+  </script>
+</body>
+</html>
