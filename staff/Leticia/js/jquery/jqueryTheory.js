@@ -189,3 +189,13 @@ $(window).scroll(function(){
         $('#mydivId .estado').css("color",'black');
     }   
 })
+
+
+// unbind()
+// Remove a previously-attached event handler from the elements.
+$( "#foo").unbind( "click" );
+
+guess = $('input').val();
+$('input').val('').focus();
+// .focus() vuelve a poner el cursor en el input
+// .val('') vacía el input
