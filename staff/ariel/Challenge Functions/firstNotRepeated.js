@@ -65,3 +65,35 @@ function firstNotRepeated(){
 }
 
 firstNotRepeated();
+
+
+
+// ============================= Solución Citlas
+
+
+function firstNotRep(str){
+    str = str.split('')
+    var arr = []
+    var counter = {}
+    str.forEach(function(el, i, elArr){//el primer elemento siempre es el elmento, el segundo el index y el tercero el array
+      if(counter[el]){
+        counter[el]++
+      } else {
+        counter[el]=1
+      }
+      
+     
+    })
+  console.log(counter);
+    for (var key in counter) {
+      console.log(key)
+      console.log(counter[key])
+      if(counter[key]>1){
+      delete counter[key]
+    }
+    }
+   
+    console.log(counter)
+    return Object.keys(counter)[0];
+  }
+  console.log(firstNotRep('aabbccd'));

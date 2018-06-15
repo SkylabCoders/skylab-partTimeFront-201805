@@ -19,22 +19,48 @@ function bubbleSort(x){
 
         changes = 0;
 
-        for (var i=0; i<x.length; i++){
+        for (var i=0; i<x.length-1; i++){
 
-            if(x[i]<x[(i+1)]){
+            if(x[i]<x[i+1]){
                 temp = x[i];
-                x[i] = x[(i+1)];
-                x[(i+1)] = temp;
+                x[i] = x[i+1];
+                x[i+1] = temp;
                 changes = changes + 1;
             };
-
         };
-
-
-        
     };
 
     return x
 };
 
 bubbleSort([12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213])
+
+
+// ================================ Solución Cristiam
+
+var arr = [10,5,8,3,12,65,34,7,33];
+
+function bubbleSort(arr){
+  var hayCambio = true;
+  
+  while(hayCambio){
+    hayCambio = false;
+    
+    for(var i=0 ; i<arr.length-1 ; i++){
+      if(arr[i] < arr[i+1]){
+        var temp = arr[i];
+
+        arr[i] = arr[i+1];
+        arr[i+1] = temp;
+        hayCambio = true;
+      }
+    }
+  }
+  
+  
+  return arr;
+  
+}
+//[ 3, 5, 7, 8, 10, 12, 33, 34, 65 ]
+
+console.log(bubbleSort(arr));

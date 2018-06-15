@@ -1,0 +1,171 @@
+.homePage nav ul, .aboutPage nav ul {
+  list-style-type: none; }
+  .homePage nav ul li, .aboutPage nav ul li {
+    display: inline-block;
+    padding: 1%;
+    vertical-align: middle; }
+  .homePage nav ul #gamma, .aboutPage nav ul #gamma {
+    color: #00b09c;
+    font-size: 1em; }
+  .homePage nav ul li:hover, .aboutPage nav ul li:hover {
+    background-color: lightgray; }
+
+.homePage .product, .aboutPage #medioAbout .product {
+  width: 300px;
+  border-style: solid;
+  border-color: lightgray;
+  padding: 10px;
+  margin: 5px;
+  display: inline-block; }
+  .homePage .product *, .aboutPage #medioAbout .product * {
+    padding: 5px; }
+  .homePage .product img, .aboutPage #medioAbout .product img {
+    width: inherit; }
+
+.homePage #bajo, .aboutPage #bajo {
+  background-color: #00b09c;
+  width: 100%;
+  color: white; }
+  .homePage #bajo #izquierda, .aboutPage #bajo #izquierda {
+    padding: 40px;
+    display: inline-block; }
+    .homePage #bajo #izquierda ul li, .aboutPage #bajo #izquierda ul li {
+      display: block;
+      line-height: 200%; }
+  .homePage #bajo #derecha, .aboutPage #bajo #derecha {
+    display: inline-block;
+    float: right; }
+  .homePage #bajo i, .aboutPage #bajo i {
+    display: inline-block;
+    font-size: 150px;
+    float: right;
+    color: #333333;
+    padding: 40px; }
+
+.homePage footer, .aboutPage footer {
+  background-color: #333333;
+  color: white; }
+  .homePage footer ul, .aboutPage footer ul {
+    list-style-type: none; }
+    .homePage footer ul li, .aboutPage footer ul li {
+      display: inline-block;
+      padding: 20px; }
+  .homePage footer #copy, .aboutPage footer #copy {
+    float: right; }
+
+* {
+  margin: 0;
+  font-family: 'Tajawal', sans-serif; }
+
+.homePage article {
+  display: inline-block; }
+@media (max-width: 768px) {
+  .homePage .product {
+    width: 40%; }
+    .homePage .product img {
+      width: 100%; }
+  .homePage #bajo {
+    overflow: auto; }
+    .homePage #bajo #izquierda {
+      display: block; }
+    .homePage #bajo #derecha {
+      float: none; }
+  .homePage footer ul {
+    padding: 2%;
+    text-align: center; }
+  .homePage footer #copy {
+    float: none;
+    text-align: center;
+    width: 100%;
+    padding: 2%; } }
+
+.aboutPage #topNameAbout {
+  background-color: #00b09c;
+  padding: 2%;
+  color: white;
+  font-size: 3vw;
+  padding-left: 5%; }
+.aboutPage #medioAbout {
+  width: 90%;
+  display: block;
+  margin: auto;
+  overflow: auto; }
+  .aboutPage #medioAbout #medioAboutLeft {
+    float: left;
+    display: inline-block;
+    width: 40%;
+    padding: 2%; }
+    .aboutPage #medioAbout #medioAboutLeft h2 {
+      padding: 3% 0%; }
+  .aboutPage #medioAbout .product {
+    float: right;
+    display: inline-block;
+    width: 40%; }
+    .aboutPage #medioAbout .product img {
+      width: 100%; }
+.aboutPage #bajo {
+  display: inline-block; }
+@media (max-width: 768px) {
+  .aboutPage #medioAbout {
+    width: 90%;
+    display: block;
+    margin: auto;
+    overflow: auto; }
+    .aboutPage #medioAbout #medioAboutLeft {
+      float: left;
+      display: inline-block;
+      width: 100%;
+      padding: 2%; }
+      .aboutPage #medioAbout #medioAboutLeft h2 {
+        padding: 3% 0%; }
+    .aboutPage #medioAbout .product {
+      border-style: solid;
+      border-color: lightgray;
+      padding: 10px;
+      margin: 5px;
+      float: left;
+      display: inline-block;
+      width: 90%; }
+      .aboutPage #medioAbout .product * {
+        padding: 5px; }
+      .aboutPage #medioAbout .product img {
+        width: 100%; }
+  .aboutPage #bajo #izquierda {
+    display: block; }
+  .aboutPage #bajo #derecha {
+    float: none; }
+  .aboutPage footer ul {
+    padding: 2%;
+    text-align: center; }
+  .aboutPage footer #copy {
+    float: none;
+    text-align: center;
+    width: 90%;
+    padding: 2%; } }
+@media (max-width: 425px) {
+  .aboutPage nav .noShow {
+    display: none; }
+  .aboutPage #capture #imgCapture img {
+    width: 100%;
+    padding: 1%; }
+  .aboutPage #medio {
+    padding: 0;
+    margin: 0; }
+    .aboutPage #medio .product {
+      width: 90%; }
+  .aboutPage #bajo {
+    width: 100%;
+    text-align: center; }
+    .aboutPage #bajo ul {
+      padding: 0; }
+    .aboutPage #bajo li {
+      float: none;
+      text-align: left; }
+    .aboutPage #bajo i {
+      width: 100%;
+      font-size: 70vw;
+      padding: 0; } }
+.aboutPage footer ul li {
+  padding: 10px; }
+
+/*# sourceMappingURL=stylesAbout.css.map */
