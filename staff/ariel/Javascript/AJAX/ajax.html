@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+    .container {
+      border:1px solid #aaa;
+      width: 75%;
+      margin-top:30px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+    }
+    .beer {
+      display: flex;
+      padding: 30px 20px;
+      justify-content: flex-start;
+      align-items: stretch;
+      border-bottom: 1px solid black;
+    }
+    .beer:last-child{
+      border:none;
+    }
+    .beer .beer-image{
+      min-width: 10%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .beer .beer-info{
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  
+</div>
+<script >
+  console.log("INI");
+  $(document).ready(function(){
+    console.log("DOCUMENT READY INI");
+    $.ajax({
+      url: "https://api.punkapi.com/v2/beers",
+      data:{
+        page: 1,
+        per_page: 2
+      },
+      success: function(data){
+        data.forEach(function(beer){
+          $('.container').append(
+            '<div class="beer">'+
+              '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+              '<div class="beer-info">'+
+                '<h1>'+beer.name+'</h1>'+
+                '<h2>'+beer.tagline+'</h2>'+
+                '<div>First brewed: '+beer.first_brewed+'</div>'+
+              '</div>'+
+            '</div>');
+        });
+      },
+      error: function(request, status, message){
+        console.log("ERROR");
+        console.log('message: ', message);
+        console.log('status: ', status);
+        console.log('request: ', request);
+        
+      }
+    })
+    console.log("DOCUMENT READY END");
+  });
+  console.log("END");
+</script>
+</body>
+</html>
