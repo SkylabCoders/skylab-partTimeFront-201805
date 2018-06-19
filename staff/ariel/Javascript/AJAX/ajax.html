@@ -48,7 +48,7 @@
   console.log("INI");
   $(document).ready(function(){
     console.log("DOCUMENT READY INI");
-    $.ajax({
+    $.ajax({          // ========================== BLOQUE AJAX =====================
       url: "https://api.punkapi.com/v2/beers",
       data:{
         page: 1,
@@ -74,7 +74,7 @@
         console.log('request: ', request);
         
       }
-    })
+    })   // ====================================== BLOQUE AJAX =======================================
     console.log("DOCUMENT READY END");
   });
   console.log("END");
