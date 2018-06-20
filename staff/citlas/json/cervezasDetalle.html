@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+    .container {
+      border:1px solid #aaa;
+      width: 75%;
+      margin-top:30px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+    }
+    .beer {
+      display: flex;
+      padding: 30px 20px;
+      justify-content: flex-start;
+      align-items: stretch;
+      border-bottom: 1px solid black;
+    }
+    .beer:last-child{
+      border:none;
+    }
+    .beer .beer-image{
+      min-width: 10%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .beer .beer-info{
+      margin-left: 20px;
+    }
+    .pages, .selecting, .toSelect, .buscarContainer {
+        width: 40%;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .searchForm{
+      display: inline-block;
+    }
+    .selecting {
+        width: 10%;
+        text-align-last:center;
+    }
+    
+
+    button {
+        margin: auto;
+        background-color: lightseagreen;
+        color: white;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 30%;
+        outline: none;
+    }
+  </style>
+</head>
+<body>
+ 
+<p>CERVEZAS DETALLE</p>
+<div class="containerDetail">
+  
+  
+</div>
+
+
+
+<script >
+  
+  /*Implementar búsqueda por nombre: 
+  -añadir input y botón tal que cuando haga click en el botón, 
+  -se busque en la API los resultados 
+  -y se remplacen por los actuales.
+  //Implementar página detalle de beer: en cada resultado, 
+  -hacer que el nombre y la imagen sea un link a 
+  -una página nueva que muestre el 
+  -detalle completo de esa cerveza. 
+  */
+  
+  
+
+/*
+  $.ajax({
+       url: "https://api.punkapi.com/v2/beers?beer_name="+$(this).attr("data-name"),
+       success: function(beer){
+           $('.containerDetail').append(
+             '<div class="beer">'+
+               '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+               '<div class="beer-info">'+
+                 '<h1>'+beer.name+'</h1>'+
+                 '<h2>'+beer.tagline+'</h2>'+
+                 '<h2> First Brewed: '+beer.first_brewed+'</h2>'+
+                 '<h2>'+beer.description+'</h2>'+
+                 '<h2> ABV:'+beer.abv+'</h2>'+
+                 '<h2> IBU: '+beer.ibu+'</h2>'+
+                 '<h2> Volume: '+beer.volume+'</h2>'+
+                 '<h2> Ingredients: '+beer.ingredients+'</h2>'+
+                 '<h2> Food pairing: '+beer.food_pairing+'</h2>'+
+                 '<h2> Brewers tips: '+beer.brewers_tips+'</h2>'+
+                 '<h2>'+beer.tagline+'</h2>'+
+               '</div>'+
+             '</div>');
+        
+       },//termina success
+       error: function(request, status, message){
+         console.log("ERROR");
+         console.log('message: ', message);
+         console.log('status: ', status);
+         console.log('request: ', request);
+       }//termina error
+       
+     });//Termina ajax*/
+  
+</script>
+</body>
+</html>

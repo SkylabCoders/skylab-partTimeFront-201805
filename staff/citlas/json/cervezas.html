@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+    .container {
+      border:1px solid #aaa;
+      width: 75%;
+      margin-top:30px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+    }
+    .beer {
+      display: flex;
+      padding: 30px 20px;
+      justify-content: flex-start;
+      align-items: stretch;
+      border-bottom: 1px solid black;
+    }
+    .beer:last-child{
+      border:none;
+    }
+    .beer .beer-image{
+      min-width: 10%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .beer .beer-info{
+      margin-left: 20px;
+    }
+    .pages, .selecting, .toSelect, .buscarContainer {
+        width: 40%;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .searchForm{
+      display: inline-block;
+    }
+    .selecting {
+        width: 10%;
+        text-align-last:center;
+    }
+    
+
+    button {
+        margin: auto;
+        background-color: lightseagreen;
+        color: white;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 30%;
+        outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="buscarContainer" id="aqui">
+     
+        <p>Busca una cerveza:</p>
+        <input type="text" class="cervezaABuscar"name="cervezaBuscada">
+        <button type="button" class="searchBeer">Busca!</button>
+     
+  </div>
+
+<div class="container">
+  
+  
+</div>
+<div >
+        <p class="toSelect">Cuantas cervezas quieres mostrar por página</p>
+        <select class="selecting">
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+    </div>
+    <div class="pages">
+        <button type="button" data-page-num="1" class="page">Page 1!</button>
+        <button type="button" data-page-num="2" class="page">Page 2!</button>
+        <button type="button" data-page-num="3" class="page">Page 3!</button>
+    </div>
+
+
+    <!-- 
+      <script type="text/javascript" src="cerveza.js"></script>
+    -->
+
+    <script>
+    
+ console.log("INI");
+ $(document).ready(function(){
+   console.log("DOCUMENT READY INI");
+   function getBeers(page, perPage){
+     $.ajax({
+       url: "https://api.punkapi.com/v2/beers",
+       data:{
+         page: page,
+         per_page: perPage
+       },
+       success: function(data){
+         data.forEach(function(beer){
+           $('.container').append(
+             '<div class="beer">'+
+               '<div class="beer-image" data-name='+beer.name+' style="background-image: url('+beer.image_url+')"></div>'+
+               '<div class="beer-info">'+
+                 '<h1>'+beer.name+'</h1>'+
+                 '<h2>'+beer.tagline+'</h2>'+
+                 '<div>First brewed: '+beer.first_brewed+'</div>'+
+               '</div>'+
+             '</div>');
+         });
+       },
+       error: function(request, status, message){
+         console.log("ERROR");
+         console.log('message: ', message);
+         console.log('status: ', status);
+         console.log('request: ', request);
+
+       }
+     });
+   }
+
+//poner la pagina en n data
+var pageNumber;
+
+
+    $('.page').click(function(){
+       pageNumber = $(this).attr('data-page-num');
+       $('.container').empty();
+       getBeers(pageNumber,$('.selecting').val());
+    });
+  /* $('.page2').click(function(){
+       $('.container').empty();
+       getBeers(2,$('.selecting').val());
+   });
+   $('.page3').click(function(){
+       $('.container').empty();
+       getBeers(3,$('.selecting').val());
+   });*/
+
+
+
+   $( ".selecting" ).change(function() {
+       $('.container').empty();
+       getBeers(pageNumber,$('.selecting').val());
+   });
+  
+   /*Implementar búsqueda por nombre: 
+  -añadir input y botón tal que cuando haga click en el botón, 
+  -se busque en la API los resultados 
+  -y se remplacen por los actuales.
+
+  */
+   //https://api.punkapi.com/v2/beers?beer_name=electric
+function searchBeer(searchThis){
+     $.ajax({
+       url: "https://api.punkapi.com/v2/beers?beer_name="+searchThis,
+       success: function(data){
+         data.forEach(function(beer){
+           $('.container').append(
+             '<div class="beer">'+
+               '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+               '<div class="beer-info">'+
+                 '<h1>'+beer.name+'</h1>'+
+                 '<h2>'+beer.tagline+'</h2>'+
+               '</div>'+
+             '</div>');
+         });
+       },
+       error: function(request, status, message){
+         console.log("ERROR");
+         console.log('message: ', message);
+         console.log('status: ', status);
+         console.log('request: ', request);
+
+       }
+       
+     });
+   }
+   
+   $('.searchBeer').click(function(){
+     $('.container').empty();
+     var buscarEsto = $('.cervezaABuscar').val();
+     searchBeer(buscarEsto)
+       console.log("busca");
+    });
+
+    //search ok!! falta el detalle
+
+   
+
+$(document).on('click', '.beer', function(){//https://stackoverflow.com/questions/9484295/jquery-click-not-working-for-dynamically-created-items
+ console.log("The beer was clicked.");
+ //var myWindow = window.open("cervezasDetalle.html", "MsgWindow","");
+ //myWindow.document.write("<h2>Hello World!</h2>")
+ 
+
+
+ $.ajax({
+       url: "https://api.punkapi.com/v2/beers?beer_name="+$(this).attr("data-name"),
+       success: function(data){
+         data.forEach(function(beer){
+           $('.containerDetail').append(
+             '<div class="beer">'+
+               '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+               '<div class="beer-info">'+
+                 '<h1>'+beer.name+'</h1>'+
+                 '<h2>'+beer.tagline+'</h2>'+
+                 '<h2> First Brewed: '+beer.first_brewed+'</h2>'+
+                 '<h2>'+beer.description+'</h2>'+
+                 '<h2> ABV:'+beer.abv+'</h2>'+
+                 '<h2> IBU: '+beer.ibu+'</h2>'+
+                 '<h2> Volume: '+beer.volume+'</h2>'+
+                 '<h2> Ingredients: '+beer.ingredients+'</h2>'+
+                 '<h2> Food pairing: '+beer.food_pairing+'</h2>'+
+                 '<h2> Brewers tips: '+beer.brewers_tips+'</h2>'+
+                 '<h2>'+beer.tagline+'</h2>'+
+               '</div>'+
+             '</div>');
+        });
+       },//termina success
+       error: function(request, status, message){
+         console.log("ERROR");
+         console.log('message: ', message);
+         console.log('status: ', status);
+         console.log('request: ', request);
+       }//termina error
+       
+     });//Termina ajax
+
+});//termina document on click
+
+
+/*
+$('.beer').click(function() {
+ //$('.beer').load("cervezasDetalle.html");
+ console.log('clicado beer')
+ window.open("cervezasDetalle.html");
+ });*/
+//$('.beer').load("cervezasDetalle.html");//no funciona?
+   
+   console.log("DOCUMENT READY END");
+ });
+
+ 
+ console.log("END");
+
+/*
+ //Implementar página detalle de beer: en cada resultado, 
+ -hacer que el nombre y la imagen sea un link a 
+ -una página nueva que muestre el 
+ -detalle completo de esa cerveza. 
+*/
+    </script>
+</body>
+</html>
