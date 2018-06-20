@@ -4,7 +4,7 @@
 // DOM -> document object model
 
 
-$('.myDivClass'); 
+$('.myDivClass'); // selector
 // retorna un objeto jquery, 
 // podemos usar métodos:
 // .html()
