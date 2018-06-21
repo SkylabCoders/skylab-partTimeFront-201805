@@ -217,6 +217,55 @@ const n = getMyBeer.name;
 const t = getMyBeer.tagline;
 
 
+//
+
+
+// SPREAD
+
+
+const letters = ["a","b","c"];
+
+function printElements(e1, e2, e3){
+  console.log(e1)
+  console.log(e2)
+  console.log(e3)
+}
+
+//printElements(letters[0],letters[1],letters[2])
+//printElements(...letters)
+
+// ...letters => "a","b","c"
+
+let letters2 = ["d","e",...letters, "f"];
+//let letters2 = ["d","e","a","b","c", "f"];
+
+let letters3 = [...letters];
+letters3[0] = "h"
+
+//console.log("L",letters, letters3)
+
+////////////////////////////////////////////////
+
+// SCOPE DE LAS VARIABLES DENTRO DE LOS {}
+
+let a = "a1";
+
+function myF(){
+  let a = "a2";
+  
+  if(true){
+    let a = "a3";
+    console.log(a);
+  }
+  
+  console.log(a);
+}
+
+myF();
+
+console.log(a);
+
+
   
 
 
