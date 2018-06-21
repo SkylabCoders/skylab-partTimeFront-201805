@@ -4,11 +4,60 @@
   <meta charset="utf-8">  
   <meta name="description" content="hangman">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Monoton" rel="stylesheet">
   <title>Hangman con Jquery</title>
   <script
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
+  <style>
+      body,*{
+        box-sizing: content-box;
+        margin: 20px auto;
+        width: 90%;
+        text-align: center;
+        font-family: 'Cabin Sketch', cursive;
+        font: 20px;
+      }
+      h1 {
+        font-family: 'Monoton', cursive;
+      }
+      .container {
+       
+        width: 100%;
+        margin-top:30px;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 1.5em;
+      }
+      .letter{
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+        line-height: 1.5em;
+        padding: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        background:lightgray;
+        cursor:pointer;
+        border-radius: 100%;
+      }
+      .letter[data-times-clicked="1"]{ background: green; }
+      .letter[data-times-clicked="2"]{ background: lightgreen; }
+      .letter[data-times-clicked="3"]{ background: yellowgreen; }
+      .letter[data-times-clicked="4"]{ background: yellow; }
+      .letter[data-times-clicked="5"]{ background: orange; }
+      .letter[data-times-clicked="6"]{ background: orangered; }
+      .letter[data-times-clicked="7"]{ background: red; }
+
+      .start{
+        background-color: black;
+        color: white;
+        font: 20px;
+        height: 30px;
+      }
+    </style>
 </head>
 
 <body>
@@ -19,12 +68,12 @@
         <button class="start" type="button">Para empezar has click!</button>
         <p class="showWord"></p>
     </div>
-      <form class="letra" style="display:none;">
+     <!--  <form class="letra" style="display:none;">
         Escoge una letra: <input type="text" name="letra" value=""><br>
         <p class="another"></p>
         <button class="guessing" type="button">haz click para saber si esta</button>
         
-      </form>
+      </form> -->
       <p class="foundOrNot"></p>
       <p class="status"></p>
     </div>
@@ -32,33 +81,95 @@
 
 
 
+  <div class="container">
+	
+	
+    </div>
+    
+    <script >
+      var paises = ['MEXICO','ESPAÑA','ARGENTINA','VENEZUELA','COLOMBIA', 'URUGUAY','FRANCIA','ALEMANIA','SUIZA','SUECIA', 'ITALIA','CROACIA','CANADA','CHINA','JAPON', 'PORTUGAL','BRASIL','CHILE','ANDORRA','HOLANDA'];
+      var vidas;
+      var selectedWord; 
+      var xWord;
+      var counts;
+      var letter;
+      var abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+      for(var i=0 ; i<abecedario.length ; i++){
+        var letter = abecedario[i];
+        $('.container').append('<div id="letter-'+letter+'" class="letter"><p>'+letter+'</p></div>')
+      }
+      
+      /*$('.letter').mouseenter(function(){
+        var timesClicked = $(this).attr('data-times-clicked');
+        if(typeof timesClicked === "undefined"){
+          timesClicked = 0;
+        }else{
+          timesClicked = parseInt(timesClicked);
+        }
+        if(timesClicked <= 0){
+          $(this).css("background", "lightblue");
+        }else{
+        }
+      })
 
-<script>
-  var paises = ['mexico','españa','argentina','venezuela','colombia', 'uruguay','francia','alemania','suiza','suecia', 'italia','croacia','canada','china','japon', 'portugal','brasil','chile','andorra','holanda'];
-  var vidas;
-  var selectedWord; 
-  var xWord;
-  var counts;
+      $('.letter').mouseleave(function(){
+        $(this).css("background", '');
+      })*/
+      $('.letter').click(function(){
+       /* var timesClicked = $(this).attr('data-times-clicked');
+        if(typeof timesClicked === "undefined"){
+          timesClicked = 0;
+        }else{
+          timesClicked = parseInt(timesClicked);
+        }
+        timesClicked++;
+        $(this)
+          .attr('data-times-clicked',timesClicked)
+          .css("background", '');*/
+        letter = $(this).text()
+        console.log(letter)
+        //letter=letter.toLowerCase();
+    var acertar = 0;
+    for (i=0;i<selectedWord.length;i++){
+      if(selectedWord[i]==letter){
+        xWord[i]= letter;
+        acertar++;
+      }   
+    }//termina for
+    
+    if (acertar<1) {
+        vidas--; 
+        $(this).css("background", "rgb(231, 76, 60)");
+        $('.foundOrNot').text('Una ' + letter + ', No has acertado! te quedan ' + vidas + ' vidas!');  
+      } else {
+        $('.foundOrNot').text('Una ' + letter + ', Has acertado!\n' );
+        $(this).css("background", "rgb(39, 174, 96)");
+        $('.showWord').text(xWord.join(''));
+      }
+      checkStatus();
+      });
+ 
+ 
 
 /* --- APPROACH OBJECT --- */
-  function Hangman(){
+  /*function Hangman(){
     this.vidas;
 
     this.initHangman = function(){
       this.vidas = 5;
 
-    }
+    }*/
 
-    this.checkStatus = function(){
+    /*this.checkStatus = function(){
       if(this.vidas > 0){
       }
       console.log(this.vidas);
-    }
-  }
+    }*/
+ // }
 
-  var h = new Hangman();
-  h.initHangman();
-  h.checkStatus()
+  //var h = new Hangman();
+  //h.initHangman();
+  //h.checkStatus()
 /* --- APPROACH OBJECT --- */
 
   function initHangman(){
@@ -77,60 +188,60 @@
     $('.showWord').text(xWord.join(''));
     $('.letra').css('display','block');
 
-    var h = new Hangman();
-  h.initHangman();
-  h.checkStatus()
+    //var h = new Hangman();
+  //initHangman();
+  checkStatus()
   }
 
-  $('.start').on('click',function(){
+ /* $('.start').on('click',function(){
     initHangman();
-  });
+  });*/
 
     
   
 
 
-  function askLetter(){
-    var letter = $('input').val()
+  /*function askLetter(){
+    //var letter = $('input').val()
     //console.log(letter)
-    letter=letter.toLowerCase();
-    var acertar = 0;
-    for (i=0;i<selectedWord.length;i++){
-      if(selectedWord[i]==letter){
-        xWord[i]= letter;
-        acertar++;
-      }   
-    }//termina for
-    
-    if (acertar<1) {
-        vidas--; 
-        $('.foundOrNot').text('una ' + letter + ' No has acertado! te quedan ' + vidas + ' vidas!');  
-      } else {
-        $('.foundOrNot').text('una ' + letter + ' Has acertado!\n' );
-        $('.showWord').text(xWord.join(''));
-      }
-  }
+   
+  }*/
   
   function checkStatus(){
     if (xWord.includes('*')){
           if (vidas<1){
-            $('.status').text('Game Over \n La palabra era '  + selectedWord.join(''));
+            $('.status').show();
+            $('.status').html('Game Over :( <br> La palabra era '  + selectedWord.join(''));
+            $( ".container" ).hide();
+            
             //return
           } else {
-            $('.another').text('Pon otra letra');
-            $('input').val('');
+            $( ".container" ).show();
+            $('.status').hide();
+            //$('.another').text('Pon otra letra');
+            //$('input').val('');
             
           };
     } else {
-      $('.status').text('You win');
-      $('.another').text('');
+      $('.status').show();
+      $('.status').text('You win :)');
+      $( ".container" ).hide();
+     // $('.another').text('');
           //return
     }
   };//fin de check status
 
-  $('.guessing').click(function(){
-      askLetter();
-      checkStatus();
+  $('.start').click(function(){
+    initHangman();
+  console.log('empieza')
+      $( ".container" ).show();
+      $('.status').hide();
+      $('.foundOrNot').text('');
+      $(".letter").css("background", "lightgrey");
+    
+      //askLetter();
+      
+      
   });
 </script>
 
