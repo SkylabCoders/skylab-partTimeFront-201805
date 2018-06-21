@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX EXCERCISE</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+
+    .sup-cont{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+      .container {
+        border:1px solid #aaa;
+        width: 100%;
+        margin-top:30px;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 1.5em;
+      }
+      .beer {
+        display: flex;
+        padding: 30px 20px;
+        justify-content: flex-start;
+        align-items: stretch;
+        border-bottom: 1px solid black;
+      }
+      .beer:last-child{
+        border:none;
+      }
+      .beer .beer-image{
+        min-width: 10%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .beer .beer-info{
+        margin-left: 20px;
+      }
+
+
+      .nr-selector{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 400px;
+        height: 70px;
+      }
+
+      .nr-per-pages{
+        width: 50%;
+      }
+
+      .nr-per-pages selector{
+        width: 100%;
+      }
+
+      .nr-selector .nr-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        border: 1px solid grey;
+        width: 40px;
+        height: 40%;
+      }
+
+      .nr-selector .nr-box p{
+        font-size: 10px;
+      }
+    
+
+
+  </style>
+</head>
+<body>
+
+<div class="sup-cont">
+  <div class="container">
+    
+    
+  </div>
+
+  <div class="nr-selector">
+
+      <div class="nr-per-pages">
+        <select>
+          <option value="2" >2</option>
+          <option value="5" >5</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <div class="nr-box">
+        <p data-number="1" >1</p>
+      </div>
+
+      <div class="nr-box">
+        <p data-number="2">2</p>
+      </div>
+
+      <div class="nr-box">
+        <p data-number="3">3</p>
+      </div>
+
+      <div class="beer-name">
+        <input class="name-search" type="text" name="beername"><br>
+        <button class="get-your-beer" type="button">Get your beer</button>
+      </div>
+
+
+  </div>
+</div>
+
+<script >
+  console.log("INI");
+
+  $(document).ready(function(){
+    console.log("DOCUMENT READY INI");
+  
+
+    function getBeers(page, perPage, name){     // ----> defino la función de Ajax
+      $('.beer').remove()
+      $.ajax({
+        url: "https://api.punkapi.com/v2/beers",
+        data:{
+          page: page,
+          per_page: perPage,
+          beer_name: name,
+        },
+        success: function(data){
+          data.forEach(function(beer){
+            $('.container').append(
+              '<div class="beer">'+
+                '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+                '<div class="beer-info">'+
+                  '<a class="click-name" href="beerSheet.html" target="_blank"> <h1>'+beer.name+'</h1> </a>'+
+                  '<h2>'+beer.tagline+'</h2>'+
+                  '<div>First brewed: '+beer.first_brewed+'</div>'+
+                '</div>'+
+              '</div>');
+          });
+        },
+        error: function(request, status, message){
+          console.log("ERROR");
+          console.log('message: ', message);
+          console.log('status: ', status);
+          console.log('request: ', request);
+
+        }
+      });
+    }
+
+
+    var nrPerPage = 2;
+    var page = 1;
+    var name = null;
+
+    $('.nr-per-pages select').change(function(){    // ---> ATENCION el cambio "cahnge" se da en el <select> NO en el <option>
+     nrPerPage = $(this).val();      
+     getBeers(page,nrPerPage);  
+    });
+
+    $('.nr-box p').click(function(){
+      $('.beer').remove()
+      page = $(this).attr('data-number');
+      getBeers(page,nrPerPage);      // -----> llamo a la fución de Ajax y le digo cuántas cervezas quiero ver.
+    });
+
+    getBeers(page,nrPerPage);
+
+    $('.get-your-beer').click(function(){
+      name = $('.name-search').val();
+      getBeers(page,nrPerPage,name);  
+          // -----> llamo a la fución de Ajax y le digo el nombre de la cerveza que busco
+    });
+
+    let clickedName = ' ';
+
+    $('.click-name').click(function(){
+      clickedName = $('clicked-name h1').html()
+    })
+
+    // const {name, tagline, abv, ibu, target_fg, target_og, ebc, srm, ph, attenuation_level,volume,boil_volume,method,ingredients,food_pairing,brewers_tips,contributed_by} = newWindow(name);
+
+    // const {name} = newWindow(name);
+
+    console.log("DOCUMENT READY END");
+
+  
+
+
+
+});
+
+</script>
+</body>
+</html>
+

@@ -1,74 +1,89 @@
-function RockPaperScissors(player1, player2, result, handwinner) {
+function RockPaperScissors(player1, player2) {
   this.player1 = player1;
   this.player2 = player2;
-  this.handwinner = ''
-  this.result = result;
-  this.score1 = 0;
-  this.score2 = 0;
+  var alternatives = ['paper', 'rock', 'scissors'];
+
   
-  play(hand1, hand2);
+  if( typeof this.player1 == 'undefined'){
+      return 'Player 1 must be defined'
+  };
 
- //SCORES   ----> cómo pasar el return de play() como input de RockPaperScissor???????????????? 
-    if(handwinner == hand1){
-        this.score1 +=1 ;
+  
+  hand1 = prompt(this.player1 + ' input your hand');
 
-    } else if (handwinner == this.hand2){
-        score2 += 1;
+  
+
+    if(typeof player2 == 'undefined'){
+        this.player2 == 'Computer';
+    } //else {
+        //hand2 = prompt(this.player2 + ' input your hand');
+
+        //if(alternatives.indexOf(hand2.toLowerCase()) <0 ){
+          //  hand2 = prompt(hand2 + ' you must choose between "Paper", "Rock", "Scissors"');
+        //};
+
+    
+
+   
+   
+    this.play = function (hand1, hand2) {
+        this.hand1 = hand1;
+        this.hand2 = hand2;
+        this.handwinner
+    
+       // if(alternatives.indexOf(hand1.toLowerCase()) < 0 ){
+       // hand1 = prompt(hand1 + ' you must choose between "Paper", "Rock", "Scissors"');   // --> evaluate spell h1
+       // };
+
+       // if(typeof hand2 == 'undefined'){
+         //   hand2 = getHand2(alternatives);
+       // } else {
+            //hand2 = prompt(this.player2 + ' input your hand');
+    
+            // if(alternatives.indexOf(hand2.toLowerCase()) <0 ){
+               // hand2 = prompt(hand2 + ' you must choose between "Paper", "Rock", "Scissors"');
+            // };
+       // };
+
+
+        if(this.hand2 == 'rock' && this.hand1 == 'scissors' ||            // A: Situaciones en que ganaría h2
+        this.hand2 == 'scissors' && this.hand1 == 'paper' || 
+        this.hand2 == 'paper' && this.hand1 == 'rock'){
+    
+        handwinner = this.hand2;
+        result = this.hand1 + ' vs ' + this.hand2 + ' => '+ handwinner + ' wins!';
+    
+    
+        return result
+    
+        } else if (this.hand2 == this.hand1){                         // B: Situación de empate
+    
+            handwinner = "It\'s a tie!";
+            result = this.hand1 + ' vs ' + this.hand2 +' => '+ handwinner ;
+            
+            return result
+    
+        } else {                                            // si no A y no B => gana h1 
+    
+            handwinner = this.hand1;
+            result = this.hand1 + ' vs ' + this.hand2+ ' => '+ handwinner + ' wins!';
+        }
+        
+        return result
+
+
     };
 
-    win(score1, score2)
+  
+  // return 'Player 1 is: ' + this.player1 +', and player2 is ' + this.player2 + '.'
  
 };
 
+game = new RockPaperScissors('John', 'Marie');
 
 
-function play (hand1, hand2) {
 
-    var alternatives = ['paper', 'rock', 'scissors', 'end', 'winner'];
-
-    if(typeof hand2 == 'undefined'){
-        hand2 = getHand2(alternatives);
-    };
-
-    if(hand2 == 'rock' && hand1 == 'scissors' || 
-    hand2 == 'scissors' && hand1 == 'paper' || 
-    hand2 == 'paper' && hand1 == 'rock'){
-
-    result = hand1 + ' vs ' +hand2+ ' => '+ hand2 + ' wins!';
-    handwinner = hand2;
-
-    return result, handwinner
-
-    } else if (hand2 == hand1){
-        result = hand1+' vs '+hand2+' => tie!';
-        handwinner = ''
-        return result,  handwinner
-
-    } else {
-        result = hand1 + ' vs ' +hand2+ ' => '+ hand1 + ' wins!';
-        handwinner = hand1;
-        return result, handwinner
-    }
+function getHand2(x){
+    y = x[Math.floor(Math.random()*3)];
+    return y
 };
-
-
-
-
-function getHand2(){
-    x = alternatives[Math.floor(Math.random()*3)];
-    return x
-};
-
-
-
-
-function win (score1, score2){
-    if(score1 > score2){
-        return 'The winner is ' + player1
-    } else if (score1< score2){
-        return 'The winner is ' + player2
-    } else {
-        return 'its a tie !'
-    }
-            
-}

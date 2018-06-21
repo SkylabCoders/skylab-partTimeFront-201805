@@ -1,0 +1,18 @@
+body{
+    background-color:yellow;
+}
+
+ 
+.container{
+    width: 90%;
+
+    margin-left: 5%;
+}
+
+
+.pics{
+    width: 400px;
+    max-height: auto;
+}
+
+

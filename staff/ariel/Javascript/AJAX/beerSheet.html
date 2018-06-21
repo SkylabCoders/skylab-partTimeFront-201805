@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BEER SHEET</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+
+    .sup-cont{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+      .container {
+        border:1px solid #aaa;
+        width: 100%;
+        margin-top:30px;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 1.5em;
+      }
+      .beer {
+        display: flex;
+        padding: 30px 20px;
+        justify-content: flex-start;
+        align-items: stretch;
+        border-bottom: 1px solid black;
+      }
+      .beer:last-child{
+        border:none;
+      }
+      .beer .beer-image{
+        min-width: 10%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .beer .beer-info{
+        margin-left: 20px;
+      }
+
+
+      .nr-selector{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 400px;
+        height: 70px;
+      }
+
+      .nr-per-pages{
+        width: 50%;
+      }
+
+      .nr-per-pages selector{
+        width: 100%;
+      }
+
+      .nr-selector .nr-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        border: 1px solid grey;
+        width: 40px;
+        height: 40%;
+      }
+
+      .nr-selector .nr-box p{
+        font-size: 10px;
+      }
+    
+
+
+  </style>
+</head>
+<body>
+
+<div class="sup-cont">
+
+  <div class="beerdetails">
+    
+    
+  </div>
+
+</div>
+
+
+<script >
+    
+
+    console.log("INI");
+  
+    $(document).ready(function(){
+      console.log("DOCUMENT READY INI");
+
+      import {clickedName} from 'ajaxExcercise.html'
+  
+      function showBeer(name){     // ----> defino la función de Ajax
+            $.ajax({
+                url: "https://api.punkapi.com/v2/beers",
+                data:{ 
+                    beer_name: name,
+                }, 
+                success: function(data){
+                    $('.beerdetails').append(
+                        '<div class="beer">'+
+                        '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+                        '<div class="beer-info">'+
+                            '<h1>'+beer.name+'</h1> '+
+                            '<h2>'+beer.tagline+'</h2>'+
+                            '<div>abv: '+beer.abv+'</div>'+
+                            '<div>ibu: '+beer.ibu+'</div>'+
+                            '<div>target_fg: '+beer.target_fg+'</div>'+
+                            '<div>target_og: '+beer.target_og+'</div>'+
+                            '<div>ebc: '+beer.ebc+'</div>'+
+                            '<div>srm: '+beer.srm+'</div>'+
+                            '<div>ph: '+beer.ph+'</div>'+
+                            '<div>attenuation_level: '+attenuation_level+'</div>'+
+                            '<div>volume: '+beer.volume+'</div>'+
+                            '<div>boil_volume: '+beer.boil_volume+'</div>'+
+                            '<div>method: '+beer.method+'</div>'+
+                            '<div>ingredients: '+beer.ingredients+'</div>'+
+                            '<div>food_pairing: '+beer.food_pairing+'</div>'+
+                            '<div>brewers_tips: '+beer.brewers_tips+'</div>'+
+                            '<div>contributed_by: '+beer.contributed_by+'</div>'+
+                        '</div>'+
+                        '</div>'
+                    );
+                }, 
+                error: function(request, status, message){
+                    console.log("ERROR");
+                    console.log('message: ', message);
+                    console.log('status: ', status);
+                    console.log('request: ', request);
+                }
+            });
+        }
+
+      console.log("DOCUMENT READY END");
+  
+      showBeer(clickedName);
+
+    });
+
+    
+      
+  </script>
+
+</body>
+</html>

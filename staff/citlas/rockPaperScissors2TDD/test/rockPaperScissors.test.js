@@ -21,6 +21,7 @@ describe('player 1 vs player 2', function(){
     beforeEach(function(){
         game = new RockPaperScissors('John', 'Peter');
     })
+    
     it('player 1 wins', function(){
             //rockPaperScissors.prototype.play = function(hand1, hand2) 
             //game.play("paper","scissors")
