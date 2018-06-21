@@ -164,20 +164,25 @@
 
     $('.nr-per-pages select').change(function(){    // ---> ATENCION el cambio "cahnge" se da en el <select> NO en el <option>
      nrPerPage = $(this).val();      
-     getBeers(page,nrPerPage);  
+     getBeers(page,nrPerPage,name);  
     });
 
     $('.nr-box p').click(function(){
       $('.beer').remove()
       page = $(this).attr('data-number');
-      getBeers(page,nrPerPage);      // -----> llamo a la fución de Ajax y le digo cuántas cervezas quiero ver.
+      getBeers(page,nrPerPage,name);      // -----> llamo a la fución de Ajax y le digo cuántas cervezas quiero ver.
     });
 
     getBeers(page,nrPerPage);
 
     $('.get-your-beer').click(function(){
       name = $('.name-search').val();
-      getBeers(page,nrPerPage,name);  
+
+      if(!name){
+        getBeers(1,nrPerPage)
+      }else{
+        getBeers(page,nrPerPage,name);  
+      }
           // -----> llamo a la fución de Ajax y le digo el nombre de la cerveza que busco
     });
 

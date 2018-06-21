@@ -1,0 +1,98 @@
+// objeto js vs json
+
+// Json no acepta funciones
+// todas las claves y valores han de ir dentro de dobles comillas
+
+{
+    "key1": "a",
+    "key2": "b",
+    "key3": "c"
+}
+
+
+// OBJETO JS PARA MANDAR COMO STRING Y USAR COMO JSON
+
+//JSON.stringify(obj){"key1": "a","key2": "b","key3": "c"}
+
+var person = {"name": "pepe","age": "b","key3": "c"}
+var data = JSON.stringify(person)
+
+var response = {"status"}
+// RECIBIMOS RESPUESTA
+JSON.parse(response)
+
+
+
+var obj = {key1: "a", key2: "b", key3: ["a","b"]}
+
+{key1: "a", key2: "b", key3: Array(2)}
+var obj = {key1: "a", key2: "b", key3: ["a","b"], key4: {key11: "aa", key22:"bb"}}
+
+var data = JSON.stringify({"key1": "a", "key2": "b", "key3": ["a","b"], "key4": {"key11": "aa", "key22":"bb"}})
+
+//Parse -> Pasa el string a object
+var objectAgain = JSON.parse(data)
+
+//ObjectAgain
+{key1: "a", key2: "b", key3: Array(2), key4: {…}}key1: "a"key2: "b"key3: (2) ["a", "b"]key4: {key11: "aa", key22: "bb"}
+
+var person = {name: "Cris", lastname:"DS", age:"31"}
+var data = JSON.stringify(person)
+
+//"{"name":"Cris","lastname":"DS","age":"31"}"
+
+
+var response = "{\"status\":\"OK\", \"message\":\"Persona guardada correctamente\"}"
+JSON.parse(response)
+//{status: "OK", message: "Persona guardada correctamente"}message: "Persona guardada correctamente"status: "OK"__proto__: Object
+
+typeof JSON.parse(response)
+//"object"
+
+var dataResponse = JSON.parse(response)
+
+//dataResponse
+{status: "OK", message: "Persona guardada correctamente"}
+
+
+// use JSON.parse() to create an object 'objectMary':
+var Mary = '{ "height":1.9, "age":36, "eyeColor":"brown"}';
+
+var objectMary = JSON.parse(Mary);
+
+console.log(objectMary.age);
+
+// You can create a JSON-encoded string of an object using the JSON.stringify() method.
+var Mary = new Object();
+Mary.height = 1.9;
+Mary.age = 36;
+Mary.eyecolor = "brown";
+
+// serialize the object using JSON.stringfy():
+console.log(JSON.stringify(Mary));
+
+//output: {"height":1.9,"age":36,"eyecolor":"brown"}
+
+//Creating an object with JSON
+var user = {
+	"username" : "laura123",
+	"city" : "New York",
+	"system" : "linux",
+	"job": "programmer"
+};
+
+console.log("User " + user.username + " is located in " + user.city + " and uses " + user.system + " as a " + user.job);
+
+// output: User laura123 is located in New York and uses linux as a programmer
+
+
+//AJAX
+// Asynchronous JavaScript And XML
+// No recarga la página
+
+// el request lo transforma en XML
+
+// Endpoint puntos disponibles de la api para ser llamados
+
+// Example of api
+// https://punkapi.com/documentation/v2

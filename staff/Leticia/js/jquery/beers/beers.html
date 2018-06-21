@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <form class="search" action="#" method="">
+        <div class="input-group">
+            <input class="input--search form-control" id="system-search" placeholder="Search for" required>
+            <span class="input-group-btn">
+                <button type="submit" class="btn--search btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+        </div>
+    </form>
+</div>
+
+<div class="container"></div>
+
+<!-- PAGINACIÓN: 3 páginas: click en cada número >> llama a getBeers con esa página -->
+<div class="wrapper">
+    <form class="view-results" action="#">
+        <select class="results-per-page form-control">
+            <option disabled selected>Show per page</option>
+            <option value="2">2</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+        </select>
+    </form>
+
+    <ul class="pagination">
+        <li><a class="goToPage" data-page-number="1" href="">1</a></li>
+        <li><a class="goToPage" data-page-number="2" href="">2</a></li>
+        <li><a class="goToPage" data-page-number="3" href="">3</a></li>
+    </ul>
+</div>
+
+<script >
+
+  console.log("INI");
+  $(document).ready(function(){
+    console.log("DOCUMENT READY INI");
+    function getBeers(page,perPage){
+        console.log("- CALLING GET BEERS");
+        $('.container').empty();
+        // $('.beer').remove();
+
+        $.ajax({
+        url: "https://api.punkapi.com/v2/beers",
+        data:{
+            page: page,
+            per_page: perPage
+        },
+        success: function(data){
+            console.log("-- RESPONSE GET BEERS");
+            data.forEach(function(beer){
+                $('.container').append(
+                    '<div class="beer">'+
+                        '<div class="beer-image open-detail" data-id="'+beer.id+'" style="background-image: url('+beer.image_url+')"></div>'+
+                        '<div class="beer-info">'+
+                        '<h1><a class="open-detail" data-id="'+beer.id+'">'+beer.name+'</a></h1>'+
+                        '<h2>'+beer.tagline+'</h2>'+
+                        '<div>First brewed: '+beer.first_brewed+'</div>'+
+                    '</div>'+
+                    '</div>'
+                );
+            });
+            registerOpenDetail();
+        },
+        error: function(request, status, message){
+            console.log("ERROR");
+            console.log('message: ', message);
+            console.log('status: ', status);
+            console.log('request: ', request);
+        }
+        })
+    }
+
+    getBeers(1,2);
+
+    function registerOpenDetail(){
+        console.log("REGISTERING open-detail CLICK");
+        $('.open-detail').click(function(e){
+            e.preventDefault();
+            console.log("- CALLING open-detail CLICK");
+            var id = $(this).data('id');
+            window.open(`beers-detail.html?beer=${id}&template=2`);
+        })
+    }
+    
+    // Declare these vars out to use them in both events when calling the function 
+    // to not to change the current value of the other
+
+    var page = 1;
+    var viewPerPage = 2;
+
+    $('.goToPage').click(function(e){
+        e.preventDefault();
+        
+        page = $(this).data("page-number");
+        //alert(page);
+        getBeers(page,viewPerPage);
+    });
+    
+
+    $('.results-per-page').change(function() {
+        
+        viewPerPage = $( ".results-per-page" ).val();
+        //alert(resultsPerPage);
+        getBeers(page,viewPerPage);
+    });
+    
+
+    // Search beers
+    $('.btn--search').click(function(e){
+        e.preventDefault();
+        var name = $('.input--search').val();
+        //console.log(name);
+        
+        if (name != ''){
+            $('.container').empty();
+
+            $.ajax({
+                type: "GET",
+                url: "https://api.punkapi.com/v2/beers",
+                data:{
+                    beer_name: name
+            },
+            success: function(data){
+                data.forEach(function(beer){
+                    $('.container').append(
+                        '<div class="beer">'+
+                            '<div class="beer-image open-detail" data-id="'+beer.id+'" style="background-image: url('+beer.image_url+')"></div>'+
+                            '<div class="beer-info">'+
+                            '<h1><a class="open-detail" data-id="'+beer.id+'">'+beer.name+'</a></h1>'+
+                            '<h2>'+beer.tagline+'</h2>'+
+                            '<div>First brewed: '+beer.first_brewed+'</div>'+
+                        '</div>'+
+                        '</div>'
+                    );
+                });
+            },
+            error: function(request, status, message){
+                console.log("ERROR");
+                console.log('message: ', message);
+                console.log('status: ', status);
+                console.log('request: ', request);
+            }
+            });
+        }
+    });
+
+    console.log("DOCUMENT READY END");
+
+  });
+  console.log("END");
+</script>
+</body>
+</html>
+

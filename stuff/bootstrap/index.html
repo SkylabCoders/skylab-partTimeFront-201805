@@ -1,89 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Percentage Calculator</title>
-	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<style>
-		body,*{
-			box-sizing: content-box;
+  <meta charset="UTF-8">
+  <title>ATTS</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+    .container-fluid {
+      border:1px solid #aaa;
+      width: 75%;
+      margin-top:30px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+    }
+		.collapsing .card{
+			background: red;
 		}
-		.container {
-			border:1px solid #aaa;
-			width: 75%;
-			margin-top:30px;
-			padding: 20px;
-			border-radius: 10px;
-			font-size: 1.5em;
+		.progress-bar{
+			width: 0%;
 		}
-		.letter{
-			display: inline-block;
-			width: 20px;
-			line-height: 20px;
-			padding: 20px;
-			margin-right: 10px;
-			margin-bottom: 10px;
-			text-align: center;
-			background:lightgray;
-			cursor:pointer;
+		.width-full{
+			width: 100%;
 		}
-		.letter[data-times-clicked="1"]{ background: green; }
-		.letter[data-times-clicked="2"]{ background: lightgreen; }
-		.letter[data-times-clicked="3"]{ background: yellowgreen; }
-		.letter[data-times-clicked="4"]{ background: yellow; }
-		.letter[data-times-clicked="5"]{ background: orange; }
-		.letter[data-times-clicked="6"]{ background: orangered; }
-		.letter[data-times-clicked="7"]{ background: red; }
-	</style>
+  </style>
 </head>
 <body>
 
-<div class="container">
-	
-	
+		<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Library</li>
+				</ol>
+			</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="alert alert-primary col-xs-12 col-md-6 col-lg-3">1<span class="badge badge-secondary">New</span></div>
+		<div class="alert alert-secondary col-xs-12 col-md-6 col-lg-6">2</div>
+		<div class="alert alert-danger col-xs-12 col-md-12 col-lg-3">3</div>
+		<div class="alert alert-success col-xs-12 col-md-3 col-lg-1 col-lg-offset-9">3</div>
+
+  </div>
+  <p>
+			<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Link with href
+			</a>
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				Button with data-target
+			</button>
+		</p>
+		<div class="collapse" id="collapseExample">
+			<div class="card card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+			</div>
+		</div>
+
+		<button id="progress-button" class="btn btn-primary" type="button">progress!!!</button>
+
+		<div class="progress" style="margin-top:20px">
+				<div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
 </div>
+<script>
+	$('#progress-button').click(function(){
 
-<script >
-	var abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-
-
-	for(var i=0 ; i<abecedario.length ; i++){
-		var letter = abecedario[i];
-
-		$('.container').append('<div id="letter-'+letter+'" class="letter"><p>'+letter+'</p></div>')
-	}
-
-	$('.letter').mouseenter(function(){
-		var timesClicked = $(this).attr('data-times-clicked');
-		if(typeof timesClicked === "undefined"){
-			timesClicked = 0;
-		}else{
-			timesClicked = parseInt(timesClicked);
-		}
-		if(timesClicked <= 0){
-			$(this).css("background", "lightblue");
-		}else{
-
-		}
+		$('.progress-bar').toggleClass('width-full');
 	})
 
-	$('.letter').mouseleave(function(){
-		$(this).css("background", '');
-	})
+	
 
-	$('.letter').click(function(){
-		var timesClicked = $(this).attr('data-times-clicked');
-		if(typeof timesClicked === "undefined"){
-			timesClicked = 0;
-		}else{
-			timesClicked = parseInt(timesClicked);
-		}
-		timesClicked++;
-		$(this)
-			.attr('data-times-clicked',timesClicked)
-			.css("background", '');
-	});
 </script>
 </body>
 </html>
