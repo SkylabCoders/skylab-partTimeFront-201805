@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+    .container {
+      border:1px solid #aaa;
+      width: 75%;
+      margin-top:30px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+    }
+    .beer {
+      display: flex;
+      padding: 30px 20px;
+      justify-content: flex-start;
+      align-items: stretch;
+      border-bottom: 1px solid black;
+    }
+    .beer:last-child{
+      border:none;
+    }
+    .beer .beer-image{
+      min-width: 10%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .beer .beer-info{
+      margin-left: 20px;
+    }
+    .pages, .selecting, .toSelect, .buscarContainer {
+        width: 40%;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .searchForm{
+      display: inline-block;
+    }
+    .selecting {
+        width: 10%;
+        text-align-last:center;
+    }
+    
+
+    button {
+        margin: auto;
+        background-color: lightseagreen;
+        color: white;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 30%;
+        outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="buscarContainer" id="aqui">
+     
+        <p>Busca una cerveza:</p>
+        <input type="text" class="cervezaABuscar"name="cervezaBuscada">
+        <button type="button" class="searchBeer">Busca!</button>
+     
+  </div>
+
+<div class="container">
+  
+  
+</div>
+<div >
+        <p class="toSelect">Cuantas cervezas quieres mostrar por página</p>
+        <select class="selecting">
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+    </div>
+    <div class="pages">
+        <button type="button" data-page-num="1" class="page">Page 1!</button>
+        <button type="button" data-page-num="2" class="page">Page 2!</button>
+        <button type="button" data-page-num="3" class="page">Page 3!</button>
+    </div>
+
+
+    <!-- 
+      <script type="text/javascript" src="cerveza.js"></script>
+    -->
+    <script type="text/javascript" src="cerveza.js"></script>
+    <script>
+ 
+    </script>
+</body>
+</html>
