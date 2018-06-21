@@ -9,5 +9,47 @@
     </head>
     <body>
       <div class="container-detail"></div>      
+
+      <script>
+        $(document).ready(function(){
+            var search = window.location.search;
+            search = search.substring(1);
+            search = search.split("&");
+            
+            var params = {};
+            search.forEach((s) => {
+              var temp = s.split('=');
+              params[temp[0]] = temp[1];
+            })
+
+            $.ajax({
+                url: "https://api.punkapi.com/v2/beers",
+                data:{
+                    ids: params.beer
+            },
+            success: function(data){
+                data.forEach(function(beer){
+                    $('.container-detail').append(
+                        '<div class="beer template-'+params.template+'">'+
+                            '<div class="beer-image" data-id="'+beer.id+'" style="background-image: url('+beer.image_url+')"></div>'+
+                            '<div class="beer-info">'+
+                            '<h1>'+beer.name+'</h1>'+
+                            '<h2>'+beer.tagline+'</h2>'+
+                            '<div>First brewed: '+beer.first_brewed+'</div>'+
+                        '</div>'+
+                        '</div>'
+                    );
+                });
+            },
+            error: function(request, status, message){
+                console.log("ERROR");
+                console.log('message: ', message);
+                console.log('status: ', status);
+                console.log('request: ', request);
+            }
+            })
+       
+        });     
+          </script>
     </body>
 </html>

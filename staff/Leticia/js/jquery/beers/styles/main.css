@@ -62,4 +62,11 @@ body,
     cursor: pointer;
 }
 
+.template-a{
+    background: lightblue;
+}
+
+.template-b{
+    background: lightcoral;
+}
   

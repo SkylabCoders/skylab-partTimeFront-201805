@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX</title>
+  <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body,*{
+      box-sizing: border-box;
+    }
+    .container {
+      border:1px solid #aaa;
+      width: 75%;
+      margin-top:30px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+    }
+    .beer {
+      display: flex;
+      padding: 30px 20px;
+      justify-content: flex-start;
+      align-items: stretch;
+      border-bottom: 1px solid black;
+    }
+    .beer:last-child{
+      border:none;
+    }
+    .beer .beer-image{
+      min-width: 10%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .beer .beer-info{
+      margin-left: 20px;
+    }
+    
+    .pagination{
+      display: flex;
+      padding: 30px 20px;
+      justify-content: flex-start;
+      -webkit-appearance: none;
+      outline: none;
+    }
+    .pagination .pagination-item{
+      margin-left: 10px;
+    }
+
+    .pagination .pagination-item.current{
+      background: darkblue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  
+</div>
+<div class="pagination">
+  <select id="items-page-select">
+    <option value="2">2 resultados</option>
+    <option value="5">5 resultados</option>
+    <option value="10">10 resultados</option>
+  </select>
+  <button class="pagination-item current">1</button>  
+  <button class="pagination-item">2</button>  
+  <button class="pagination-item">3</button>  
+</div>
+
+  <!-- PAGINACIÓN: 3 páginas: click en cada número >> llama a getBeers con esa página -->
+  
+<script >
+  function getMyBeer(){
+  return {
+    name: "Punk",
+    tagline: "Punk tagline",
+    ingredients :{
+      hops: 20,
+      water: 80
+    }
+  }  
+}
+
+/*
+const result = getMyBeer();
+const n = result.name;
+const t = result.tagline;
+const w = result.ingredients.water;
+const h = result.ingredients.hops;
+*/
+
+const {name, tagline} = getMyBeer();
+
+console.log(name);
+console.log(tagline);
+//console.log(ingredients);
+// console.log(w);
+// console.log(h);
+
+  console.log("INI");
+  $(document).ready(function(){
+    console.log("DOCUMENT READY INI");
+    
+    var perPage = 2;
+    var page = 1;
+    
+    $('.pagination-item').click(function(){
+      $('.pagination-item').removeClass("current");
+      $(this).addClass("current");
+
+      page = $(this).html();
+      getBeers(page, perPage);
+    })
+    
+    $('#items-page-select').change(function(){
+      perPage = $(this).val();
+      getBeers(page, perPage);
+    });
+    
+    
+    function getBeers(page, perPage){
+      $('.beer').remove();
+      $.ajax({
+        url: "https://api.punkapi.com/v2/beers",
+        data:{
+          page: page,
+          per_page: perPage
+        },
+        success: function(data){
+          data.forEach(function(beer){
+            $('.container').append(
+              '<div class="beer">'+
+                '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+                '<div class="beer-info">'+
+                  '<h1>'+beer.name+'</h1>'+
+                  '<h2>'+beer.tagline+'</h2>'+
+                  '<div>First brewed: '+beer.first_brewed+'</div>'+
+                '</div>'+
+              '</div>');
+          });
+        },
+        error: function(request, status, message){
+          console.log("ERROR");
+          console.log('message: ', message);
+          console.log('status: ', status);
+          console.log('request: ', request);
+
+        }
+      });
+    }
+    getBeers(page,perPage);
+    
+    console.log("DOCUMENT READY END");
+  });
+  console.log("END");
+</script>
+</body>
+</html>

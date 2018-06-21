@@ -10,9 +10,9 @@
 <body>
 
 <div class="wrapper">
-    <form class="search" action="#" method="get">
+    <form class="search" action="#" method="">
         <div class="input-group">
-            <input class="input--search form-control" id="system-search" name="q" placeholder="Search for" required>
+            <input class="input--search form-control" id="system-search" placeholder="Search for" required>
             <span class="input-group-btn">
                 <button type="submit" class="btn--search btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
             </span>
@@ -42,10 +42,11 @@
 
 <script >
 
-  //console.log("INI");
+  console.log("INI");
   $(document).ready(function(){
-    //console.log("DOCUMENT READY INI");
+    console.log("DOCUMENT READY INI");
     function getBeers(page,perPage){
+        console.log("- CALLING GET BEERS");
         $('.container').empty();
         // $('.beer').remove();
 
@@ -56,6 +57,7 @@
             per_page: perPage
         },
         success: function(data){
+            console.log("-- RESPONSE GET BEERS");
             data.forEach(function(beer){
                 $('.container').append(
                     '<div class="beer">'+
@@ -68,6 +70,7 @@
                     '</div>'
                 );
             });
+            registerOpenDetail();
         },
         error: function(request, status, message){
             console.log("ERROR");
@@ -80,43 +83,15 @@
 
     getBeers(1,2);
 
-
-    $('.open-detail').click(function(e){
-        e.preventDefault();
-        console.log("open");
-
-        var id = $('.open-detail').data(id);
-        console.log(id);
-
-        $.ajax({
-            url: "https://api.punkapi.com/v2/beers",
-            data:{
-                ids: id
-        },
-        success: function(data){
-            window.open("beer-detail.html");
-
-            data.forEach(function(beer){
-                $('.container-detail').append(
-                    '<div class="beer">'+
-                        '<div class="beer-image" data-id="'+beer.id+'" style="background-image: url('+beer.image_url+')"></div>'+
-                        '<div class="beer-info">'+
-                        '<h1>'+beer.name+'</h1>'+
-                        '<h2>'+beer.tagline+'</h2>'+
-                        '<div>First brewed: '+beer.first_brewed+'</div>'+
-                    '</div>'+
-                    '</div>'
-                );
-            });
-        },
-        error: function(request, status, message){
-            console.log("ERROR");
-            console.log('message: ', message);
-            console.log('status: ', status);
-            console.log('request: ', request);
-        }
+    function registerOpenDetail(){
+        console.log("REGISTERING open-detail CLICK");
+        $('.open-detail').click(function(e){
+            e.preventDefault();
+            console.log("- CALLING open-detail CLICK");
+            var id = $(this).data('id');
+            window.open(`beers-detail.html?beer=${id}&template=2`);
         })
-    })
+    }
     
     // Declare these vars out to use them in both events when calling the function 
     // to not to change the current value of the other
@@ -142,7 +117,8 @@
     
 
     // Search beers
-    $('.btn--search').click(function(){
+    $('.btn--search').click(function(e){
+        e.preventDefault();
         var name = $('.input--search').val();
         //console.log(name);
         
@@ -179,10 +155,10 @@
         }
     });
 
-    //console.log("DOCUMENT READY END");
+    console.log("DOCUMENT READY END");
 
   });
-  //console.log("END");
+  console.log("END");
 </script>
 </body>
 </html>
