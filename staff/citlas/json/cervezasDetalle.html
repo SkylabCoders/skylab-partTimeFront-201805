@@ -72,25 +72,18 @@
 </div>
 
 
+<script type="text/javascript" src="cerveza.js"></script>
 
 <script >
   
-  /*Implementar búsqueda por nombre: 
-  -añadir input y botón tal que cuando haga click en el botón, 
-  -se busque en la API los resultados 
-  -y se remplacen por los actuales.
-  //Implementar página detalle de beer: en cada resultado, 
-  -hacer que el nombre y la imagen sea un link a 
-  -una página nueva que muestre el 
-  -detalle completo de esa cerveza. 
-  */
-  
-  
-
-/*
+   var dataFromParent;  
+   console.log(dataFromParent)  
+    function init() {
+      function details(){
   $.ajax({
-       url: "https://api.punkapi.com/v2/beers?beer_name="+$(this).attr("data-name"),
-       success: function(beer){
+       url: "https://api.punkapi.com/v2/beers/"+dataFromParent,
+       success: function(data){
+         data.forEach(function(beer){
            $('.containerDetail').append(
              '<div class="beer">'+
                '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
@@ -105,10 +98,9 @@
                  '<h2> Ingredients: '+beer.ingredients+'</h2>'+
                  '<h2> Food pairing: '+beer.food_pairing+'</h2>'+
                  '<h2> Brewers tips: '+beer.brewers_tips+'</h2>'+
-                 '<h2>'+beer.tagline+'</h2>'+
                '</div>'+
              '</div>');
-        
+        });
        },//termina success
        error: function(request, status, message){
          console.log("ERROR");
@@ -117,7 +109,12 @@
          console.log('request: ', request);
        }//termina error
        
-     });//Termina ajax*/
+     });//Termina ajax
+}
+
+        document.write(details());
+    }
+    init()
   
 </script>
 </body>
