@@ -12,19 +12,36 @@
             margin-top: 20vh;
         }
 
-        .feedback {
-            display: block;
-            margin: 15px 0;
-            padding: 5px;
-            color: blue;
-            font-family: Helvetica, sans-serif;
-        }
-        
+                
         .misteryLetters {
             display: inline-block;
             padding: 10px 20px;
             background-color: rgb(255, 255, 177);
         }
+
+        .feedback,
+        .instructions {
+            display: block;
+            margin: 15px 0;
+            padding: 5px;
+            font-family: Helvetica, sans-serif;
+        }
+        
+        .feedback--fail,
+        .feedback--win {
+            font-size: 18px; 
+            font-weight: 700;
+        }
+
+        .restart {
+            text-decoration: none;
+            font-family: helvetica, sans-serif;
+            padding: 5px 10px;
+            border: 1px solid #e4e4e4;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
     </style>
 
 </head>
@@ -34,21 +51,23 @@
     
     <p class="misteryLetters"></p>
     
-    <small class="feedback">¿Qué letra quieres jugar?</small>
+    <small class="instructions">¿Qué letra quieres jugar?</small>
 
     <form class="getLetterForm" action="#">
         <input class="letterToGuess" type="text">
         <input class="validateLetter" type="submit" value="valida">
     </form>
 
+    <small class="feedback"></small>
+    <a href="#" class="restart">Play again</a>
+
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!-- <script type="text/javascript" src="hangman.js"></script> -->
     
     <script>
         
-        var greekGods = ['Achelous','Aeolus','Aether','Alastor','APOLLO','ARES','Aristaeus','Asclepius','ATLAS','Attis','Boreas','Caerus','Castor','Cerus','CHAOS','Charon','Cronos','Crios','CRONUS','Dinlas','DIONYSUS'];
-
-        // var lifes = 2;
+        var greekGods = ['achelous','aeolus','aether','alastor','apollo','ares','aristaeus','asclepius','atlas','attis','boreas','caerus','castor','cerus','chaos','charon','cronos','crios','cronus','dinlas','dionysus'];
+        
         var userProgress = [];
 
         //function chose a word 
@@ -68,51 +87,65 @@
             return wordEncripted; 
         }
 
+        $('.restart').click(function() {
+            location.reload();
+        });
+
         function startPlaying(wordToGuess, status){
             //var letter = window.prompt('¿Qué letra quieres jugar? ESTADO: '+status.word.join('')); // [3] ask for letter    
+            $('.restart').hide();
+            $('.letterToGuess').focus();
+            $('.feedback').html("Te quedan " + status.lifes + " vidas");
 
             $( '.validateLetter' ).click(function() {
-                var letter = $('.letterToGuess').val();
+                var letter = $('.letterToGuess').val().toLowerCase();
                 var esta = false;
         
                 //comprobacion de letra dentro de array
                 for(var i = 0; i < wordToGuess.length; i++) {
-                    //console.log('dentro del for');
+                    
                     if(letter === wordToGuess[i]){
                         status.word[i] = wordToGuess[i];
                         esta = true;
                         $('.misteryLetters').html(status.word.join(''));
                     }
                 }
+
                 if(!esta){
                     console.log(letter, status.lifes);
                     status.lifes--;
+                    $('.feedback').html("Te quedan " + status.lifes + " vidas");
                 }
                 
-                console.log(status.word, wordToGuess);
+                //console.log(status.word, wordToGuess);
                 
                 if(status.word.join('') === wordToGuess.join('')){
                     status.current = "success";
                     
                 } else if(status.lifes == 0){
                     status.current = "fail";
-                    console.log(status);
+                    //console.log(status);
                 }
 
                 if(status.current === "success"){
-                    $('.feedback').html("YOU WIN").css('color','green');
+                    $('.feedback').html("YOU WIN").css('color','green').addClass('feedback--win');;
                     $('.misteryLetters').html(status.word.join(''));
+                    $('.getLetterForm').hide();
+                    $('.instructions').hide();
+                    $('.restart').show();
 
                 } else if(status.current === "fail"){
-                    $('.feedback').html("GAME OVER").css('color','red');
+                    $('.feedback').html("GAME OVER").css('color','red').addClass('feedback--fail');
+                    $('.getLetterForm').hide();
+                    $('.instructions').hide();
+                    $('.restart').show();
+                    
                 }
+                
+                $('.letterToGuess').focus().val('');
             }); 
             
-            
-            
             // return status;
-
-            // $('.misteryLetters').html(status.word.join(''));
         }
 
 
@@ -120,9 +153,9 @@
             var wordToGuess = chooseWord(arr); // [1] choose a word 
             
             var status = {
-            lifes: 2,
-            word : encriptWord(wordToGuess),
-            current: "running"
+                lifes: 5,
+                word : encriptWord(wordToGuess),
+                current: "running"
             }
         
             // while (status.current === "running"){
