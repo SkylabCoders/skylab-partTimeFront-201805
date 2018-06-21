@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AJAX</title>
+  <title>BEER SHEET</title>
   <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <style>
@@ -83,13 +83,74 @@
 
 <div class="sup-cont">
 
-  <div class="container">
+  <div class="beerdetails">
     
     
   </div>
 
 </div>
 
+
+<script >
+    
+
+    console.log("INI");
+  
+    $(document).ready(function(){
+      console.log("DOCUMENT READY INI");
+
+      import {clickedName} from 'ajaxExcercise.html'
+  
+      function showBeer(name){     // ----> defino la función de Ajax
+            $.ajax({
+                url: "https://api.punkapi.com/v2/beers",
+                data:{ 
+                    beer_name: name,
+                }, 
+                success: function(data){
+                    $('.beerdetails').append(
+                        '<div class="beer">'+
+                        '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
+                        '<div class="beer-info">'+
+                            '<h1>'+beer.name+'</h1> '+
+                            '<h2>'+beer.tagline+'</h2>'+
+                            '<div>abv: '+beer.abv+'</div>'+
+                            '<div>ibu: '+beer.ibu+'</div>'+
+                            '<div>target_fg: '+beer.target_fg+'</div>'+
+                            '<div>target_og: '+beer.target_og+'</div>'+
+                            '<div>ebc: '+beer.ebc+'</div>'+
+                            '<div>srm: '+beer.srm+'</div>'+
+                            '<div>ph: '+beer.ph+'</div>'+
+                            '<div>attenuation_level: '+attenuation_level+'</div>'+
+                            '<div>volume: '+beer.volume+'</div>'+
+                            '<div>boil_volume: '+beer.boil_volume+'</div>'+
+                            '<div>method: '+beer.method+'</div>'+
+                            '<div>ingredients: '+beer.ingredients+'</div>'+
+                            '<div>food_pairing: '+beer.food_pairing+'</div>'+
+                            '<div>brewers_tips: '+beer.brewers_tips+'</div>'+
+                            '<div>contributed_by: '+beer.contributed_by+'</div>'+
+                        '</div>'+
+                        '</div>'
+                    );
+                }, 
+                error: function(request, status, message){
+                    console.log("ERROR");
+                    console.log('message: ', message);
+                    console.log('status: ', status);
+                    console.log('request: ', request);
+                }
+            });
+        }
+
+      console.log("DOCUMENT READY END");
+  
+      showBeer(clickedName);
+
+    });
+
+    
+      
+  </script>
 
 </body>
 </html>

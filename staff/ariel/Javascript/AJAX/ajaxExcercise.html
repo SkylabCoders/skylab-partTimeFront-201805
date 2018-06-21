@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AJAX</title>
+  <title>AJAX EXCERCISE</title>
   <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <style>
@@ -90,11 +90,11 @@
   <div class="nr-selector">
 
       <div class="nr-per-pages">
-          <select>
-              <option value="2" >2</option>
-              <option value="5" >5</option>
-              <option value="10">10</option>
-          </select>
+        <select>
+          <option value="2" >2</option>
+          <option value="5" >5</option>
+          <option value="10">10</option>
+        </select>
       </div>
 
       <div class="nr-box">
@@ -138,9 +138,9 @@
           data.forEach(function(beer){
             $('.container').append(
               '<div class="beer">'+
-                '<div class="beer-image" style="background-image: url('+beer.image_url+')"><a href="beerpage.html" target="_blank"></a></div>'+
+                '<div class="beer-image" style="background-image: url('+beer.image_url+')"></div>'+
                 '<div class="beer-info">'+
-                  '<a href="beerpage.html" target="_blank"> <h1>'+beer.name+'</h1> </a>'+
+                  '<a class="click-name" href="beerSheet.html" target="_blank"> <h1>'+beer.name+'</h1> </a>'+
                   '<h2>'+beer.tagline+'</h2>'+
                   '<div>First brewed: '+beer.first_brewed+'</div>'+
                 '</div>'+
@@ -156,6 +156,7 @@
         }
       });
     }
+
 
     var nrPerPage = 2;
     var page = 1;
@@ -175,14 +176,30 @@
     getBeers(page,nrPerPage);
 
     $('.get-your-beer').click(function(){
-      
       name = $('.name-search').val();
-      getBeers(page,nrPerPage,name);      // -----> llamo a la fución de Ajax y le digo el nombre de la cerveza que busco
+      getBeers(page,nrPerPage,name);  
+          // -----> llamo a la fución de Ajax y le digo el nombre de la cerveza que busco
     });
-    
-    console.log("DOCUMENT READY END" + name);
-  });
-  console.log("END");
+
+    let clickedName = ' ';
+
+    $('.click-name').click(function(){
+      clickedName = $('clicked-name h1').html()
+    })
+
+    // const {name, tagline, abv, ibu, target_fg, target_og, ebc, srm, ph, attenuation_level,volume,boil_volume,method,ingredients,food_pairing,brewers_tips,contributed_by} = newWindow(name);
+
+    // const {name} = newWindow(name);
+
+    console.log("DOCUMENT READY END");
+
+  
+
+
+
+});
+
 </script>
 </body>
 </html>
+
