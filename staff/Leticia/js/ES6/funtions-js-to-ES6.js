@@ -37,23 +37,24 @@ function invertCase(str){
 
 invertCase(sentence);
 
-// ES6 hacer de nuevo
-var sentence = "The Quick Brown Fox";
+// ES6
+let sentence = "The Quick Brown Fox";
 
-function invertCase(str){
-    var newArray = str.split("");
+const invertCase = (str) => {
+    let newArray = str.split("");
 
-    for(i = 0; i < newArray.length; i++){
-        if( newArray[i] === newArray[i].toLowerCase()) {
-            newArray[i] = newArray[i].toUpperCase();
+    newArray.forEach((e)=>{
+        if( e === e.toLowerCase()) {
+            e = e.toUpperCase();
         } else {
-            newArray[i] = newArray[i].toLowerCase();
+            e = e.toLowerCase();
         }
-    }
+    });
+    
     return newArray.join("");
 }
 
-invertCase(sentence);
+invertCase(sentence);}
 
 
 //------------------------------------
