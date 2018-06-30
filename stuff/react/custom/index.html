@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <style>
+      #container{
+        font-family:monospace;
+        font-weight:bold;
+        color: #fff;
+        background: #161719;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  
+  <body>
+    
+    <div id="root"></div>
+    
+    <script>
+      class RDOM {
+        render(component, element){
+          //JQUERY ONLY
+          $(element).empty();
+          $(element).append(component);
+        }
+      }
+      
+      const ReactDOM = new RDOM();
+
+      class Component {
+        constructor(props){
+          this.props = props;
+          this.state = {
+            lastName: "Bonito"
+          };
+
+        }
+        
+        _bindEvents(){
+          $('#component-01').unbind('click');
+          $('#component-01').click(()=>{
+            this.setState({lastName: 'Feo'});
+          });
+        }
+        
+        setState(newState){
+          this.state = Object.assign(this.state, newState);
+          this.render();
+        }
+
+        render(){
+          console.log("state: ", this.state);
+          this._bindEvents();
+          
+          const rendered = `<button id="component-01">Hola ${this.props.name} ${this.state.lastName}</button>`;
+          ReactDOM.render(rendered, document.getElementById('root'));
+        }
+      }
+
+      const c = new Component({name: "World"});
+
+      c.render();
+      c._bindEvents();
+    </script>
+    
+  </body>
+</html>
+
