@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
-import './App.css';
-import GenerateABC from '../GenerateABC/';
-import GetIncognita from '../SelectWord/';
-import StartGame from '../StartGame/';
+import './index.css';
+import GenerateABC from '../GenerateABC';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+
+  }
+
   render() {
     return (
-      <div className="App">
-
-
-
-   
+     
+      <div>
         <div className="Upper">
-          <StartGame />
-          <GetIncognita />
+
+          <div className="Button">
+        
+            <button onClick>START</button>
+
+          </div>
+
+          <p>AQUI VA LA INCOGNITA</p>
+        
         </div>
+
 
         <div className="lower">
+          
           <GenerateABC />
+          
         </div>
-        
+
       </div>
+        
     );
   }
 }

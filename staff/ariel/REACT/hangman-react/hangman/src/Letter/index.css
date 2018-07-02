@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.LetterBox{
+
+  margin: 1%;
+  height: 80px;
+  width: 5%;
+  background-color: lightblue;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 10px #888888;
+
+}
+
+ p{
+  font-size: 25px;
+  font-weight: 500;
+}
