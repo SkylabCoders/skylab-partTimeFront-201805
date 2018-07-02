@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import App from '../App/';
 import Letter from '../Letter/';
 import './index.css';
 
@@ -39,7 +38,7 @@ class GenerateABC extends Component {
   };
 
   evaluateLetter(id){
-    
+
   }
 
   render() {
