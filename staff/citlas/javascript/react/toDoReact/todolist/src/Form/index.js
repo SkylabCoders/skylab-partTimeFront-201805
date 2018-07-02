@@ -50,12 +50,13 @@ class Form extends Component {
   render() {
     return (
       <div className="Form">
-      <p>Form</p>
+     
       <form onSubmit={this.addItem}>
         <input 
+        placeholder="Enter text here..."
         onChange = {this.changeInputValue}
         value={this.state.todoTitle}/>
-        <input type="submit" value="Add!" />
+        <input className="formButton" type="submit" value="Add!" />
       </form>
       </div>
     );

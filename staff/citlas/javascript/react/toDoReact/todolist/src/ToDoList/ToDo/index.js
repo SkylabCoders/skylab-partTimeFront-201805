@@ -35,13 +35,20 @@ class ToDo extends Component {
     const {title} = this.props;
     const {done} = this.props;
     */
+   
     return (
       
       <li className="ToDo"  >
-        <p>{this.props.id} - {this.props.title}--{this.props.done ? 'Hecho!':'Falta por hacer'}</p>
-        {this.props.done ? <button onClick={this.toUndoDone}>Undone</button>: <button onClick={this.todoDone}>Done</button> }
-        <button onClick={this.deleteTodo}>X</button>
+        <p 
+        className={this.props.done ? 'doneTarea': 'undoneTarea'} 
+        onClick={this.toggleClass} 
+
+        >{this.props.id}. {this.props.title}  {this.props.done ? '✔️':'⚠️'}</p>
+        
+        {this.props.done ? <button className="undoneButton" onClick={this.toUndoDone}>Undone</button>: <button className="doneButton" onClick={this.todoDone}>Done</button> }
+        <button className="deleteButton" onClick={this.deleteTodo}>X</button>
       </li>
+      
       
     );
   }

@@ -20,8 +20,13 @@ class ToDoList extends Component {
     this.deleteTodo = this.deleteTodo.bind(this)
     this.setTodoStatus = this.setTodoStatus.bind(this)
     this.addItem = this.addItem.bind(this)
-
+    this.toggleClass = this.toggleClass.bind(this)
   }
+
+  toggleClass() {
+    const currentState = this.state.todos.done;
+    this.setState({ done: !currentState });
+};
 
   addItem(NewTitle){
     console.log('A name was submitted: ' + NewTitle);
@@ -67,10 +72,10 @@ class ToDoList extends Component {
     return (
       <div className="ToDoList">
       <Form  onHandleSubmit = {this.addItem} />
-        <p>Todolist</p>
+        <p></p>
         <ul>
         {this.state.todos.map((e)=>{
-          return <ToDo key={e.id} id={e.id} title={e.title} done={e.done} onDeleteTodo = {this.deleteTodo} onSetStatus = {this.setTodoStatus}/>
+          return <ToDo key={e.id} id={e.id} title={e.title} done={e.done} onDeleteTodo = {this.deleteTodo} onSetStatus = {this.setTodoStatus} togglingClass = {this.toggleClass}/>
         })}
         </ul>
         

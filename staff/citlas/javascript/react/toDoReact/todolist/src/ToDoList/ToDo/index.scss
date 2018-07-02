@@ -1,3 +1,41 @@
 .ToDo {
+    p{
+        display: inline-block;
+    }
     text-align: left;
+
+    
+       
+        width: 100%;
+       
+        
+        font-size: 1em;
+        color: gray;    
+        
+        overflow: auto;
+        display: inline-block;
+     
+button {
+    float: right;
+   
+    padding: 2%;
+    font-size: 1em;
+    color: gray; 
+}
+}
+
+.undoneButton, .doneButton, .deleteButton {
+    border: none;
+    float: right;
+    width: 17%;
+    position: relative;
+}
+
+.doneTarea{
+    text-decoration: line-through;
+    color: lightgray;
+}
+
+.undoneTarea{
+    
 }
