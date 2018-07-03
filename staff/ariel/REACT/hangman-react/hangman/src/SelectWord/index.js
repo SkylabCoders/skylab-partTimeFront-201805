@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import EvaluateLetter from '../EvaluateLetter/';
 import './index.css';
 
 
@@ -15,6 +15,7 @@ class SelectWord extends Component {
     
   }
 
+
   newWord(){
     const frutas = ['manzana','banana','pera','fresa','cereza','anana','tomate','naranja','clementina','chirimoya','pomelo','melocoton', 'ciruela', 'lichi','melon', 'sandia', 'mango', 'papaya', 'higos', 'maracuya', 'guanabana' ];
     const indice = Math.round(Math.random()*20);
@@ -27,7 +28,9 @@ class SelectWord extends Component {
       incognitaArr[k] = " _ ";
     };
 
-    return incognitaArr
+    
+
+    return incognitaArr //, frutaArr
 
   }
     
@@ -35,11 +38,22 @@ class SelectWord extends Component {
   render() {
     return (
 
+      /*<div className="Incognita">
+
+        <EvaluateLetter 
+          incognita={this.incognitaArr}
+          word={this.frutaArr}
+          newWord={this.newWord()}
+
+        />
+
+      </div> */
+
+
       <div className="Incognita">
 
         <p>{this.newWord()}</p>
        
-
       </div>
 
     );

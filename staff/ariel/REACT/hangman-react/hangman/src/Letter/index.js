@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-//import GenerateABC form '../GenerateABC';
+import EvaluateLetter from '../EvaluateLetter/';
 
 class Letter extends Component {
 
@@ -8,24 +8,39 @@ class Letter extends Component {
     super(props);
 
     this.state = {
-      clicked: props.clicked
+      id: props.id,
+      clicked: false,
+      exists: false
     }
 
-    this.checkLetter = this.checkLetter.bind(this)
+    this.clickedLetter = this.clickedLetter.bind(this)
    
   }
   
-  checkLetter(){
-    this.props.checkClicked(this.props.id)
+  clickedLetter(t){
+    this.props.clicked = true
+
+
   }
 
   render() {
     return (
       
-      <button className="LetterBox" onClick={this.checkLetter}>
+      <button className="LetterBox" onClick={() =>
+        console.log('Click en la letra: ' + this.props.id)
+      
+      
+        /*<EvaluateLetter 
 
-        {this.props.id}
-  
+          onClickLetter={this.checkLetter}
+          id={this.props.id}
+          clicked={this.props.clicked}
+          exists={this.props.exists}
+        /> */
+        }> 
+
+      <p>{this.props.id}</p>
+
       </button>
 
     )

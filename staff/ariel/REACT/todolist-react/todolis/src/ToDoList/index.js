@@ -23,13 +23,12 @@ class ToDoList extends Component {
     };
 
     setTodoStatus(id, status){
-        //console.log('delete TODO: ', id);
-        //console.log('status: ', status);
+
         let todos2 = this.state.todos;
 
         todos2.forEach((e,i)=>{
             if(e.id === id){
-                indice = i; //this.state.todos.indexOf(e);
+                indice = i; 
                 todos2[i].done = status
             }
         })
@@ -41,7 +40,7 @@ class ToDoList extends Component {
 
 
     deleteToDo(id){
-        console.log('delete TODO: ', id);
+
         let indice;
         let todos2 = this.state.todos;
 
@@ -50,8 +49,6 @@ class ToDoList extends Component {
                 indice = i; //this.state.todos.indexOf(e);
             }
         })
-
-        console.log('indice: ',indice)
 
         todos2.splice(indice,1)
 
