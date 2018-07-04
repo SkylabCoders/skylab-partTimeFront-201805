@@ -21,12 +21,15 @@ class ShowDate extends Component{
         }
 
         return <span 
-                onClick={()=>{
-                    if(this.props.onDateClicked){
-                        this.props.onDateClicked()
-                    }
-                }}
-                style={{color:props.color}}>{dateToShow}</span>
+                    onClick={()=>{
+
+                        if(this.props.onDateClicked){
+                            this.props.onDateClicked()
+                        }
+                    }}
+
+                    style={{color:props.color}}>{dateToShow}
+                </span>
     }
 }
 

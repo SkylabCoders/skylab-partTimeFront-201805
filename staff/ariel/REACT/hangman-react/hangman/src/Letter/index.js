@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import EvaluateLetter from '../EvaluateLetter/';
+import ManageGuess from '../ManageGuess'
 
 class Letter extends Component {
 
@@ -8,38 +8,25 @@ class Letter extends Component {
     super(props);
 
     this.state = {
-      id: props.id,
+      //id: id,
       clicked: false,
       exists: false
     }
-
-    this.clickedLetter = this.clickedLetter.bind(this)
-   
   }
-  
-  clickedLetter(t){
-    this.props.clicked = true
 
 
-  }
 
   render() {
     return (
       
       <button className="LetterBox" onClick={() =>
-        console.log('Click en la letra: ' + this.props.id)
-      
-      
-        /*<EvaluateLetter 
+      //console.log('Click en la letra: ' + this.props.id);
 
-          onClickLetter={this.checkLetter}
-          id={this.props.id}
-          clicked={this.props.clicked}
-          exists={this.props.exists}
-        /> */
-        }> 
+        <ManageGuess id={this.props.id} />
 
-      <p>{this.props.id}</p>
+      }>
+
+      <h1>{this.props.id}</h1>
 
       </button>
 

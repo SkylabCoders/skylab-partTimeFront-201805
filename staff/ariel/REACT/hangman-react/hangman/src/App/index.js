@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import './index.css';
 import GenerateABC from '../GenerateABC';
-import SelectWord from '../SelectWord';
+import ManageGuess from '../ManageGuess';
+import SelectWord from '../SelectWord'
 
 class App extends Component {
   constructor(props){
     super(props)
 
+    this.state = {
+      incognita: ['P','R','E','S','S',' ','S','T','A','R','T'],
+      vidas: 0
+    }
 
   }
+
+
 
   render() {
     return (
@@ -17,14 +24,8 @@ class App extends Component {
 
         <div className="Upper">
 
-          <div className="Button">
-            <button onClick>START</button>
-          </div>
+          <SelectWord startWord={this.state.incognita}/>
 
-    
-          <SelectWord />
-          
-        
         </div>
 
 

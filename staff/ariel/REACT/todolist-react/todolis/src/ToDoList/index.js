@@ -28,7 +28,7 @@ class ToDoList extends Component {
 
         todos2.forEach((e,i)=>{
             if(e.id === id){
-                indice = i; 
+                indice = i; //this.state.todos.indexOf(e);
                 todos2[i].done = status
             }
         })

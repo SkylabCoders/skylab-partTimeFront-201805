@@ -37,9 +37,7 @@ class GenerateABC extends Component {
     }
   };
 
-  evaluateLetter(id){
 
-  }
 
   render() {
     return (

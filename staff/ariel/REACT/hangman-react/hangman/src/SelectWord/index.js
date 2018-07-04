@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EvaluateLetter from '../EvaluateLetter/';
 import './index.css';
 
 
@@ -7,14 +6,15 @@ class SelectWord extends Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      incognita: []
+
+    this.state ={
+      incognita: this.props.startWord,
+
     }
 
     this.newWord = this.newWord.bind(this);
-    
-  }
 
+  }
 
   newWord(){
     const frutas = ['manzana','banana','pera','fresa','cereza','anana','tomate','naranja','clementina','chirimoya','pomelo','melocoton', 'ciruela', 'lichi','melon', 'sandia', 'mango', 'papaya', 'higos', 'maracuya', 'guanabana' ];
@@ -29,32 +29,25 @@ class SelectWord extends Component {
     };
 
     
-
-    return incognitaArr //, frutaArr
+    this.setState({incognita: incognitaArr})
 
   }
+
     
 
   render() {
     return (
 
-      /*<div className="Incognita">
+      <div>
+        <div className="Button">
+          <button onClick={this.newWord}>START</button>
+        </div>
 
-        <EvaluateLetter 
-          incognita={this.incognitaArr}
-          word={this.frutaArr}
-          newWord={this.newWord()}
+        <div className="Incognita">
+          <p>{this.state.incognita}</p>
+        </div>
 
-        />
-
-      </div> */
-
-
-      <div className="Incognita">
-
-        <p>{this.newWord()}</p>
-       
-      </div>
+      </div>   
 
     );
   }
