@@ -17,6 +17,7 @@ class App extends Component {
    //aqui van los bind
    this.chooseWord = this.chooseWord.bind(this)
    this.xWording = this.xWording.bind(this)
+   this.setTodoStatus = this.setTodoStatus.bind(this)
 
   }
 
@@ -45,6 +46,9 @@ class App extends Component {
   }
 
 
+  setTodoStatus(lifes){   
+    this.setState({vidas: lifes})  
+  }
 
   render() {
     return (
@@ -58,10 +62,9 @@ class App extends Component {
 
 
         <p className="showWord">{this.state.xWord}</p>
-        <p className="foundOrNot"></p>
-        <p className="status"></p>
+       
       </div>
-       <Letra vidas={this.state.vidas} selectedWord={this.state.selectedWord} xWord={this.state.xWord} counts={this.state.counts} letter={this.state.letter} />
+       <Letra vidas={this.state.vidas} selectedWord={this.state.selectedWord} xWord={this.state.xWord} counts={this.state.counts} letter={this.state.letter} onSetStatus = {this.setTodoStatus} />
        
       </div>
     );
