@@ -30,20 +30,18 @@ class Form extends Component {
   }
 
   /*
-  asi se llama desde app
+  asi se llama/mete a props desde todolist
   onDeleteTodo = {this.deleteTodo}
-  OnHandleSubmit = {this.addItem}
   
-  asi esta la funcion en app
+  asi esta la funcion en todolist
   deleteTodo(id){....
-  //addItem(NewTitle,NewId){
-    this.state.todos.push({id:NewId, title: NewTitle, done:false})
-  }
-
-  asi en toDo
+  
+  asi la funcion va en toDo
   deleteTodo(){
     this.props.onDeleteTodo(this.props.id)
   }
+  y se llama en el boton
+  onClick={this.deleteTodo}
   
   */
 

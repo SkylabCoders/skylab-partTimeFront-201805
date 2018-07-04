@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './index.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ToDo extends Component {
   constructor(props){
@@ -38,15 +38,15 @@ class ToDo extends Component {
    
     return (
       
-      <li className="ToDo"  >
+      <li className="ToDo" onClick={this.toggleClass} >
         <p 
         className={this.props.done ? 'doneTarea': 'undoneTarea'} 
-        onClick={this.toggleClass} 
+         
 
-        >{this.props.id}. {this.props.title}  {this.props.done ? '✔️':'⚠️'}</p>
+        >{this.props.title} - {this.props.done ? <FontAwesomeIcon icon="check" />:<FontAwesomeIcon icon="exclamation" />}</p>
         
-        {this.props.done ? <button className="undoneButton" onClick={this.toUndoDone}>Undone</button>: <button className="doneButton" onClick={this.todoDone}>Done</button> }
-        <button className="deleteButton" onClick={this.deleteTodo}>X</button>
+        {this.props.done ? <button className="undoneButton" onClick={this.toUndoDone}>Mark  <FontAwesomeIcon icon="exclamation" /></button>: <button className="doneButton" onClick={this.todoDone}>Mark <FontAwesomeIcon icon="check" /></button> }
+        <button className="deleteButton" onClick={this.deleteTodo}><FontAwesomeIcon icon="trash" /></button>
       </li>
       
       

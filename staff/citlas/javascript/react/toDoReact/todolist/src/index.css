@@ -2,12 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif; }
-  body .app {
-    padding: 5% 5%;
-    background-color: tomato; }
-    body .app p {
-      color: white;
-      text-align: center; }
 
 /*
 
