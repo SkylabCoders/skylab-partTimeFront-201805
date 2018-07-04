@@ -9,6 +9,7 @@ class SelectWord extends Component {
 
     this.state ={
       incognita: this.props.startWord,
+      vidas: 0,
 
     }
 
@@ -29,18 +30,27 @@ class SelectWord extends Component {
     };
 
     
-    this.setState({incognita: incognitaArr})
+    this.setState({
+      incognita: incognitaArr,
+      vidas: Math.round(incognitaArr.length*1.5)
+    })
 
   }
 
     
 
   render() {
+
+
+
     return (
 
       <div>
         <div className="Button">
           <button onClick={this.newWord}>START</button>
+        </div>
+        <div className="Vidas">
+          <p>Tienes: {this.state.vidas} vidas</p>
         </div>
 
         <div className="Incognita">

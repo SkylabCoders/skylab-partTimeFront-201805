@@ -7,7 +7,7 @@ class ManageGuess extends Component {
   constructor(props){
     super(props);
     this.state = {
-      //incognita: this.props.incongitaArr,
+      incognita: this.props.incongitaArr,
       incognita: <SelectWord />
     };
 
