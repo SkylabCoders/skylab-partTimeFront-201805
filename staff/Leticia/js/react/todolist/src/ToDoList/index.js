@@ -22,7 +22,7 @@ class Todolist extends Component {
 
         this.deleteToDo = this.deleteToDo.bind(this); // register "this"
         this.setToDoDone = this.setToDoDone.bind(this); // register "this"
-        this.onAddToDoItem = this.onAddToDoItem.bind(this); // register "this"
+        this.addToDoItem = this.addToDoItem.bind(this); // register "this"
     }
 
     // onAddToDoItem = (todoTitle) => {
@@ -35,25 +35,23 @@ class Todolist extends Component {
     //     this.setState({todos: todos2});
     // }
 
-    onAddToDoItem = (todoTitle) => {
+    addToDoItem = (todoTitle) => {
         let todos = this.state.todos;
         let todos2 = this.state.todos;
         let todo = {};
 
-        // todo: { 
-        //     id: todos2.length + 1,
-        //     title: todoTitle,
-        //     done: false
-        // };
-        
-        todos2.forEach((e, i) => {
-            todos2[i].id = i;
-        });
-        
-        todos2: todos2.push(todo);
+        // todos2.forEach((e, i) => {
+        //     todos2[i].id = i;
+        // });
 
+        todo = { 
+            id: todos2.length > 0 ? todos2[todos2.length - 1].id + 1 : 1,
+            title: todoTitle,
+            done: false
+        };
+        
+        todos2.push(todo);
         this.setState({todos, todos2});        
-
         console.log(todo);
     }
 
@@ -86,7 +84,7 @@ class Todolist extends Component {
         return (
         <div className="App">
             
-            <Form onSubmit={this.addToDoItem} />
+            <Form onAddToDoItem={this.addToDoItem} />
             
             <ul className="to-do-list">
                 {this.state.todos.map((e) => { // retorna todos los todos

@@ -30,8 +30,8 @@ class ToDoList extends Component {
 
   addItem(NewTitle){
     console.log('A name was submitted: ' + NewTitle);
-    let NewId = this.state.todos.length+1
-    let todos = this.state.todos
+    let NewId = this.state.todos.length > 0 ? this.state.todos[this.state.todos.length - 1].id+1 : 1;
+    let todos = Object.assign(this.state.todos);
     todos.push({id:NewId, title: NewTitle, done:false})
     this.setState({todos})
     //console.log(this.state.todos.length)
