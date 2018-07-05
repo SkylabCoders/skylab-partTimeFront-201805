@@ -1,0 +1,27 @@
+form{
+    width: 80%;
+    margin: auto; 
+    overflow: auto; 
+    
+    input { 
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 2%;
+        width: 40%;
+       padding: 2%;
+        float: left;
+        font-size: 1em;
+        color: gray;    
+    }
+    .formButton{
+        padding: 2%;
+        margin: 2%;
+        background-color: lightgray;
+        font-size: 1em;
+    }
+    .formButton:hover{
+        background-color: rgb(80, 77, 76);
+        color: white;
+    }
+}
