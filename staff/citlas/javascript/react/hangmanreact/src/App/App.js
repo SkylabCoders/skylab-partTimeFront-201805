@@ -18,10 +18,23 @@ class App extends Component {
    this.chooseWord = this.chooseWord.bind(this)
    this.xWording = this.xWording.bind(this)
    this.setTodoStatus = this.setTodoStatus.bind(this)
+   this.start = this.start.bind(this)
 
   }
 
+  start(){
+    //this.setState({status: ''})
+    //this.setState({foundOrNot: ''}) 
+    //this.setState({showingContainer: true})  
+    this.setState({vidas: 5}) 
+    this.setState({xWord: []}) 
+    this.setState({counts: {}}) 
+    this.setState({letter: ''}) 
+  }
+
   chooseWord(){
+    this.start()
+    console.log(this.state.vidas)
     console.log('pressed')
     var paises = ['MEXICO','ESPAÑA','ARGENTINA','VENEZUELA','COLOMBIA', 'URUGUAY','FRANCIA','ALEMANIA','SUIZA','SUECIA', 'ITALIA','CROACIA','CANADA','CHINA','JAPON', 'PORTUGAL','BRASIL','CHILE','ANDORRA','HOLANDA'];
     let selectedWord1 = paises[Math.floor((Math.random() * paises.length))];
@@ -50,6 +63,8 @@ class App extends Component {
     this.setState({vidas: lifes})  
   }
 
+  
+
   render() {
     return (
       <div className="App">
@@ -64,7 +79,7 @@ class App extends Component {
         <p className="showWord">{this.state.xWord}</p>
        
       </div>
-       <Letra vidas={this.state.vidas} selectedWord={this.state.selectedWord} xWord={this.state.xWord} counts={this.state.counts} letter={this.state.letter} onSetStatus = {this.setTodoStatus} />
+       <Letra vidas={this.state.vidas} selectedWord={this.state.selectedWord} xWord={this.state.xWord} counts={this.state.counts} letter={this.state.letter} onSetStatus = {this.setTodoStatus} start = {this.start} />
        
       </div>
     );

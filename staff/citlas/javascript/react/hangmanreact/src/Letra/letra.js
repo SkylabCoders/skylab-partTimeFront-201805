@@ -10,11 +10,14 @@ class Letra extends Component {
     this.state = {//this.state es un objeto
       status: '',
       foundOrNot: '',
+      showingContainer: true
     }
    //aqui van los bind
   this.createAbc = this.createAbc.bind(this)
   this.getLetterClicked = this.getLetterClicked.bind(this)
-  }
+  this.start = this.start.bind(this)
+
+}
 
   createAbc(){
     var abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -26,6 +29,14 @@ class Letra extends Component {
     console.log('hola')
   }
 
+  start(){
+    if(this.props.vidas == 5){
+      var abc = document.getElementById("myContainer");
+        //abc.style.display = "block"
+        var foundedText = document.getElementById("founded");
+        //foundedText.style.display = "block"
+    } 
+  }
   getLetterClicked(event){
     console.log('click a')
     let letterClicked = event.currentTarget.textContent
@@ -51,7 +62,7 @@ class Letra extends Component {
       console.log(this.props.vidas)
       let result = 'fallaste, una '+letterClicked
       this.setState({foundOrNot:result })
-      console.log(this.state.foundOrNot)
+      console.log(result)
       //console.log('fallaste, una ' + letterClicked)
       
       /*$(this).css("background", "rgb(231, 76, 60)");
@@ -59,7 +70,7 @@ class Letra extends Component {
      */} else {
        let result = 'acertaste una '+letterClicked
        this.setState({foundOrNot:result })
-       console.log(this.state.foundOrNot)
+       console.log(result)
       /*$('.foundOrNot').text('Una ' + letter + ', Has acertado!\n' );
       $(this).css("background", "rgb(39, 174, 96)");
       $('.showWord').text(xWord.join(''));*/
@@ -72,7 +83,14 @@ class Letra extends Component {
         //$('.status').show();
         //$('.status').html('Game Over :( <br> La palabra era '  + selectedWord.join(''));
         //$( ".container" ).hide();
-        console.log('has perdido ya no tienes vidas, la palabra era '+ this.props.selectedWord)
+        //console.log('has perdido ya no tienes vidas, la palabra era '+ this.props.selectedWord)
+        let statusText = 'has perdido ya no tienes vidas, la palabra era '+ this.props.selectedWord
+        this.setState({status:statusText })
+        console.log(statusText)
+        var abc = document.getElementById("myContainer");
+        abc.style.display = "none"
+        var foundedText = document.getElementById("founded");
+        foundedText.style.display = "none"
         return
       } //else {
         //$( ".container" ).show();
@@ -83,17 +101,27 @@ class Letra extends Component {
   //$('.status').show();
   //$('.status').text('You win :)');
   //$( ".container" ).hide();
- console.log('has ganado')
+  //console.log('has ganado')
+  let statusText = 'has ganado'
+        this.setState({status:statusText })
+        console.log(statusText)
+        var abc = document.getElementById("myContainer");
+        abc.style.display = "none"
+        var foundedText = document.getElementById("founded");
+        foundedText.style.display = "none"
 }
     console.log(this.props.selectedWord)
   }
 
   render() {
     //this.createAbc()
+    this.start()
     return (
-      <div className="letra container" id='myContainer'>
-         <p className="foundOrNot">{this.state.foundOrNot}</p>
-        <p className="status"></p>
+      <div className="letra container" >
+         <p className="foundOrNot" id="founded">{this.state.foundOrNot}</p>
+        <p className="status">{this.state.status}</p>
+       
+       <div id='myContainer'>
         <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>A</p></div>
         <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>B</p></div>
         <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>C</p></div>
@@ -121,7 +149,8 @@ class Letra extends Component {
         <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>X</p></div>
         <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>Y</p></div>
         <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>Z</p></div>
-       
+       </div>
+
       </div>
     );
   }
