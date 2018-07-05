@@ -40,7 +40,6 @@ class App extends Component {
         </p>
         <FunctComp id="fc"/>
         <p> yesterday as <ShowDate type={this.state.date2} onDateClicked={this.dClicked}/></p> // pasamos la funcion
-
       </div>
     );
   }

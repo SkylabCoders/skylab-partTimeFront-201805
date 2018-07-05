@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User Cards</title>
+
+	<!-- metiendo jquery -->
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.css">
+
+	<style>
+		.container	{ margin-top:50px; }
+		.full-name, .gender, .address {  text-transform: capitalize; }
+		.profile-image { margin:10px; }
+		.nationality i { margin-right: 5px; }
+	</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+				<p class="text-info text-right now"></p>
+
+					<div class="panel panel-info">
+						<!-- CARD HEADING -->
+						<div class="panel-heading">
+
+							<h3 class="panel-title full-name"></h3>
+						</div>
+
+						<!-- CARD BODY -->
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-3 col-lg-3 " align="center">
+									<img alt="User Pic" src="" class="img-circle img-responsive img-thumbnail  profile-image">
+								</div>
+
+								<div class=" col-md-9 col-lg-9 ">
+									<table class="table table-user-information">
+										<tbody>
+											<tr>
+												<td>Registration Date:</td>
+												<td class="registration-date"></td>
+											</tr>
+											<tr>
+												<td>Date of Birth</td>
+												<td class="born-date"></td>
+											</tr>
+											<tr>
+												<td>Nationality</td>
+												<td class="nationality"><i class=""></i><span></span></td>
+											</tr>
+
+											<tr>
+												<td>Gender</td>
+												<td class="gender"></td>
+											</tr>
+												<tr>
+												<td>Home Address</td>
+												<td class="address"></td>
+											</tr>
+											<tr>
+												<td>Email</td>
+												<td><a class="email"></a></td>
+											</tr>
+											<tr>
+												<td>Phone Number</td>
+												<td class="phone"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+							<div class="panel-footer text-center">
+									<a href="#" class="get-profile btn btn-primary">Get Random Profile</a>
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script>
+		var countries = {
+			AU: "Australia 🇦🇺",
+			BR: "Brazil 🇧🇷",
+			CA: "Canada 🇨🇦",
+			CH: "Switzerland 🇨🇭",
+			DE: "Germany 🇩🇪",
+			DK: "Denmark 🇩🇰",
+			ES: "Spain 🇪🇸",
+			FI: "Finland 🇫🇮",
+			FR: "France 🇫🇷",
+			GB: "United Kingdom 🇬🇧",
+			IE: "Ireland 🇮🇪",
+			IR: "Iran 🇮🇷",
+			NL: "Netherlands 🇳🇱",
+			NZ: "New Zealand 🇳🇿",
+			TR: "Turkey 🇹🇷",
+			US: "United States of America 🇺🇸",
+			NO: "not available country"
+		}
+	
+	$(document).ready(function(){
+		
+		$('.btn-primary').click(function(){
+			/*$('.full-name').empty()
+			$('.img-responsive').empty()
+			$('.registration-date').empty()
+			$('.born-date').empty()
+			$('.nationality').empty()
+			$('.gender').empty()
+			$('.address').empty()
+			$('.email').empty()
+			$('.phone').empty()*/
+
+
+			   let intervalCounter = 0;
+				const i = setInterval(()=>{
+					randomNext('interval');
+				},1000);
+
+				$('#cancel-interval').click(()=>{
+					clearInterval(i);
+					reportStatus('interval');
+				});
+		
+
+				function randomNext(){
+					$.ajax({
+			url: 'https://randomuser.me/api/',
+			
+			success: function(data) {
+				//console.log("sdasdad")
+				console.log(data);
+				$(".full-name").html(data.results[0].name.first + " " + data.results[0].name.last);
+				//<img alt="User Pic" src="" class="img-circle img-responsive img-thumbnail  profile-image">
+				$(".img-responsive").attr("src", data.results[0].picture.large);
+				
+				/*
+				var newDate = new Date("2017-10-10T16:14:16Z")
+				newDate
+				Tue Oct 10 2017 18:14:16 GMT+0200 (hora de verano de Europa central)
+				newDate.getDate()
+				10
+				newDate.getFullYear()
+				2017
+				newDate.toLocaleString()
+				"10/10/2017 18:14:16"
+				*/
+
+				var regDate = new Date(data.results[0].registered.date)
+				regDate = regDate.toLocaleDateString();
+				$(".registration-date").html(regDate);
+				
+				var dobDate = new Date(data.results[0].dob.date)
+				dobDate = dobDate.toLocaleDateString();
+
+				$(".born-date").html(dobDate);
+				
+				var nationalityFull = countries[data.results[0].nat]
+				console.log(data.results[0].nat.toLowerCase())
+				$("span").html(nationalityFull);
+				$("i").attr("class",`flag-icon-background flag-icon flag-icon-${data.results[0].nat.toLowerCase()}`);
+				//$("i").addClass(`flag-icon-${data.results[0].nat.toLowerCase()}`);
+				
+				$(".gender").html(data.results[0].gender);
+				$(".address").html(data.results[0].location.street + ", " + data.results[0].location.city + ", " + data.results[0].location.state + ", " + data.results[0].location.postcode + ", coordinates: latitud" + data.results[0].location.coordinates.latitude + ", longitud" + data.results[0].location.coordinates.longitude );
+				$(".email").html(data.results[0].email);
+				$(".phone").html(data.results[0].phone);
+			}
+		});//fin ajax
+
+				}
+		});//fin del click
+
+		
+	});//fin document ready
+
+	
+	</script>
+</body>
+</html>
+
+
