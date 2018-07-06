@@ -1,4 +1,3 @@
-
 const obj1 = {prop1: "pr1"};
 const obj2 = {prop2: "pr2"};
 
@@ -6,6 +5,7 @@ console.log("--------- ANTES --------")
 console.log(obj1)
 console.log(obj2)
 
+// IMPORTANT!!!
 // copia el objeto de la derecha dentro del de la izq, 
 // sustituyendo las keys comunes de ambos objetos 
 // con los valores del objeto de la derecha
@@ -153,3 +153,21 @@ console.log(obj3)
   </body>
 </html>
 
+
+componentDidMount() {
+  this.setState({}) // vuelve a decirnos si se ha ejecutado
+} 
+// comprueba que se ha montado/presente el elemento
+// sirve para cuando llamas a apis externas
+
+componentDidUpdate(prevProps, prevState, snapshot) {
+  // añadir condicion par que no se quede en bucle
+  prevState.todos.length < 4 && <Form />
+}
+
+componentWillUnmount(){}
+
+shouldComponentUpdate(nextProps, nextState)
+// if we wnat to reneder again an element
+// use when sth no necessary to update in DOM
+// retorne true o false
