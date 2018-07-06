@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import './index.css';
+import Game from '../Game';
+import EvaluateLetter from '../EvaluateLetter'
 
-
-class SelectWord extends Component {
+class StartGame extends Component {
 
   constructor(props){
     super(props);
 
     this.state ={
-      incognita: this.props.startWord,
+      palabraArr: [],
+      guessArr: ['P','R','E','S','S',' ','S','T','A','R','T'],
       vidas: 0,
 
     }
@@ -31,31 +33,37 @@ class SelectWord extends Component {
 
     
     this.setState({
-      incognita: incognitaArr,
-      vidas: Math.round(incognitaArr.length*1.5)
+      guessArr: incognitaArr,
+      vidas: Math.round(incognitaArr.length*1.5),
+      palabraArr: frutaArr
     })
+
+    //this.props.onClick(this.state.guessArr, this.state.vidas);
+
 
   }
 
-    
+
 
   render() {
 
-
+    console.log('las props de SelectWord son: ', this.props)
 
     return (
 
       <div>
         <div className="Button">
-          <button onClick={this.newWord}>START</button>
+          <button onClick={()=>{ 
+            this.newWord();
+            <EvaluateLetter palabra={this.state.palabraArr} lifes={this.props.vidas} guessArr={this.state.iguessArr}/>
+          }}>START</button>
         </div>
+
         <div className="Vidas">
           <p>Tienes: {this.state.vidas} vidas</p>
         </div>
 
-        <div className="Incognita">
-          <p>{this.state.incognita}</p>
-        </div>
+        <Game guessArr={this.state.guessArr} palabraArr={this.state.palabraArr} lifes={this.props.vidas}/>
 
       </div>   
 
@@ -63,4 +71,4 @@ class SelectWord extends Component {
   }
 }
 
-export default SelectWord;
+export default StartGame;

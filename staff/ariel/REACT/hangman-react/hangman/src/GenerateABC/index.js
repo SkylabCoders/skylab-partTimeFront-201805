@@ -51,7 +51,6 @@ class GenerateABC extends Component {
             id={e.id}
             clicked={e.clicked}
             exists={e.exists}
-            evaluateLetter= {this.checkClicked}
           />
 
         })}
