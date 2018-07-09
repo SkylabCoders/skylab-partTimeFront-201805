@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+.Upper{
+  width: 100%;
+  height: 200px;
+}
+
+.Upper .Button{
+  width: 100%;
+  height: 20px;
+  margin: 2px 0px 0px 2px;
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+
+
+.lower {
+  width: 100%;
+  height: 300px;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+.KeyBoard{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.LetterBox{
+
+  margin: 1%;
+  height: 80px;
+  width: 5%;
+  background-color: lightblue;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 10px #888888;
+
+}
+
+  button p{
+  font-size: 25px;
+  font-weight: 500;
+}

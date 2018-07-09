@@ -7,37 +7,39 @@ class Letter extends Component {
   constructor(props){
     super(props);
 
-
+    console.log("LEtters Props: " + props)
 
     this.state = {
       id: '',
       clicked: false,
+      nr: null,
       exists: false
     }
 
     this.onClickedLetter = this.onClickedLetter.bind(this)
-  }
+  };
 
   onClickedLetter(){
 
-    this.props.evaluateLetter(this.props.id)
+    this.props.evaluateLetter(this.props.id, this.props.nr)
+    
+  };
 
-  }
-
+ 
   
 
   render() {
     return (
-      <div className="LetterBox">
-        <button className="LetterBox" onClick={this.onClickedLetter}> 
+      
+
+        <button className="LetterBox" onClick={
+          this.onClickedLetter}> 
 
         <h1>{this.props.id}</h1>
-        <h1>{this.props.fruta}</h1>
         </button>
 
     
 
-      </div>
     )
   }
   

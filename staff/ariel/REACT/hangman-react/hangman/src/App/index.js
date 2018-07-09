@@ -8,35 +8,37 @@ class App extends Component {
 
     this.state = {
       guessArr: ['P','R','E','S','S',' ','S','T','A','R','T'],
+      fruit: '',
       vidas: null,
       palabraArr: [],
+      consola:'',
       letters:[
-        {id: "A", clicked: false, exists: false},
-        {id: "B", clicked: false, exists: false},
-        {id: "C", clicked: false, exists: false},
-        {id: "D", clicked: false, exists: false},
-        {id: "E", clicked: false, exists: false},
-        {id: "F", clicked: false, exists: false},
-        {id: "G", clicked: false, exists: false},
-        {id: "H", clicked: false, exists: false},
-        {id: "I", clicked: false, exists: false},
-        {id: "J", clicked: false, exists: false},
-        {id: "K", clicked: false, exists: false},
-        {id: "L", clicked: false, exists: false},
-        {id: "M", clicked: false, exists: false},
-        {id: "N", clicked: false, exists: false},
-        {id: "O", clicked: false, exists: false},
-        {id: "P", clicked: false, exists: false},
-        {id: "Q", clicked: false, exists: false},
-        {id: "R", clicked: false, exists: false},
-        {id: "S", clicked: false, exists: false},
-        {id: "T", clicked: false, exists: false},
-        {id: "U", clicked: false, exists: false},
-        {id: "V", clicked: false, exists: false},
-        {id: "W", clicked: false, exists: false},
-        {id: "X", clicked: false, exists: false},
-        {id: "Y", clicked: false, exists: false},
-        {id: "Z", clicked: false, exists: false},
+        {id: "A", nr:0, clicked: false, exists: false},
+        {id: "B", nr:1, clicked: false, exists: false},
+        {id: "C", nr:2, clicked: false, exists: false},
+        {id: "D", nr:3, clicked: false, exists: false},
+        {id: "E", nr:4, clicked: false, exists: false},
+        {id: "F", nr:5, clicked: false, exists: false},
+        {id: "G", nr:6, clicked: false, exists: false},
+        {id: "H", nr:7, clicked: false, exists: false},
+        {id: "I", nr:8, clicked: false, exists: false},
+        {id: "J", nr:9, clicked: false, exists: false},
+        {id: "K", nr:10, clicked: false, exists: false},
+        {id: "L", nr:11, clicked: false, exists: false},
+        {id: "M", nr:12, clicked: false, exists: false},
+        {id: "N", nr:13, clicked: false, exists: false},
+        {id: "O", nr:14, clicked: false, exists: false},
+        {id: "P", nr:15, clicked: false, exists: false},
+        {id: "Q", nr:16, clicked: false, exists: false},
+        {id: "R", nr:17, clicked: false, exists: false},
+        {id: "S", nr:18, clicked: false, exists: false},
+        {id: "T", nr:19, clicked: false, exists: false},
+        {id: "U", nr:20, clicked: false, exists: false},
+        {id: "V", nr:21, clicked: false, exists: false},
+        {id: "W", nr:22, clicked: false, exists: false},
+        {id: "X", nr:23, clicked: false, exists: false},
+        {id: "Y", nr:24, clicked: false, exists: false},
+        {id: "Z", nr:25, clicked: false, exists: false},
       ]
     }
 
@@ -59,16 +61,16 @@ class App extends Component {
     
     newVidas = Math.round(incognitaArr.length*1.5);
 
-    console.log('Elección de fruta: ' + frutaArr)
     return this.setState({
       guessArr: incognitaArr,
       vidas: newVidas,
-      palabraArr: frutaArr
+      palabraArr: frutaArr,
+      fruit: fruta
     })
 
   }
 
-  onLetterClick(letter){             
+  onLetterClick(letter,nr){             
     let guess = letter;
     let fruta = this.state.palabraArr
     let lifes = this.state.vidas;
@@ -86,14 +88,23 @@ class App extends Component {
         };
     };
         
-    if (cont!== 0) {    // ---> guess está en la fruta
+    if (cont!== 0 && incognitaArr.join().toLowerCase() === fruta.join().toLowerCase() ) {    // ---> guess está en la fruta
   
-        if ( incognitaArr.join() === fruta.join() ) {
-  
-            return console.log('FELICITACIONES HAS GANADO')
-        } 
-            
-        return this.setState({guessArr: incognitaArr})
+
+      console.log("IncognitaARR: ", incognitaArr.join().toLowerCase())
+      console.log("FrutaARr: ", fruta.join().toLowerCase())
+
+      return this.setState({consola:"FELICITACIONES HAS GANADO"})
+    } 
+    
+    if (cont!== 0 && incognitaArr.join().toLowerCase() !== fruta.join().toLowerCase() ) { 
+
+        return this.setState({
+          guessArr: incognitaArr, 
+          consola:'BRAVO LA LETRA "'+ guess +'" ESTÁ EN LA PALABRA',
+          //letters[nr].clicked: true,
+          //letters[nr].exists: true,
+          })
 
     };
     
@@ -104,12 +115,13 @@ class App extends Component {
         if (lifes === 0 ){
             
           console.log('GAME OVER\n\nLa fruta era: ' + fruta);
+           return this.setState({consola: "GAME OVER\n\nLa fruta era: '" + this.state.fruit.toUpperCase()+"'." })
     
         } 
         
       return   (
         console.log('Lo siento la letra ' + guess + ' no se encuentra en la palabra'),
-        this.setState({vidas: lifes})
+        this.setState({vidas: lifes, consola: 'Lo siento la letra ' + guess + ' no se encuentra en la palabra'})
       )
   
     }
@@ -123,20 +135,27 @@ class App extends Component {
 
         <div className="Upper">
 
-          <div className="Button">
-            <button onClick={()=>{ 
-              this.newWord();
-             }}>START
-            </button>
+          <div className="Upper-up">
+            <div className="Button">
+              <button onClick={()=>{ 
+                this.newWord();
+              }}>START
+              </button>
+            </div>
+
+            <div className="Vidas">
+              <p>Tienes: {this.state.vidas} vidas</p>
+            </div>
           </div>
+          <div className="Upper-low">
 
-          <div className="Vidas">
-            <p>Tienes: {this.state.vidas} vidas</p>
-          </div>
+            <div className="GuessWord">
+              <h2>{this.state.guessArr}</h2>
+            </div>
 
-          <div className="GuessWord">
-
-            <h2>{this.state.guessArr}</h2>
+            <div className="Console">
+              <h4>{this.state.consola}</h4>
+            </div>
 
           </div>
 
@@ -149,8 +168,6 @@ class App extends Component {
           
           <div className="KeyBoard">
 
-          <h1>{this.state.frutaArr}</h1>
-
             {this.state.letters.map((e) => {
               return(
               
@@ -159,6 +176,7 @@ class App extends Component {
                 <Letter         
                     key={e.id} 
                     id={e.id}
+                    nr={e.nr}
                     clicked={e.clicked}
                     exists={e.exists} 
                     
