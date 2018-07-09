@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './index.css';
-import EvaluateLetter from '../EvaluateLetter'
+
 
 class Letter extends Component {
 
   constructor(props){
     super(props);
+
+
 
     this.state = {
       id: '',
@@ -13,23 +15,29 @@ class Letter extends Component {
       exists: false
     }
 
+    this.onClickedLetter = this.onClickedLetter.bind(this)
   }
 
+  onClickedLetter(){
 
+    this.props.evaluateLetter(this.props.id)
 
+  }
+
+  
 
   render() {
     return (
-      
-      <button className="LetterBox" onClick={()=>{
-        <EvaluateLetter letra={this.props.id} />
-        console.log('Letra clickeada: ', this.props.id)
-      }}> 
+      <div className="LetterBox">
+        <button className="LetterBox" onClick={this.onClickedLetter}> 
 
-      <h1>{this.props.id}</h1>
+        <h1>{this.props.id}</h1>
+        <h1>{this.props.fruta}</h1>
+        </button>
 
-      </button>
+    
 
+      </div>
     )
   }
   
