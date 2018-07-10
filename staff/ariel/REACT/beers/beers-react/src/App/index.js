@@ -23,11 +23,14 @@ class App extends Component {
       <div className="App">
         
         <header>
-          
-        <h1> This is my header <Link to="/beer">Go to Beeer</Link></h1>
-          <div>
-          <p><Link to="/About">Go to About</Link></p> 
-          <p><Link to="/BeerList">Go to Beer List</Link></p>
+          <div className="title">
+             <h1> This is my header </h1>
+          </div>
+          <div className="About">
+            <p><Link to="/About">Go to About</Link></p> 
+          </div>
+          <div className="List">
+            <p><Link to="/BeerList">Go to Beer List</Link></p>
           </div>
 
         </header>
@@ -35,7 +38,9 @@ class App extends Component {
           <div>
             <Route path="/About" exact component={About}/> 
             <Route path="/BeerList" exact component={BeerList}/>
-            <Route path="/beer" exact render = {() => { return <BeerDetail beerId={2}/> } }/>  {/* el render lo uso solo cuando necesito pasar props}*/}
+            <Route path="/BeerDetail/:x" exact render ={(props) => {return <BeerDetail beerInfo={props.match.params.x}/> } }/>
+           
+
           </div>
 
         

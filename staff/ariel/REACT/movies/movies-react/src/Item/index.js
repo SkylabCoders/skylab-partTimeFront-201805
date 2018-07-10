@@ -15,6 +15,7 @@ class Item extends Component {
   componentDidMount() {
     console.log("ComponentDidMount START")  // Los params van luego del signo de ? en la URL y se definien como Objeto
     axios.get(`https://api.themoviedb.org/3/movie/${this.props.movieId}`,{
+      
       params: {
         api_key:'1995c1a1d232dd178b70583c0f5a779b',
       }

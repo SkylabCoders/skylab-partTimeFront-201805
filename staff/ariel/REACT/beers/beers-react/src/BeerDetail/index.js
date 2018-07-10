@@ -1,52 +1,64 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
+import './index.css';
 
 class BeerDetail extends Component {
   
   constructor(props){
-    super(props);
+    super(props)
 
     this.state = {
-      beer: null
+      beer: []
     }
     
   }
 
-
   componentDidMount() {
     console.log("ComponentDidMount START")
-    axios.get(`https://api.punkapi.com/v2/beers/${this.props.beerId}`)
+
+    axios.get(`https://api.punkapi.com/v2/beers/`,{
+      
+      params: {
+        beerInfo:this.props.beerInfo,
+      }
+
+    })
+    
       .then(res => {
-        const beer = res.data[0];
+        const beer = res.data[this.props.beerInfo-1];
         this.setState({ beer });
       })
       .catch(function (error) {    // ataja el error: no rompe la app
         // handle error
         console.log(error);
       })
-  };
+      
+  };   
 
   render(){
+
+    console.log("Beer ID como prop", this.props.beerInfo);
+    console.log('Beer del state: ', this.state.beer)
     return (
 
-      <div className="SingleBeer">
+      <div>
 
-        {this.state.beer === null ? <p>LOADING !</p> : 
+        {this.state.beer === null ? <p>LOADING BEER DETAILS !</p> : 
         
-          <div>
-            <div className="pic">
-              <img src={this.state.beer.image_url}/>
+          <div className="SingleBeer">
+            <div className="Pic">
+            <img src={this.state.beer.image_url}/>
             </div>
             <div className="BeerInfo">
+              <h1>{this.props.beerID}</h1>
               <h2>{this.state.beer.name}</h2>
               <h4>{this.state.beer.tagline}</h4>
               <p>{this.state.beer.description}</p>
             </div>
           </div>
         
-       
         }
+        
 
       </div> 
 

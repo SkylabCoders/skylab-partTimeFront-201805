@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Beer from './Beer/';
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 
 class BeerList extends Component {
@@ -20,6 +20,7 @@ class BeerList extends Component {
         const beers = res.data;
         this.setState({ beers });
       })
+
       .catch(function (error) {    // ataja el error: no rompe la app
         // handle error
         console.log(error);
@@ -29,14 +30,32 @@ class BeerList extends Component {
 
   _renderBeers(){
     return this.state.beers.map((beer,i) => {
-      return <Beer key={i} name={beer.name} image_url={beer.image_url} tagline={beer.tagline} />
+      return (
 
+        <div className="BeerUnitInfo">
+
+          <Link to={`/BeerDetail/${beer.id}`} key={i}>
+            <div className="BeerPicture">
+              <img src={beer.image_url}/>
+            </div>
+          </Link>
+
+
+          <div className="BeerInfo">
+            <div>
+              <h2>{beer.name}</h2> 
+
+            <h4>{beer.tagline}</h4>
+            </div>
+          </div>
+        </div>
+      )
     })
   } 
 
   render() {
 
-    console.log("Render: ", this.state.beers.length)
+   
 
     return (
       
