@@ -171,3 +171,44 @@ shouldComponentUpdate(nextProps, nextState)
 // if we wnat to reneder again an element
 // use when sth no necessary to update in DOM
 // retorne true o false
+
+
+
+
+{/* 1- funcion comparte padre
+2- Pasar función al componente hijo a través de props.
+   la referencia, no la ejecución.
+3- Componente hijo ejecuta la funcion de props {this.props.function} con o sin argumento
+4-  funcion se ejecuta en el componente padre recibiendo el argumento */}
+
+
+<div 
+  className="beer-image" // className from react
+  dataId={props.id}  // data-id -> dataId camel case
+  
+  // how to write style inline
+  style={{backgroundImage: `url(${props.image_url})`}}> 
+</div>
+
+
+high order components Home de beerlist
+wrappea un componente
+home traer cervezas
+beerlist pintar cervezas
+
+Crear otro componente search 
+:searchString
+
+componentDidMount
+axios.get(`apiurl`), {
+  params: {
+    beer_name: this.props.match.params.searchString
+  }
+}
+( mirar)
+
+---
+
+cambio slect pags onchange
+llama a otra vez a la api de cervezas
+y lo enchufo a un setState
