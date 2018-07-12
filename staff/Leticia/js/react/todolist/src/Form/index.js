@@ -20,7 +20,7 @@ class Form extends Component {
     addToDoItem = (e) => {
         e.preventDefault();
         this.props.onAddToDoItem(this.state.todoTitle); 
-        
+        this.setState({todoTitle: ''})
         console.log(this.state.todoTitle);
     }
 

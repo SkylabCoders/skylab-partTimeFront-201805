@@ -1,0 +1,15 @@
+
+.letter-list {
+    width: 80vw;
+
+    &_item {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+    }
+}

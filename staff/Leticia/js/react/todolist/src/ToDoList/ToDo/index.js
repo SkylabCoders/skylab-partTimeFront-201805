@@ -29,7 +29,7 @@ class ToDo extends Component {
     render() {
         return (
             <li id={this.props.id}>
-                {this.props.title}--{this.props.done ? "hecho" : "falta por hacer!"}
+                {this.props.id}. {this.props.title}--{this.props.done ? "hecho" : "falta por hacer!"}
                 { this.props.done ?
                     <button onClick={this.toUnDone}>undone</button> :
                     <button onClick={this.todoDone}>done</button>
