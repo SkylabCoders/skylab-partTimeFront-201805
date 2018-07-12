@@ -10,24 +10,16 @@ class Letra extends Component {
     this.state = {//this.state es un objeto
       status: '',
       foundOrNot: '',
-      showingContainer: true
+      showingContainer: true,
+      letterChosen: ''
     }
    //aqui van los bind
-  this.createAbc = this.createAbc.bind(this)
   this.getLetterClicked = this.getLetterClicked.bind(this)
   this.start = this.start.bind(this)
 
 }
 
-  createAbc(){
-    var abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-    for(var i=0 ; i<abecedario.length ; i++){
-      var letter = abecedario[i];
-      //$('.container').append('<div id="letter-'+letter+'" class="letter"><p>'+letter+'</p></div>')
-      
-    }
-    console.log('hola')
-  }
+ 
 
   start(){
     if(this.props.vidas == 5){
@@ -37,10 +29,13 @@ class Letra extends Component {
         //foundedText.style.display = "block"
     } 
   }
+
   getLetterClicked(event){
     console.log('click a')
+    //let letterClicked = this.state.letterChosen
     let letterClicked = event.currentTarget.textContent
     console.log(letterClicked)
+    this.props.settingLetter(letterClicked)
     //this.props.onSetStatus(this.props.letter,letterClicked)
     let acertar = 0;
      for (let i=0;i<this.props.selectedWord.length;i++){
@@ -114,44 +109,12 @@ class Letra extends Component {
   }
 
   render() {
-    //this.createAbc()
+   
     this.start()
     return (
-      <div className="letra container" >
-         <p className="foundOrNot" id="founded">{this.state.foundOrNot}</p>
-        <p className="status">{this.state.status}</p>
-       
-       <div id='myContainer'>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>A</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>B</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>C</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>D</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>E</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>F</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>G</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>H</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>I</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>J</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>K</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>L</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>M</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>N</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>Ñ</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>O</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>P</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>Q</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>R</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>S</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>T</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>U</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>V</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>W</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>X</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>Y</p></div>
-        <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>Z</p></div>
-       </div>
-
-      </div>
+      
+          <div onClick={this.getLetterClicked} id="letter-'+letter+'" className="letter"><p>{this.props.letter2}</p></div>
+     
     );
   }
 }

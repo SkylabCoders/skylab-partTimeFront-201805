@@ -25,7 +25,7 @@ class Form extends Component {
     console.log(this.state.todoTitle)
     this.props.onHandleSubmit(this.state.todoTitle)
     
-    event.preventDefault();
+    event.preventDefault();//para que no se recargue la pagina
     this.setState({todoTitle: ''})
   }
 

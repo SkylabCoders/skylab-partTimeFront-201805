@@ -1,0 +1,32 @@
+.Beer {
+    overflow: auto;
+    display: block;
+    width: 75%;
+    margin: auto;
+}
+
+.name {
+    
+    font-size: 25px;
+    
+}
+
+.tagline {
+    color: grey;
+    font-size: 15px;
+    
+}
+
+.image {
+    height: 100px;
+    width: auto;
+    display: inline-block;
+    
+ 
+}
+
+.beers-info{
+    float: left;
+    text-align: center;
+}
+
