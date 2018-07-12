@@ -43,7 +43,7 @@ class ToDo extends Component {
         className={this.props.done ? 'doneTarea': 'undoneTarea'} 
          
 
-        >{this.props.title} - {this.props.done ? <FontAwesomeIcon icon="check" />:<FontAwesomeIcon icon="exclamation" />}</p>
+        >{this.props.id}  {this.props.title} - {this.props.done ? <FontAwesomeIcon icon="check" />:<FontAwesomeIcon icon="exclamation" />}</p>
         
         {this.props.done ? <button className="undoneButton" onClick={this.toUndoDone}>Mark  <FontAwesomeIcon icon="exclamation" /></button>: <button className="doneButton" onClick={this.todoDone}>Mark <FontAwesomeIcon icon="check" /></button> }
         <button className="deleteButton" onClick={this.deleteTodo}><FontAwesomeIcon icon="trash" /></button>

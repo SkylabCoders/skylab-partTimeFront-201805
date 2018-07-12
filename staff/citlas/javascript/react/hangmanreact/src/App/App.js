@@ -19,7 +19,15 @@ class App extends Component {
    this.xWording = this.xWording.bind(this)
    this.setTodoStatus = this.setTodoStatus.bind(this)
    this.start = this.start.bind(this)
+   this.setLetter = this.setLetter.bind(this)
 
+   
+   this.abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+
+  }
+
+  setLetter(letter1){
+    this.setState({letter: letter1})
   }
 
   start(){
@@ -64,8 +72,10 @@ class App extends Component {
   }
 
   
+  
 
   render() {
+    const letters = this.abc.split('')
     return (
       <div className="App">
         <header className="App-header">
@@ -79,7 +89,27 @@ class App extends Component {
         <p className="showWord">{this.state.xWord}</p>
        
       </div>
-       <Letra vidas={this.state.vidas} selectedWord={this.state.selectedWord} xWord={this.state.xWord} counts={this.state.counts} letter={this.state.letter} onSetStatus = {this.setTodoStatus} start = {this.start} />
+      <div className="letra container" >
+         <p className="foundOrNot" id="founded">{this.state.foundOrNot}</p>
+        <p className="status">{this.state.status}</p>
+       
+       <div id='myContainer'>
+      {letters.map((l)=>{
+      return <Letra  letter2={l} 
+                    vidas={this.state.vidas} 
+                    selectedWord={this.state.selectedWord} 
+                    xWord={this.state.xWord} 
+                    counts={this.state.counts} 
+                    letter={this.state.letter} 
+                    onSetStatus = {this.setTodoStatus} 
+                    start = {this.start} 
+                    settingletter={this.setLetter} />
+    })}
+      </div>
+
+      </div>
+
+
        
       </div>
     );
