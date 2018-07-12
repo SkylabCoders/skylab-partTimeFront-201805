@@ -46,15 +46,20 @@ class BeerDetail extends Component {
         {this.state.beer === null ? <p>LOADING BEER DETAILS !</p> : 
         
           <div className="SingleBeer">
+
             <div className="Pic">
-            <img src={this.state.beer.image_url}/>
+              <img src={this.state.beer.image_url}/>
             </div>
+
             <div className="BeerInfo">
+
               <h1>{this.props.beerID}</h1>
-              <h2>{this.state.beer.name}</h2>
-              <h4>{this.state.beer.tagline}</h4>
-              <p>{this.state.beer.description}</p>
+              <h1>{this.state.beer.name}</h1>
+              <h3>{this.state.beer.tagline}</h3>
+              <h5>{this.state.beer.description}</h5>
+
             </div>
+
           </div>
         
         }

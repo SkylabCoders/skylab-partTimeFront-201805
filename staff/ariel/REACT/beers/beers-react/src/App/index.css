@@ -2,44 +2,7 @@
     box-sizing: border-box;
 }
 
-
-header {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+.content{
     width: 100%;
 }
-
-header .title{
-    width: 100%;
-    height: 50px;
-    justify-content: center;
-    display: flex;
-
-}
-
-.About{
-    width: 15%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.About  p{
-    margin-left: 2%;
-
-}
-
-.List{
-    width: 15%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.List  p{
-    margin-left: 2%;
-
-}
-
 

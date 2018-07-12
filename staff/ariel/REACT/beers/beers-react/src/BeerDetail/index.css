@@ -1,7 +1,9 @@
 .SingleBeer {
+  margin-top: 60px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .Pic{
@@ -21,18 +23,27 @@ img{
 .BeerInfo{
   display: flex;
   width: 60%;
+  height: auto;
   flex-direction: column;
-  align-self: flex-start;
+  align-items: flex-start;
+  justify-content: center;
   margin-left: 2%;
- 
+   
 }
 
-h2{
+.BeerInfo h1{
+  font-size: 40px;
+  margin: 0%  0% 0% 2%;
+  color: black;
+}
+
+.BeerInfo h3{
+  font-size: 30px;
   margin: 2%  0% 0% 2%;
 }
 
-h4{
+.BeerInfo h5{
+  font-size: 18px;
   margin: 2%  0% 0% 2%;
 }
-
 

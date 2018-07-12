@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
+import './index.css';
 
 class BeerList extends Component {
   constructor(props){
@@ -41,13 +41,14 @@ class BeerList extends Component {
           </Link>
 
 
-          <div className="BeerInfo">
+          <div className="BeerListInfo">
+
             <div>
               <h2>{beer.name}</h2> 
-
-            <h4>{beer.tagline}</h4>
+              <h4>{beer.tagline}</h4>
             </div>
           </div>
+
         </div>
       )
     })

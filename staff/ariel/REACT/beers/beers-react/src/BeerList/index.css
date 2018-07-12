@@ -1,0 +1,58 @@
+.list{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.BeerUnitInfo {
+  margin: 15px 0px 0px 0px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.BeerPicture{
+  margin-left: 15px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BeerPicture img{
+  width: auto;
+  height: 100%;
+}
+
+.BeerListInfo{
+  margin-left: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+}
+
+.BeerInfo div {
+  width: 100%;
+  margin-left: 20px;
+}
+
+h2{
+  width: 100%;
+  margin: 2%  0% 0% 2%;
+}
+
+h4{
+  width: 100%;
+  margin: 2%  0% 0% 2%;
+}
+
+
