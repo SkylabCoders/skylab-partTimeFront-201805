@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeout</title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container1">
+        Promise status <span id="promise-status"></span>
+        <input id="beer-id" />
+        <button id="get-beer">Ger Beer</button>
+        <div class="container"></div>
+    </div>
+    <button id="cancel-promise">cancel promise</button>
+    <script >
+        const reportStatus = (type, status) => {
+            $(`#${type}-status`).html(status);
+        }
+
+        $('#get-beer').click(()=>{
+          const p = new Promise((resolve, reject)=>{
+            const beerId = $('#beer-id').val();
+            
+            if(!/\d/.test(beerId)){
+              reject("not a valid id");
+              return;
+            }
+
+            reportStatus('promise', 'getting Beer');
+            $.ajax({
+              url: `https://api.punkapi.com/v2/beers/${beerId}`,
+              success: (beers)=>{
+                reportStatus('promise', 'data arrived');
+
+                if(beers.length !== 1){
+                  reject('not a single beer');
+                }else{
+                  resolve(beers[0]);
+                }
+              },
+              error: (e,e2,e3) => {
+                reject(e.responseJSON.error);
+              }
+            });
+          });
+      
+          p.then((beer)=>{
+            reportStatus('promise', 'Beer OK');
+            $('.container').append(
+              `<div class="beer">
+                <div class="beer-image" style="background-image: url(${beer.image_url})"></div>
+                <div class="beer-info">
+                  <h1>${beer.name}</h1>
+                  <h2>${beer.tagline}</h2>
+                <div>
+            </div>`);
+            
+          },(reason)=>{
+            reportStatus('promise', reason);
+            
+          })
+
+          reportStatus('promise', 'end click');
+        });
+
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeout</title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container1">
+        Promise status <span id="promise-status"></span>
+        <input id="beer-id" />
+        <button id="get-beer">Ger Beers</button>
+        <div id="container-b1"></div>
+        <div id="container-b2"></div>
+    </div>
+    <button id="cancel-promise">cancel promise</button>
+    <script >
+        const reportStatus = (type, status) => {
+            $(`#${type}-status`).html(status);
+        }
+
+        $('#get-beer').click(()=>{
+          let promises = [];
+
+          const p = new Promise((resolve, reject)=>{
+            const beerId = $('#beer-id').val();
+            
+            if(!/\d/.test(beerId)){
+              reject("p is not a valid id");
+              return;
+            }
+
+            reportStatus('promise', 'getting Beer');
+            $.ajax({
+              url: `https://api.punkapi.com/v2/beers/${beerId}`,
+              success: (beers)=>{
+                //reportStatus('promise', 'data arrived');
+
+                if(beers.length !== 1){
+                  reject('p is not a single beer');
+                }else{
+                  beers[0].promiseId = "p";
+                  resolve(beers[0]);
+                }
+              },
+              error: (e,e2,e3) => {
+                reject(`p1 ${e.responseJSON.error}`);
+              }
+            });
+          });
+
+          promises.push(p);
+
+          const p2 = new Promise((resolve, reject)=>{
+            let beerId = $('#beer-id').val();
+            
+            if(!/\d/.test(beerId)){
+              reject("p2 is not a valid id");
+              return;
+            }
+
+            beerId++;
+
+            reportStatus('promise', 'getting Beer');
+            $.ajax({
+              url: `https://api.punkapi.com/v2/beers/${beerId}`,
+              success: (beers)=>{
+                //reportStatus('promise', 'data arrived');
+
+                if(beers.length !== 1){
+                  reject('p2 is not a single beer');
+                }else{
+                  beers[0].promiseId = "p2";
+                  resolve(beers[0]);
+                }
+              },
+              error: (e,e2,e3) => {
+                reject(`p2 ${e.responseJSON.error}`);
+              }
+            });
+          });
+          promises.push(p2);
+/*
+          Promise.all(promises).then((results) => {   // ---> Ésta alternativa espera a que lleguen todos los resultados
+            results.forEach((r,i)=>{
+              reportStatus('promise', 'Beer OK');
+              $(`#container-b${i+1}`).html(
+                `<div class="beer">
+                  <div class="beer-image" style="background-image: url(${r.image_url})"></div>
+                  <div class="beer-info">
+                    <h1>${r.name}</h1>
+                    <h2>${r.tagline}</h2>
+                  <div>
+              </div>`);
+            })
+          }, (reason)=>{
+            reportStatus('promise', reason);
+            $(`#container-b1, #container-b2`).html('')
+          });
+
+          reportStatus('promise', 'end click');
+          */
+
+          Promise.race(promises).then((result) => {     // ---> Arroja el dato que llega primero.
+            reportStatus('promise', `La promesa ganadora es ${result.promiseId}`);
+          });
+        });
+        
+    </script>
+
+</body>
+</html>

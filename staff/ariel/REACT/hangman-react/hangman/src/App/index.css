@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .Upper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Upper-up{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+  .Upper .Button{
+    width: 48%;
+    height: 20px;
+    margin: 2% 0% 0% 2%;
+    display: flex;
+    justify-content: flex-start;
+    
+  }
+
+  .Upper .Vidas{
+    width: 48%;
+    height: 20px;
+    margin: 2% 0% 0% 2%;
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  .Upper .Vidas p{
+      margin:0px;
+  }
+
+  .Upper .Upper-low{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  .GuessWord{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+  }
+
+  h2 {
+      font-size: 50px;
+  }
+
+  .Console{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+      height: 40px;
+      background-color: lightcyan;
+      border-radius: 5%;
+      margin: 2% 0% 2% 0%;
+      box-shadow: inset 0 0 10px #000000;
+  }
+
+  h4{
+      margin: 0px;
+  }
+  
+  
+  
+  .lower {
+    width: 100%;
+    height: 300px;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  
+  
+  .KeyBoard{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+  }
+  
+
+  
+    button p{
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0px;
+  }
+  

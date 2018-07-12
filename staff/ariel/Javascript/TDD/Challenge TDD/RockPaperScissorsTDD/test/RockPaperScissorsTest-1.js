@@ -15,8 +15,6 @@ describe('player 1 vs player 2', function(){
   })
 })
 
-
-
 describe('Tie', function(){
   
   it('tie', function(){ 

@@ -1,0 +1,87 @@
+*{
+    box-sizing: border-box;
+}
+
+
+header {
+    margin: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: orange;
+    color: white;
+    position: top;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.headerLeft{
+    margin-left: 1%;
+    width: 48%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.title{
+    width: 30%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    margin: 0px;
+    font-size: 16px;
+    color: green;
+}
+
+.navegacion {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about  p{
+    margin-left: 2%;
+    font-size: 18px;
+
+}
+
+.navlist{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list  p{
+    margin-left: 2%;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.headerRight{
+    width: 48%;
+    margin-right: 1px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
