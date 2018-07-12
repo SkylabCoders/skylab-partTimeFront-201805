@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import './index.css';
 
-class Header extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      beer: null
-    }
-    
-  }
-
+function Header (props){
 // Hacer el componente header y mostrar/ocultar el 
-// link "Go to list" (this.props.location)
+// link "Go to list" (props.location)
+  const { location } = props;
 
-  render() {
-    return (
-    
-      <h3><Link to="/" >Beerlist</Link></h3>
-    );
-  }
+  return (
+    <header>
+      {location.pathname !== '/' ? <h3><Link to="/" >Beerlist</Link></h3> : null}
+      {location.pathname !== '/about' && <h3><Link to="/about" >About</Link></h3>}
+    </header>
+  );
 }
 
-export default Header;
+export default withRouter(Header);
