@@ -133,6 +133,22 @@ function sumAndProduct (a){
 }
 console.log(sumAndProduct([2,3]))
 
+//ES6
+const sumAndProduct = (a)=>{ 
+  
+  let sum = 0;
+  let product = 1;
+  a.forEach((n) => sum=sum+n);
+  a.forEach((n) => product=product*n)
+  //console.log(sum)
+  //console.log(product)
+  
+  return `la suma es ${sum} y el product es ${product}`;
+}
+
+console.log(sumAndProduct([2,3]))
+
+
 /*
 6
 
@@ -1059,6 +1075,13 @@ function removeElement(arr,del){
 }
 console.log(removeElement([2, 5, 9, 6], 5));
 
+//ES6 - map, reduce, filter, some, every, forEach
+
+const removeElement = (arr,el)=>{ 
+ return arr.filter((n) => n != el );
+}
+
+console.log(removeElement([2, 5, 9, 6], 5));
 
 /* 37
 findArrayWithElement
@@ -1152,3 +1175,129 @@ console.log(filterFalsy([58, '', 'abcd', true, null, false, 0]));
 //https://stackoverflow.com/questions/32906887/remove-all-falsy-values-from-an-array/32906951
 
 
+
+//ES6
+//ES6 - map, reduce, filter, some, every, forEach
+/*
+5
+Sum and Product
+Write a JavaScript program to compute the sum and product of an array of integers.
+
+}*/
+
+
+const sumAndProduct = (a)=>{ 
+  
+  let sum = 0;
+  let product = 1;
+  a.forEach((n) => sum=sum+n);
+  a.forEach((n) => product=product*n)
+  //console.log(sum)
+  //console.log(product)
+  
+  return `la suma es ${sum} y el product es ${product}`;
+}
+
+console.log(sumAndProduct([2,3]))
+
+//// Cristiam del mio
+
+const sumAndProduct = (a)=>{ 
+  
+  let sum = 0;
+  let product = 1;
+  a.forEach((n) => {
+    sum=sum+n
+    product=product*n
+  });
+  //a.forEach((n) => product=product*n)
+  
+  return `la suma es ${sum} y el product es ${product}`;
+}
+
+console.log(sumAndProduct([2,3]))
+
+//----------------- sol Ari
+const sumAndProduct = (a) => {
+    
+    const {sum, pro} = a.reduce(function(x,y){
+        return {sum: x + y.sum, pro: x * y.pro}
+      
+    },{sum: 0, pro: 1});
+
+    return `a suma es ${sum} y el product es ${pro}`
+
+};
+
+console.log(sumAndProduct([1,2,3,4,5]));
+
+//-------------- sol cristiam
+const sumAndProduct = (a) => {
+    
+    const sum = a.reduce(function(x,y){
+        return x+y
+    },0);
+
+    const product = a.reduce(function(x,y){
+        return x*y
+    },1);
+
+    return `a suma es ${sum} y el product es ${product}`
+
+};
+
+console.log(sumAndProduct([1,2,3,4,5]));
+
+
+
+/* 36
+removeElement
+Write a JavaScript function to remove a specific element from an array.
+
+Test data :
+console.log(remove_array_element([2, 5, 9, 6], 5));
+[2, 9, 6]
+*/
+
+
+
+const removeElement = (arr,el)=>{ 
+ return arr.filter((n) => n != el );
+}
+
+console.log(removeElement([2, 5, 9, 6], 5));
+
+//ES6 - map, reduce, filter, some, every, forEach
+
+/*
+16
+swapCase
+Write a JavaScript program which accept a string as input and swap the case of each character. 
+For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'.
+
+---------------------- me falta cambiar este
+*/
+
+function swap(str){
+  var splited = str.split('')
+  //console.log(splited)
+  for (i=0;i<splited.length;i++){
+     var answer = []
+   if (splited[i] == splited[i].toLowerCase()){
+     splited[i] = splited[i].toUpperCase();
+   } else {
+     splited[i] = splited[i].toLowerCase();
+   }
+  }
+  
+   var nonsplit = splited.join('')
+  
+  console.log(nonsplit)
+}
+
+const swap = (str)=>{
+  let string = str.split('');
+  return string.forEach((n) => n == n.toUpperCase() ? n.toLowerCase() : n.toUpperCase())
+}
+
+swap('The Quick Brown Fox');

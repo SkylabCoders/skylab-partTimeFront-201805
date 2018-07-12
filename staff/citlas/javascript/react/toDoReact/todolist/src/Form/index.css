@@ -1,0 +1,22 @@
+form {
+  width: 80%;
+  margin: auto;
+  overflow: auto; }
+  form input {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2%;
+    width: 40%;
+    padding: 2%;
+    float: left;
+    font-size: 1em;
+    color: gray; }
+  form .formButton {
+    padding: 2%;
+    margin: 2%;
+    background-color: lightgray;
+    font-size: 1em; }
+  form .formButton:hover {
+    background-color: #504d4c;
+    color: white; }
