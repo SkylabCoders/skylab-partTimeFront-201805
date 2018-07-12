@@ -22,6 +22,10 @@ class ToDo extends Component {
     this.props.onDeleteTodo(this.props.id);
   }
 
+  componentWillUnmount(){
+    console.log('TODO componentWillUnmount');
+  }
+
   render() {
     const { title, id, done } = this.props;
 

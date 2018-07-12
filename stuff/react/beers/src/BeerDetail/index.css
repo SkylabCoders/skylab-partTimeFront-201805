@@ -1,0 +1,7 @@
+.beer-detail {
+    text-align: center;
+}
+
+.beer-detail .main-image img{
+    height: 200px;
+}

@@ -6,23 +6,32 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      todoTitle: 'a'
+      todoTitle: ''
     }
 
     this.changeInputValue = this.changeInputValue.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
   changeInputValue(e){
     this.setState({todoTitle: e.target.value})
   }
 
+  addTodo(e){
+    e.preventDefault();
+    this.props.onAddTodo(this.state.todoTitle);
+  }
+
   render() {
     return (
       <div className="Form">
-        <input 
-          onChange={this.changeInputValue}
-          value={this.state.todoTitle}
-          />
+        <form onSubmit={this.addTodo}>
+          <input 
+            onChange={this.changeInputValue}
+            value={this.state.todoTitle}
+            />
+          <button type="submit">ADD TODO</button>
+        </form>
       </div>
     );
   }
