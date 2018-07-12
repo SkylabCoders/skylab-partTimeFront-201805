@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import BeerList from '../BeerList/';
+import SearchList from '../Search/';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import BeerDetail from "../BeerDetail/";
 import About from '../About/';
+import Search from '../Search';
 import './index.css';
 
 class App extends Component {
@@ -24,7 +26,7 @@ class App extends Component {
         
         <header>
           <div className="title">
-             <h1> This is my header </h1>
+             <h1> BEER HEADER </h1>
           </div>
           <div className="About">
             <p><Link to="/About">Go to About</Link></p> 
@@ -32,13 +34,17 @@ class App extends Component {
           <div className="List">
             <p><Link to="/BeerList">Go to Beer List</Link></p>
           </div>
+          <div>
+            <Search />
+          </div>
 
         </header>
         
           <div>
             <Route path="/About" exact component={About}/> 
             <Route path="/BeerList" exact component={BeerList}/>
-            <Route path="/BeerDetail/:x" exact render ={(props) => {return <BeerDetail beerInfo={props.match.params.x}/> } }/>
+            <Route path="/SearchList/:s" exact render = {(props) => {return <SearchList nameSearch={props.match.params.s}/> } }/>
+            <Route path="/BeerDetail/:x" exact render = {(props) => {return <BeerDetail beerInfo={props.match.params.x}/> } }/>
            
 
           </div>

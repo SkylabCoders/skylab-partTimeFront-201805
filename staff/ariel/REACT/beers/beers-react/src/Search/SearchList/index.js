@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router,  Link} from 'react-router-dom';
 
 
-class BeerList extends Component {
+class SearchList extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       beers: []
     }
+
+    this.onSubmit = this.onSubmit.bind(this);
     
   }
 
   componentDidMount() {
     console.log("ComponentDidMount START")
-    axios.get(`https://api.punkapi.com/v2/beers/`)
+    axios.get(`https://api.punkapi.com/v2/beers/`,{
+      
+      params: {
+        beerName:this.props.nameSearch,
+      }
+
+    })
       .then(res => {
         const beers = res.data;
         this.setState({ beers });
@@ -27,6 +35,7 @@ class BeerList extends Component {
       })
   };
 
+  
 
   _renderBeers(){
     return this.state.beers.map((beer,i) => {
@@ -34,7 +43,7 @@ class BeerList extends Component {
 
         <div className="BeerUnitInfo">
 
-          <Link to={`/BeerDetail/${beer.id}`} key={i}>
+          <Link to={`../../BeerDetail/${beer.id}`} key={i}>
             <div className="BeerPicture">
               <img src={beer.image_url}/>
             </div>
@@ -73,4 +82,4 @@ class BeerList extends Component {
 }
 
 
-export default BeerList;
+export default SearchList;

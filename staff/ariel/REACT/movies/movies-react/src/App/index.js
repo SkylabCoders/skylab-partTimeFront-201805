@@ -25,6 +25,7 @@ class App extends Component {
             <Route path="/Discovery" exact component={Discovery}/>
             {/*<Route path="/item/:x" exact component={Item}/>  --> en este caso en Item sí necesitaría el props.match.params y el api_key se lo paso en el mismo Item*/}
             <Route path="/item/:x" exact render = {(props) => { return <Item movieId={props.match.params.x}/> } }/> 
+            
           </div>
 
         
