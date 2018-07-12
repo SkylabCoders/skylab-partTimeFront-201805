@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { withRouter } from 'react-router';
 import SearchList from './SearchList/';
 import './index.css';
 
@@ -21,7 +21,7 @@ class Search extends Component {
   onSubmit(e) {
     e.preventDefault();
     console.log(this.state);
-    <SearchList nameSearch={this.state.beerName}/>
+    this.props.history.push(`/search-list/${this.state.beerName}`)
   }
 
   render() {
@@ -42,4 +42,4 @@ class Search extends Component {
 }
 
 
-export default Search;
+export default withRouter(Search);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BeerList from '../BeerList/';
-import SearchList from '../Search/';
+import SearchList from '../Search/SearchList';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import BeerDetail from "../BeerDetail/";
 import About from '../About/';
@@ -29,8 +29,8 @@ class App extends Component {
         <div className="content">
 
           <Route path="/About" exact component={About}/> 
-          <Route path="/BeerList" exact component={BeerList}/>
-          <Route path="/SearchList/:s" exact render = {(props) => {return <SearchList nameSearch={props.match.params.s}/> } }/>
+          <Route path="/beer-list" exact component={BeerList}/>
+          <Route path="/search-list/:s" exact render = {(props) => {return <SearchList nameSearch={props.match.params.s}/> } }/>
           <Route path="/BeerDetail/:x" exact render = {(props) => {return <BeerDetail beerInfo={props.match.params.x}/> } }/>
           
         </div>

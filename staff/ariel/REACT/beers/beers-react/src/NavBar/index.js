@@ -16,9 +16,6 @@ class Navbar extends Component {
 
   render() {
     return (
-
-    <Router> 
-
       <header>
 
         <div className="headerLeft">
@@ -34,7 +31,7 @@ class Navbar extends Component {
             </div>
 
             <div className="navlist">
-              <p><Link to="/BeerList">Beer List</Link></p>
+              <p><Link to="/beer-list">Beer List</Link></p>
             </div>
 
           </div>
@@ -48,10 +45,6 @@ class Navbar extends Component {
         </div>
 
       </header>
-        
-
-
-    </Router>
     );
   }
 }

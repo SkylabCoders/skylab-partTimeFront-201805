@@ -11,31 +11,37 @@ class SearchList extends Component {
       beers: []
     }
 
-    this.onSubmit = this.onSubmit.bind(this);
-    
+    this.loadBeers = this.loadBeers.bind(this);
   }
 
   componentDidMount() {
-    console.log("ComponentDidMount START")
-    axios.get(`https://api.punkapi.com/v2/beers/`,{
-      
-      params: {
-        beerName:this.props.nameSearch,
-      }
-
-    })
-      .then(res => {
-        const beers = res.data;
-        this.setState({ beers });
-      })
-
-      .catch(function (error) {    // ataja el error: no rompe la app
-        // handle error
-        console.log(error);
-      })
+    this.loadBeers();
   };
 
-  
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.nameSearch !== this.props.nameSearch){
+      this.loadBeers();
+    }
+  }
+
+
+  loadBeers(){
+    console.log("ComponentDidMount START")
+    axios.get(`https://api.punkapi.com/v2/beers/`,{
+      params: {
+        beer_name:this.props.nameSearch,
+      }
+    })
+    .then(res => {
+      const beers = res.data;
+      this.setState({ beers });
+    })
+
+    .catch(function (error) {    // ataja el error: no rompe la app
+      // handle error
+      console.log(error);
+    })
+  }
 
   _renderBeers(){
     return this.state.beers.map((beer,i) => {
