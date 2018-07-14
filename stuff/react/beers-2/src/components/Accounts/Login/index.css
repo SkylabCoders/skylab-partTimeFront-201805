@@ -1,0 +1,21 @@
+.register-form{
+    width: 500px;
+    margin:100px auto;
+    background: lightgray;
+    text-align: center;
+    padding: 30px;
+}
+
+.form-item{
+    margin-bottom: 20px;
+}
+
+.form-item-label{
+    font-size: 16px;
+    color: blue;
+}
+
+.form-error{
+    font-size: 12px;
+    color: red;
+}
