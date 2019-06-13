@@ -1,0 +1,10 @@
+
+body {
+  padding: 40px 30px;
+}
+
+body,
+* {
+    box-sizing: border-box;
+}
+
